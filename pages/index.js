@@ -1,3 +1,4 @@
+import antdCss from 'antd/dist/antd.css';
 import React from 'react';
 import withRedux from 'next-redux-wrapper';
 import { initStore } from '../store';
@@ -10,7 +11,11 @@ class Tovi extends React.Component {
 
     render() {
         return (
-            <Layout />
+            <div>
+                <style dangerouslySetInnerHTML={{ __html: antdCss }} />
+                <Layout />
+            </div>
+
         )
     }
 }
