@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import Logo from './Logo';
-import { Menu, Icon } from 'antd';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import OptionsPanel from './OptionsPanel';
+import { Nav } from './styles';
 
 export default class Navigator extends Component {
-  state = { 
-    selected: 'home',
-  };
-
   goHome = () => {
-    console.log('HOME');
+    console.log('HOME2');
   }
 
   render() {
     return( 
-      <div>
+      <Nav>
         <Logo onClick={this.goHome}/>
-      </div>
+        <OptionsPanel />
+      </Nav>
       );
   }
 }
