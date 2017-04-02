@@ -1,12 +1,29 @@
-import FA from 'react-fontawesome';
+import React from 'react';
+import Bars from './Bars';
+import CompactList from './CompactList';
 
-const CompactMenu = (props) => (
-  <div>
-    <FA
-      name='bars'
-    />
-  </div>
-  
-);
+class CompactMenu extends React.PureComponent {
+  state = {
+    opened: false,
+  };
+
+  toggleMenu = () => {
+    console.log('Toggling MENU');
+    this.setState({
+      opened: !this.state.opened,
+    });
+  };
+
+  render() {
+    return(
+      <div>
+        <Bars
+          onClick={this.toggleMenu}
+          showCross={this.state.opened}
+        />
+        { this.state.opened && <CompactList items={this.props.items} /> }
+      </div>
+  )};
+};
 
 export default CompactMenu;

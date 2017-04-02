@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { debounce } from 'lodash';
 import ExtendedMenu from './ExtendedMenu';
 import CompactMenu from './CompactMenu';
+import items from './config';
 
 class OptionsPanelContainer extends Component {
   state = {
@@ -31,8 +32,8 @@ class OptionsPanelContainer extends Component {
   render() {
     return (
       this.state.compactMode
-      ? <CompactMenu />
-      : <ExtendedMenu />
+      ? <CompactMenu items={items} />
+      : <ExtendedMenu items={items} />
     )
   }
 };
