@@ -5,7 +5,15 @@ import { OptionsPanel } from './styles';
 class ExtendedMenu extends React.PureComponent {
   render() {
     const Items = this.props.items.map((option) => {
-      return (<NavButton key={option}> {option} </NavButton>)
+      console.log(option);
+      return (
+        <NavButton 
+          key={option.name}
+          onClick={option.handler}
+        > 
+          {option.name} 
+        </NavButton>
+      )
     });
 
     return (

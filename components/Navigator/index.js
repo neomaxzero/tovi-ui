@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Logo from './Logo';
 import OptionsPanel from './OptionsPanel';
 import { Nav } from './styles';
+import Router from 'next/router';
 
 export default class Navigator extends Component {
   goHome = () => {
-    console.log('HOME2');
+    Router.push('/');
   }
 
   render() {

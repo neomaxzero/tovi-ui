@@ -1,10 +1,27 @@
+import { noop } from 'lodash';
+import Router from 'next/router';
 
 const optionsPanelItems = [
-  'Ayuda',
-  'Empresas',
-  'Conviertete en guia',       
-  'Registrate',       
-  'Iniciar Sesion',      
+  { 
+    name: 'Ayuda', 
+    handler: () => (Router.push('/help'))
+  },
+  {
+    name: 'Empresas',
+    handler: () => (console.log('Empresas'))
+  },
+  {
+    name: 'Conviertete en guia',
+    handler: () => (console.log('Conviertete en guia'))
+  },       
+  {
+    name: 'Registrate',
+    handler: () => (console.log('Registrate'))
+  },       
+  {
+    name: 'Iniciar Sesion',
+    handler: () => (console.log('Log In'))
+  },      
 ];
 
 export default optionsPanelItems;

@@ -1,11 +1,17 @@
 import React from 'react';
-import { ListContainer } from './styles';
+import { ListContainer, ItemSy } from './styles';
 
 class CompactList extends React.PureComponent {
   render() {
     const items = this.props.items.map((item) => {
+      console.log(item);
       return (
-        <li key={item}>{ item }</li>
+        <ItemSy 
+          key={item.name}
+          onClick={item.handler}
+        >
+          { item.name }
+        </ItemSy>
       )
     });
     return(

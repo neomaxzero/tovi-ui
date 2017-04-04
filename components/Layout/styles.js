@@ -7,6 +7,11 @@ const global = () =>
       color: #333;
     }
 
+    ul {
+      margin:0;
+      padding: 0;
+    }
+    
     body { 
       margin: 0;
     }

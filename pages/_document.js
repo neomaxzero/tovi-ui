@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>          
-          <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />          
+          <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />              
           <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         </Head>
         <body>

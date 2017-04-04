@@ -1,8 +1,5 @@
 import React from 'react';
-import withRedux from 'next-redux-wrapper';
-import { initStore } from '../store';
-import Layout from '../components/Layout';
-import ResetStyles from  './styles.js';
+import Layout from '~/components/Layout';
 
 class Tovi extends React.Component {
     static getInitialProps({store, isServer}) {
@@ -12,7 +9,6 @@ class Tovi extends React.Component {
     render() {
         return (
             <div>   
-                <ResetStyles />
                 <Layout />
             </div>
 
@@ -20,4 +16,4 @@ class Tovi extends React.Component {
     }
 }
 
-export default withRedux(initStore)(Tovi);
+export default Tovi;

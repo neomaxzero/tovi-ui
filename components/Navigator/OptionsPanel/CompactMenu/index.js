@@ -8,7 +8,6 @@ class CompactMenu extends React.PureComponent {
   };
 
   toggleMenu = () => {
-    console.log('Toggling MENU');
     this.setState({
       opened: !this.state.opened,
     });
