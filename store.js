@@ -8,6 +8,5 @@ const reducer = combineReducers({
 });
 
 const store = createStore(reducer);
-
-export const initStore = (initialState) => 
-    (createStore(reducer, initialState));
+const devTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__();
+export const initStore = (initialState) => (createStore(reducer, initialState, devTools));

@@ -8,7 +8,8 @@ export const ListContainer = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3em;
+    margin-top: 1.5em;
+    background-color: white;
 `
 export const ItemSy = styled.li`
     list-style-type: none;
