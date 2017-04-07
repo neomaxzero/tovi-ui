@@ -13,13 +13,9 @@ class Layout extends React.PureComponent {
     this.title = props.title || 'Turismo Local';
   }
   
-
   componentDidMount() {
-    let devtools = f => f
-    if (window) {
-      
-      window.Perf = require('react-addons-perf')
-      
+    if (window) {      
+      window.Perf = require('react-addons-perf')      
     }
   }
 
