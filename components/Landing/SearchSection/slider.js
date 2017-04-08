@@ -11,11 +11,14 @@ class SliderBar extends PureComponent {
       slidesToShow: 1,
       slidesToScroll: 1
     };
-    
+
     return (
       <StyledContainer>
         <Slider {...settings}>
-          <img src='static/backgroundSearch.jpg' />
+          <div>
+            <div style={{backgroundColor: 'red'}} />
+            <img src='static/backgroundSearch.jpg' />          
+          </div>
         </Slider>
       </StyledContainer>
     );   

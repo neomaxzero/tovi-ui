@@ -6,8 +6,6 @@ class Tovi extends React.Component {
     return { isServer };
   }
 
-
-
   render() {
     console.log(SearchSection);
     return (
