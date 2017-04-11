@@ -5,6 +5,16 @@ import { Nav } from './styles';
 import Router from 'next/router';
 
 export default class Navigator extends Component {
+  state = {
+    showLogin: false,
+  };
+
+  toggleLogin = () => {
+    this.setState({
+      showLogin: !this.state.showLogin,
+    });
+  }
+
   goHome = () => {
     Router.push('/');
   }

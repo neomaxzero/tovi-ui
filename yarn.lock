@@ -3543,6 +3543,16 @@ react-addons-perf@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-click-outside@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-2.2.0.tgz#fb815517cb6144bb5e670f69e1a61d6165338a59"
+  dependencies:
+    hoist-non-react-statics "^1.2.0"
+
+react-click-outside@tj/react-click-outside:
+  version "1.1.0"
+  resolved "https://codeload.github.com/tj/react-click-outside/tar.gz/82d51114d841a151e6285ac542d6fd98690910e6"
+
 react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
@@ -3608,7 +3618,7 @@ react-responsive-mixin@^0.4.0:
     enquire.js "^2.1.1"
     json2mq "^0.2.0"
 
-react-slick@~0.14.2:
+react-slick@^0.14.7, react-slick@~0.14.2:
   version "0.14.7"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.14.7.tgz#5035f8b070f26fd18be1f6d3adc7dd2ab4b0bc2f"
   dependencies:
