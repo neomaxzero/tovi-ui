@@ -7,6 +7,6 @@ export const LemasContainer =  styled.div`
 export const LemaSc = styled.div`
   color: black;
   font-size: 2em;
-  font-weight: bold;
+  font-family: Montserrat;
   opacity: 0.5;
 `;

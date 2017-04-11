@@ -1,13 +1,18 @@
+import { TOGGLE_LOGIN } from  '~/components/constants';
 import { fromJS } from 'immutable';
 
 const InitialState = fromJS({
-  user: '',
+  showLogin: false,
 });
+
 
 const reducer = (state = InitialState, action) => {
   switch (action) {
-    case 'TEST':
-      return state.set('user', 'maxi');
+    case TOGGLE_LOGIN: {
+      console.log('KIASDKIQWEKIKEIWQIE');
+      console.log(state.get('showLogin'))
+      return state.set('showLogin', !state.get('showLogin'));
+    }
       break;
     default:
       return state;
