@@ -1,7 +1,7 @@
 import { noop } from 'lodash';
 import Router from 'next/router';
 
-const optionsPanelItems = [
+const optionsPanelItems = (actions) => ([
   { 
     name: 'Ayuda', 
     handler: () => (Router.push('/help'))
@@ -20,8 +20,8 @@ const optionsPanelItems = [
   },       
   {
     name: 'Iniciar Sesion',
-    handler: () => (console.log('Log In'))
+    handler: actions.toggleLogin,
   },      
-];
+]);
 
 export default optionsPanelItems;
