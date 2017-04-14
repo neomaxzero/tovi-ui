@@ -5,8 +5,7 @@ export const BackgroundSc = styled.div`
   top: 0;
   height: 100vh;
   width: 100vw;
-  background: black;
-  opacity: 0.75;
+  background: rgba(0,0,0,0.85);  
   display: flex;
   justify-content: center;
   align-items: center;
