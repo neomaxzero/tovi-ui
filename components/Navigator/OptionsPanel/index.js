@@ -30,7 +30,6 @@ class OptionsPanelContainer extends Component {
 
 
   render() {
-    console.log(this.props);
     return (
       this.state.compactMode
       ? <CompactMenu items={items(this.props)} />

@@ -15,20 +15,3 @@ export const Field = styled.input`
 export const FormLogin = styled.form`
   width: 100%;
 `;
-
-export const LoginButtonSc = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  background-color: ${primary};
-  padding: 1em;
-  width: 100%;
-  cursor: pointer;
-  color: white;
-  font-size: 1.1em;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;

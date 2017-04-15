@@ -5,7 +5,6 @@ import Button from '~/components/shared/Button';
 
 class SearchBar extends React.PureComponent {
   search = () => {
-    console.log('SEARCH!!');
   }
 
   render() {
