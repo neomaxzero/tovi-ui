@@ -1,4 +1,4 @@
-import { TOGGLE_LOGIN } from  '~/components/constants';
+import { TOGGLE_LOGIN, SET_LOGIN } from  '~/components/constants';
 import { fromJS } from 'immutable';
 
 const InitialState = fromJS({
@@ -10,11 +10,15 @@ const InitialState = fromJS({
   },
 });
 
+const toggler = (state) => (state.set('showLogin', !state.get('showLogin')))
 
 const reducer = (state = InitialState, action) => {  
   switch(action.type) {
     case TOGGLE_LOGIN: {
-      return state.set('showLogin', !state.get('showLogin'));
+      return toggler(state);
+    }
+    case SET_LOGIN: {
+      return toggler(state);
     }
       break;
     default:

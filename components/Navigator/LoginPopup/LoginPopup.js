@@ -11,10 +11,12 @@ class LoginPopup extends Component {
   }
 
   render() {
+    const { setLogin } = this.props;
+
     return(
       <Background onClickOutside={this.toggleLogin}>
         <PopupContainer>
-          <SocialLogin />
+          <SocialLogin onLogin={setLogin}/>
           <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
           <LoginForm />
           <NewAccount />

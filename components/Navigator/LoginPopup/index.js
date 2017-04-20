@@ -1,3 +1,5 @@
-import LoginPoup from './LoginPopup';
+import LoginPoupComponent from './LoginPopup';
+import LoginPopupContainer from './container';
 
-export default LoginPoup;
+export { LoginPoupComponent }
+export default LoginPopupContainer ;

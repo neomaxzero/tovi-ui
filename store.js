@@ -3,9 +3,11 @@ import createSagaMiddleware from 'redux-saga';
 
 //Reducers
 import NavigatorReducer from './components/Navigator/reducer';
+import LoginReducer from './components/Orphan/Login/reducer';
 
 const reducer = combineReducers({
     Navigator: NavigatorReducer,
+    Login: LoginReducer,
 });
 const sagaMiddleware = createSagaMiddleware();
 

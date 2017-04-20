@@ -4,10 +4,12 @@ import FacebookButton from './FacebookButton';
 
 class SocialLogin extends PureComponent {
   render() {
+    const { onLogin } = this.props;
+
     return(
       <SocialLoginContainer>
         <OneClickPhrase>Inicia sesión con un click</OneClickPhrase>
-        <FacebookButton />
+        <FacebookButton onLogin={onLogin} />
       </SocialLoginContainer>
     )
   }
