@@ -1,10 +1,9 @@
-import { TOGGLE_LOGIN } from '~/components/'
-const TEST_ACTION = 'TEST';
+import { TOGGLE_LOGIN } from '~/components/constants';
 
-const toggleAction = () => ({
+const toggleLogin = () => ({
 	type: TOGGLE_LOGIN,
 });
 
 export default {
-	toggleAction,
+	toggleLogin,
 };

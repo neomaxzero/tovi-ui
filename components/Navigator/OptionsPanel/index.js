@@ -14,10 +14,6 @@ class OptionsPanelContainer extends Component {
     window.onresize = debounce(this.verifyMode, 200);
   };
 
-  shouldComponentUpdate(_, nextState) {
-    return nextState.compactMode !== this.state.compactMode;
-  };
-
   componentWillUnmount() {
     window.onresize = null;
   };
@@ -32,8 +28,8 @@ class OptionsPanelContainer extends Component {
   render() {
     return (
       this.state.compactMode
-      ? <CompactMenu items={items} />
-      : <ExtendedMenu items={items} />
+      ? <CompactMenu items={items(this.props)} />
+      : <ExtendedMenu items={items(this.props)} />
     )
   }
 };

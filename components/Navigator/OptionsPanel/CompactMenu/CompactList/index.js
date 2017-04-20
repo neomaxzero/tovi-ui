@@ -4,7 +4,6 @@ import { ListContainer, ItemSy } from './styles';
 class CompactList extends React.PureComponent {
   render() {
     const items = this.props.items.map((item) => {
-      console.log(item);
       return (
         <ItemSy 
           key={item.name}

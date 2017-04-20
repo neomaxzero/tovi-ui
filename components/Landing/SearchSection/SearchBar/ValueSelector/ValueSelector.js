@@ -13,11 +13,9 @@ class ValueSelector extends React.PureComponent {
     });
   }
   openList = () => {
-    console.log('opening');
     this.setList(true);
   }
   closeList = () => {
-    console.log('click outside')
     this.setList(false);
   }
 

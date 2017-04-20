@@ -7,7 +7,6 @@ class Tovi extends React.Component {
   }
 
   render() {
-    console.log(SearchSection);
     return (
       <div>   
         <Layout />
