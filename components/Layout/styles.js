@@ -12,8 +12,12 @@ const global = () =>
       padding: 0;
     }
     
-    body { 
+    body, p { 
       margin: 0;
+    }
+
+    textarea:focus, input:focus{
+      outline: none;
     }
     `
   }

@@ -10,6 +10,8 @@ export const ListContainer = styled.ul`
     align-items: center;
     margin-top: 1.5em;
     background-color: white;
+    z-index: 1;
+    height: 100%;
 `
 export const ItemSy = styled.li`
     list-style-type: none;

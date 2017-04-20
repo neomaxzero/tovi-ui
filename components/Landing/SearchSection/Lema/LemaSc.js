@@ -9,4 +9,5 @@ export const LemaSc = styled.div`
   font-size: 2em;
   font-family: Montserrat;
   opacity: 0.5;
+  cursor: default; 
 `;

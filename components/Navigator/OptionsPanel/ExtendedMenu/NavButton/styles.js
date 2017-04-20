@@ -14,3 +14,9 @@ export const ButtonWrapper = styled.div`
         border-bottom: 1px solid ${primary};
     }
 `
+
+export const Avatar = styled.img`
+    margin-left: 1em;
+    height: 60%;
+    border-radius: 50%;
+`
