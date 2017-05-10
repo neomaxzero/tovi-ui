@@ -1,8 +1,11 @@
+const moment = require('moment');
 import React, { PureComponent } from 'react';
 import FA from 'react-fontawesome';
-import FacebookSecrets from '~/config/FacebookSecrets.js';
-
+import Cookies from 'js-cookie';
+import FacebookSecrets from '~/config/FacebookSecrets';
+import { login } from '~/services/user';
 import { FacebookButtonSc, FacebookPhrase } from './SocialLoginSc';
+import { PROVIDERS } from '~/components/Orphan/Login/constants';
 
 class FacebookButton extends PureComponent {
   constructor(props) {
@@ -12,8 +15,23 @@ class FacebookButton extends PureComponent {
 
   fetchProfile = () => {
     FB.api('/me?fields=email, name, picture, age_range, first_name, link, gender, locale, verified', (response) => {
-      this.props.onLogin(response, 'facebook');
+      this.props.onLogin(response, PROVIDERS.FACEBOOK );
     });
+  }
+  
+  exchangeToken = () => {
+    const Provider = 'facebook';
+    const TokenFace = FB.getAccessToken();
+    login({ TokenFace, Provider })
+      .then((result) => {
+        const { tokenExpireAt, tokenExpiresIn, token } = result.data;
+        const dateExpiration = moment.utc(tokenExpireAt).add(tokenExpiresIn, 'milliseconds').toDate() || 1;
+        Cookies.set('token', token, { expires: dateExpiration });
+        
+        console.log(Cookies.get());
+      })
+      .catch((err) => { console.error(err)})
+    
   }
 
   setScript = () => {
@@ -31,6 +49,7 @@ class FacebookButton extends PureComponent {
   statusChangeCallback = (response) => {
     if (response.status === 'connected') {
       this.fetchProfile();
+      this.exchangeToken();
     } else {
       FB.login((response) => {
         if (response.authResponse) this.fetchProfile();

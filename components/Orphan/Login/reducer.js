@@ -1,4 +1,4 @@
-import { SET_LOGIN } from  '~/components/constants';
+import { SET_LOGIN, LOGOUT } from  '~/components/constants';
 import { fromJS } from 'immutable';
 
 const InitialState = fromJS({
@@ -12,8 +12,9 @@ const reducer = (state = InitialState, action) => {
       return state
         .set('loginInfo', fromJS(action.loginInfo))
         .set('provider', fromJS(action.provider))
-    }
-      break;
+    }      
+    case LOGOUT: 
+      return InitialState      
     default:
       return state;
   }

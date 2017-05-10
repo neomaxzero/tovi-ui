@@ -1,14 +1,23 @@
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import OptionsPanel from './';
-import actions from '../actions';
-import { isLogged, getLoginInfo } from '~/components/Orphan/Login/selector';
+import LoginPopupActions from '../actions';
+import AuthActions from '~/components/Orphan/Login/actions';
+import { isLogged, getLoginInfo, getProvider } from '~/components/Orphan/Login/selector';
 
 const mapStateToProps = (state) => {
   return {
     logged: isLogged(state),
     loginInfo: getLoginInfo(state),
+    provider: getProvider(state),
   }
 }
 
-export default connect(mapStateToProps, actions)(OptionsPanel);
+const mapDispatchToProps = (dispatch) => {
+  return {
+  ...bindActionCreators(LoginPopupActions, dispatch),
+  logout: bindActionCreators(AuthActions.logout, dispatch),
+}};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OptionsPanel);
 

@@ -6,8 +6,20 @@ import LoginForm from './LoginForm';
 import NewAccount from './NewAccount';
 
 class LoginPopup extends Component {
+  state = {
+    locked : false,
+  }
+  
   toggleLogin = () => {
+    if(this.state.locked) return;
+
     this.props.toggleLogin();
+  }
+
+  lockPopup = () => {
+    this.setState({
+      locked: true,
+    });
   }
 
   render() {
@@ -18,7 +30,7 @@ class LoginPopup extends Component {
         <PopupContainer>
           <SocialLogin onLogin={setLogin}/>
           <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
-          <LoginForm />
+          <LoginForm  onLogin={setLogin} lockPopup={this.lockPopup} />
           <NewAccount />
         </PopupContainer>
       </Background>

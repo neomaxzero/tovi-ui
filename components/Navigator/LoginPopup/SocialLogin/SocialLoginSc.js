@@ -17,6 +17,7 @@ export const FacebookButtonSc = styled.div`
   background-color: #3b5998;
   padding: 1em;
   width: 100%;
+  height: 3.2em;
   cursor: pointer;
 
   &:hover {

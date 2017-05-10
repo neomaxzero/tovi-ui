@@ -1,10 +1,35 @@
+import React, { PureComponent } from 'react';
 import { ButtonWrapper, Avatar } from './styles';
+import DropList from './DropList';
 
-const NavButton = ({ onClick, children, avatar }) => (
-    <ButtonWrapper onClick={onClick}>
-      <span> {children} </span>
-      { avatar && <Avatar src={avatar} alt="avatar" /> }
-    </ButtonWrapper>
-);
+export default class NavButton extends PureComponent {
+  state = {
+    showPopup: false,
+  };
 
-export default NavButton;
+  toggle = () => {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    })
+  }
+
+  handleClick = () => {
+    this.toggle();
+    this.props.onClick();
+  }
+
+  render() {
+    const { children, avatar, child } = this.props;
+    const showPopup = child && this.state.showPopup;
+    return(
+      <div>
+        <ButtonWrapper onClick={this.handleClick}>
+          <span> {children} </span>
+          { avatar && <Avatar src={avatar} alt="avatar" /> }
+          { showPopup && <DropList items={child}/> }
+        </ButtonWrapper>
+      </div>
+    )
+  }
+}
+

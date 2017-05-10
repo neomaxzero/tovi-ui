@@ -10,6 +10,7 @@ class ExtendedMenu extends React.PureComponent {
           key={option.name}
           onClick={option.handler}
           avatar={option.avatar}
+          child={option.child}
         > 
           {option.name} 
         </NavButton>

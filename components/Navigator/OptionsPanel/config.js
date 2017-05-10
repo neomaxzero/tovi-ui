@@ -1,15 +1,18 @@
 import { noop } from 'lodash';
 import Router from 'next/router';
-
 const optionsPanelItems = (props) => {
 let subscriberOptions;
 
 if (props.logged) {
   subscriberOptions = [
     {
-      name: props.loginInfo.get('name'),
+      name: props.loginInfo.get('first_name'),
       handler: () => (console.log('LOGIN')),
       avatar: props.loginInfo.getIn(['picture','data', 'url']),
+      child: [{
+        name: 'Cerrar Sesion',
+        handler: props.logout.bind(this, props.provider),
+      }],
     }
   ]
 } else {
