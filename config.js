@@ -1,1 +1,1 @@
-export const BASE_API = 'http://toviservicios.azurewebsites.net/';
+export const BASE_API = 'https://toviservicios.azurewebsites.net/';
