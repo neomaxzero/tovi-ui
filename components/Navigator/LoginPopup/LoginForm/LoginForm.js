@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { Field, FormLogin, ErrorMessage } from './LoginFormSc';
+import { ErrorMessage } from './LoginFormSc';
+import { Field, Form } from '~/components/shared/FormPopup/styled';
 import FormButton from '~/components/shared/FormButton/';
 import OptionsLogin from './OptionsLogin';
 import Validators from '~/components/shared/Validators';
@@ -88,7 +89,7 @@ export default class LoginForm extends Component {
   render() {
     const { message, user, pass, validForm, loading } = this.state;
     return(
-      <FormLogin onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <Field 
           type="text" 
           name="user" 
@@ -110,7 +111,7 @@ export default class LoginForm extends Component {
         <OptionsLogin />        
         { message && <ErrorMessage>{message}</ErrorMessage>}
         <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading}/>
-      </FormLogin>
+      </Form>
     );
   }
 }

@@ -19,7 +19,7 @@ if (props.logged) {
   subscriberOptions =  [
     {
       name: 'Registrate',
-      handler: () => (console.log('Registrate'))
+      handler: props.toggleSignup,
     },       
     {
       name: 'Iniciar Sesion',
