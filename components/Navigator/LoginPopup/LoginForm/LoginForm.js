@@ -53,7 +53,7 @@ export default class LoginForm extends Component {
     if (loading) return;
 
     if (ev) ev.preventDefault();
-    let message, validForm, loading;
+    let message, validForm, loading, pass;
     if(this.validateFields()) { 
       message = '';
       this.doLogin();
