@@ -1,16 +1,14 @@
-const moment = require('moment');
 import React, { PureComponent } from 'react';
 import FA from 'react-fontawesome';
-import Cookies from 'js-cookie';
 import FacebookSecrets from '~/config/FacebookSecrets';
 import { login } from '~/services/user';
 import { FacebookButtonSc, FacebookPhrase } from './SocialLoginSc';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
+import { saveToken } from '~/utils/token';
 
 class FacebookButton extends PureComponent {
   constructor(props) {
     super(props);
-    
   }
 
   fetchProfile = () => {
@@ -24,14 +22,9 @@ class FacebookButton extends PureComponent {
     const TokenFace = FB.getAccessToken();
     login({ TokenFace, Provider })
       .then((result) => {
-        const { tokenExpireAt, tokenExpiresIn, token } = result.data;
-        const dateExpiration = moment.utc(tokenExpireAt).add(tokenExpiresIn, 'milliseconds').toDate() || 1;
-        Cookies.set('token', token, { expires: dateExpiration });
-        
-        console.log(Cookies.get());
+        saveToken(result)        
       })
       .catch((err) => { console.error(err)})
-    
   }
 
   setScript = () => {

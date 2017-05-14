@@ -1,5 +1,7 @@
 import React from 'react';
 import Layout from '~/components/Layout';
+import withRedux from '~/utils/redux-wrapper';
+import { store } from '~/store';
 
 class Help extends React.Component {
     static getInitialProps({store, isServer}) {
@@ -14,4 +16,4 @@ class Help extends React.Component {
     )
   }
 }
-export default Help;
+export default withRedux(store)(Help);

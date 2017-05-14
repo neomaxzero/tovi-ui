@@ -5,6 +5,7 @@ import NavigatorActions from './actions';
 
 const mapStateToProps = (state) => ({
   showLogin: showLoginSelector(state),
+  showEmailPassword: false,
 });
 
 export default connect(mapStateToProps, NavigatorActions)(Navigator);

@@ -1,19 +1,32 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { fromJS } from 'immutable';
+// import withRedux from 'next-redux-wrapper';
+import withRedux from '~/utils/redux-wrapper';
+import { store } from '~/store';
 import Layout from '~/components/Layout';
 import SearchSection from '~/components/Landing/SearchSection';
+
+
 class Tovi extends React.Component {
-  static getInitialProps({store, isServer}) {
-    return { isServer };
+  static async getInitialProps({ req, query,initialState }) { 
+    const isServer = !!req;
+    return { 
+      isServer, 
+      act: query.act 
+    };
   }
 
   render() {
     return (
       <div>   
-        <Layout />
+        <Layout activation={this.props.act}/>
         <SearchSection />        
       </div>
     );
   }
 }
 
-export default Tovi;
+const ToviRx = withRedux(store)(Tovi);
+export default ToviRx;
+// export default (Tovi);

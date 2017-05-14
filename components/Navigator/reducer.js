@@ -2,7 +2,7 @@ import { TOGGLE_LOGIN, SET_LOGIN } from  '~/components/constants';
 import { fromJS } from 'immutable';
 
 const InitialState = fromJS({
-  showLogin: true,
+  showLogin: false,
   login: {
     email: '',   
     password: '',

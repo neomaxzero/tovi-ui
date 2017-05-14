@@ -2,10 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
 import ResetStyles from  './styles.js';
-
 import Navigator from '../Navigator';
+import ActivationPopup from './ActivationPopup';
 
-import { initStore } from '~/store';
+import { store } from '~/store';
 
 class Layout extends React.PureComponent {
   constructor(props) {
@@ -20,6 +20,7 @@ class Layout extends React.PureComponent {
   }
 
   render() {
+    const { activated } = this.props;
     return (
     <div>
       <ResetStyles />
@@ -29,11 +30,13 @@ class Layout extends React.PureComponent {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />      
       </Head>        
       <Navigator />
-        { this.props.children }
+      { activated && <ActivationPopup />}
+      { this.props.children }
     </div>
     )
   }
 }
 
-export default withRedux(initStore)(Layout)
+// const withRx = withRedux(store);
+export default Layout;
 

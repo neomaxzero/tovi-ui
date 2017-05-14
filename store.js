@@ -5,10 +5,11 @@ import rootSaga from './rootSaga';
 //Reducers
 import NavigatorReducer from './components/Navigator/reducer';
 import LoginReducer from './components/Orphan/Login/reducer';
-
+import GlobalReducer from './components/Orphan/Global/reducer';
 const reducer = combineReducers({
     Navigator: NavigatorReducer,
     Login: LoginReducer,
+    Global: GlobalReducer,
 });
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,10 +17,10 @@ const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOL
 
 const store = (initialState) => { 
     const store = createStore(reducer, initialState,composeEnhancers(applyMiddleware(sagaMiddleware)));
-    sagaMiddleware.run(rootSaga);    
+    sagaMiddleware.run(rootSaga); 
     return store;
 };
 
-export const initStore = store;
+export { store };
 
  

@@ -1,9 +1,19 @@
 import { connect } from 'react-redux';
 import Layout from './Layout';
+import activacionActions from './ActivationPopup/actions';
+import { isActivated } from '~/components/Orphan/Global/selector';
 
 const mapStatetoProps = (state) => {
     return {
-        fromContainer: 'Maxi',
+        activated: isActivated(state),
     }
 }
-export default connect(mapStatetoProps)(Layout)
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    if (ownProps.activation)
+        dispatch(activacionActions.activateRequest(ownProps.activation));
+
+    return {};
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Layout)

@@ -11,7 +11,7 @@ export const getLoginInfo = createSelector(
 
 export const isLogged = createSelector(
   getLoginInfo,
-  LoginInfo => (LoginInfo && LoginInfo.get('name') !== undefined)
+  LoginInfo => (LoginInfo && LoginInfo.get('first_name') !== undefined)
 );
 
 export const getProvider = createSelector(

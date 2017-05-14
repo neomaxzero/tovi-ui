@@ -1,3 +1,7 @@
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const SET_LOGIN = 'SET_LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const ACTIVATE_REQUEST = 'ACTIVATE_REQUEST';
+export const ACTIVATE_SUCCESS = 'ACTIVATE_SUCCESS';
+export const ACTIVATE_FAIL = 'ACTIVATE_FAIL';
+export const ACTIVATE_CLOSE = 'ACTIVATE_CLOSE';

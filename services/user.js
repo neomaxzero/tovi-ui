@@ -1,6 +1,9 @@
-import { post } from 'axios';
-import { toviServices } from '~/config';
+import { req, secureReq } from './provider';
 
-const LOGIN_API = 'api/login/login';
-
-export const login = (loginBody) => (post(toviServices(LOGIN_API), loginBody));
+export const login = (loginBody) => (req.post('api/login/login', loginBody));
+export const user = {
+  get: (id) => (secureReq.get(`api/usuario/${id}`)),
+  create: (body) =>(req.post('api/usuario/'), body),
+  // activate: (code) =>(req.post('api/activate'),{ code }),
+  activate: () =>(Promise.resolve()), 
+} 
