@@ -1,8 +1,12 @@
-import { ACTIVATE_REQUEST, ACTIVATE_SUCCESS, ACTIVATE_CLOSE } from  '~/components/constants';
+import { ACTIVATE_REQUEST, ACTIVATE_SUCCESS, ACTIVATE_CLOSE,
+SIGNUP_SUCCEED_OPEN, SIGNUP_SUCCEED_CLOSE } from  '~/components/constants';
 import { fromJS } from 'immutable';
 
 const InitialState = fromJS({
   activation: { },
+  popups: { 
+    showSignUpSucceed: false,
+  },
 });
 
 
@@ -19,8 +23,15 @@ const reducer = (state = InitialState, action) => {
     }      
     case ACTIVATE_CLOSE: {
       return state
-        .setIn(['activation', 'activated'], false)                   
-      
+        .setIn(['activation', 'activated'], false)                         
+    }
+    case SIGNUP_SUCCEED_OPEN: {
+      return state
+        .setIn(['popups', 'showSignUpSucceed'], true)                         
+    }
+    case SIGNUP_SUCCEED_CLOSE: {
+      return state
+        .setIn(['popups', 'showSignUpSucceed'], false)                         
     }
     default:
       return state;

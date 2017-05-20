@@ -9,11 +9,6 @@ export const OptionsContainer = styled.div`
   margin-bottom: 2em;
 `;
 
-export const LabelSc = styled.label`
-  cursor: pointer;
-  user-select: none;
-`;
-
 export const Linki = styled.a`
   text-decoration: none;
   color: ${linkColors};

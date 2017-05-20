@@ -1,3 +1,5 @@
+import StyleReactSelect from './stylesReactSelect';
+
 const global = () => 
   (<style>{
     `
@@ -20,6 +22,8 @@ const global = () =>
     textarea:focus, input:focus{
       outline: none;
     }
+    
+    ${StyleReactSelect}
     `
   }
   </style>)

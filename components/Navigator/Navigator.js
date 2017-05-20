@@ -5,6 +5,8 @@ import OptionsPanel from './OptionsPanel/container';
 import Login from './LoginPopup';
 import SingUp from './SingUpPopup';
 import PasswordBlocked from './LoginPopup/PasswordBlocked';
+import SignUpSucceed from './SingUpPopup/SignUpSucceed';
+
 import { Nav } from './styles';
 
 export default class Navigator extends Component {
@@ -15,7 +17,7 @@ export default class Navigator extends Component {
   render() {
     const { showLogin, showSignUp, 
       toggleLogin, toggleSignup,
-      showEmailPassword } = this.props;
+      showEmailPassword, showSignupSucceed } = this.props;
     return( 
       <Nav>
         <Logo onClick={this.goHome}/>        
@@ -23,6 +25,7 @@ export default class Navigator extends Component {
         { showLogin && <Login toggleLogin={toggleLogin} /> }
         { showSignUp && <SingUp toggleSignup={toggleSignup} /> }
         { showEmailPassword && <PasswordBlocked /> }
+        { showSignupSucceed && <SignUpSucceed />}
       </Nav>
       );
   }

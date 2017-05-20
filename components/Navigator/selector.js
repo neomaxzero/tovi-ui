@@ -10,6 +10,7 @@ export const showLoginSelector = createSelector(
 );
 
 
+
 export const showSingup = createSelector(
   NavigatorSelector,
   Navigator => Navigator.get('showSignUp'),

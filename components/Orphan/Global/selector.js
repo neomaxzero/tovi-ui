@@ -7,6 +7,17 @@ const getActivation = createSelector(
   global => global.get('activation')
 );
 
+const getPopups = createSelector(
+  GlobalSelector,
+  global => global.get('popups')
+)
+
+export const showSignupSucceed = createSelector(
+  getPopups,
+  popups => popups.get('showSignUpSucceed')
+)
+
+
 export const isActivated = createSelector(
   getActivation,
   activation => activation.get('activated'),

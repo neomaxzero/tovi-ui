@@ -4,7 +4,6 @@ import withRedux from 'next-redux-wrapper';
 import ResetStyles from  './styles.js';
 import Navigator from '../Navigator';
 import ActivationPopup from './ActivationPopup';
-
 import { store } from '~/store';
 
 class Layout extends React.PureComponent {
