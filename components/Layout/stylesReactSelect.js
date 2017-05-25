@@ -1,4 +1,4 @@
-import { primaryArgb } from '~/components/shared/MainColors';
+import { primaryArgb, textPrimary } from '~/components/shared/MainColors';
 
 export default ` 
     .selectForm {
@@ -39,5 +39,6 @@ export default `
       line-height: 3em;
       padding-left: 1em;
       font-size: 1.1em;
+      color: #777;
     }
 `;

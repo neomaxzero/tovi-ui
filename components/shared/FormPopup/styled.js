@@ -3,12 +3,16 @@ import { primary, greyLine, error } from '~/components/shared/MainColors';
 
 export const PopupContainer = styled.div`
   border-radius: 4px;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
   width: 30em;
   display: flex;
   flex-direction:column;
   align-items: center;
   background-color: white;
   padding: 2em 1.5em;
+  position: relative;
 `;
 
 export const Field = styled.input`
@@ -25,3 +29,14 @@ export const Field = styled.input`
 export const Form = styled.form`
   width: 100%;
 `;
+
+export const QuitResponsive = styled.form`
+  cursor: pointer;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+
+  @media (min-width: 700px) {
+		display: none;
+	}
+`
