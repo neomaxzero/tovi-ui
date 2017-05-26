@@ -6,6 +6,10 @@ import LoginForm from './LoginForm';
 import NewAccount from './NewAccount';
 
 class LoginPopup extends Component {  
+  openSignUp = () => {
+    this.props.toggleLogin();
+    this.props.toggleSignup();
+  }
   render() {
     const { setLogin, toggleLogin } = this.props;
 
@@ -16,7 +20,7 @@ class LoginPopup extends Component {
             <SocialLogin onLogin={setLogin}/>
             <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
             <LoginForm  onLogin={setLogin} lockPopup={lockPopup} />
-            <NewAccount />
+            <NewAccount openSignUp={this.openSignUp}/>
           </div>
         )}          
       </FormPopup>

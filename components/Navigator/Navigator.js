@@ -22,7 +22,7 @@ export default class Navigator extends Component {
       <Nav>
         <Logo onClick={this.goHome}/>        
         <OptionsPanel />
-        { showLogin && <Login toggleLogin={toggleLogin} /> }
+        { showLogin && <Login toggleLogin={toggleLogin} toggleSignup={toggleSignup} /> }
         { showSignUp && <SingUp toggleSignup={toggleSignup} /> }
         { showEmailPassword && <PasswordBlocked /> }
         { showSignupSucceed && <SignUpSucceed />}

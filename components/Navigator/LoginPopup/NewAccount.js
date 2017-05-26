@@ -7,7 +7,10 @@ export default class NewAccount extends PureComponent {
     return(
       <NewAccountContainer>
         <NoAccQ>¿No tienes cuenta?</NoAccQ>
-        <FormButton name="Crear una Cuenta" secundary />
+        <FormButton 
+          name="Crear una Cuenta"
+          onClick={this.props.openSignUp}
+          secundary />
       </NewAccountContainer>
     );
   }
