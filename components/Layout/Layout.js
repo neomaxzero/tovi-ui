@@ -13,7 +13,7 @@ class Layout extends React.PureComponent {
   }
 
   render() {
-    const { activated } = this.props;
+    const { activating, activation } = this.props;
     return (
     <div>
       <ResetStyles />
@@ -23,7 +23,7 @@ class Layout extends React.PureComponent {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />      
       </Head>        
       <Navigator />
-      { activated && <ActivationPopup />}
+      { activating && <ActivationPopup code={activation}/>}
       { this.props.children }
     </div>
     )

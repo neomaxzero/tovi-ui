@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Layout from './Layout';
 import activacionActions from './ActivationPopup/actions';
-import { isActivated } from '~/components/Orphan/Global/selector';
+import { isActivating } from '~/components/Orphan/Global/selector';
 
 const mapStatetoProps = (state) => {
     return {
-        activated: isActivated(state),
+        activating: isActivating(state),
     }
 }
 

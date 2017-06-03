@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primary, greyLine, error } from '~/components/shared/MainColors';
+import { primary, greyLine, error, linkColors } from '~/components/shared/MainColors';
 
 export const PopupContainer = styled.div`
   border-radius: 4px;
@@ -40,3 +40,26 @@ export const QuitResponsive = styled.form`
 		display: none;
 	}
 `
+
+export const ErrorMessage = styled.p`
+  margin-bottom: 0.6em;
+  color: ${error};
+  text-align: center;
+`;
+
+export const OptionsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+`;
+
+export const Linki = styled.a`
+  text-decoration: none;
+  color: ${linkColors};
+  cursor: pointer; 
+  &:hover {
+    opacity: 0.8;
+  }
+`;

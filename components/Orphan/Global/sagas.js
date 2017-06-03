@@ -13,15 +13,15 @@ function * logoutAct(provider) {
 
 }
 
-export function * activationSaga() {
-  while(true) {
-    const { code } = yield take(ACTIVATE_REQUEST);
-    try {
-      yield call(user.activate, code)
-      yield put({ type: ACTIVATE_SUCCESS });
-    } catch (e) {
-      yield put({ type: ACTIVATE_FAIL });
+// export function * activationSaga() {
+//   while(true) {
+//     const { code } = yield take(ACTIVATE_REQUEST);
+//     try {
+//       yield call(user.activate, code)
+//       yield put({ type: ACTIVATE_SUCCESS });
+//     } catch (e) {
+//       yield put({ type: ACTIVATE_FAIL });
       
-    }
-  }
-}
+//     }
+//   }
+// }

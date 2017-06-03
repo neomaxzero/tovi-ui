@@ -2,9 +2,9 @@ import { createSelector } from 'reselect';
 
 const GlobalSelector = state => state.Global;
 
-const getActivation = createSelector(
+export const isActivating = createSelector(
   GlobalSelector,
-  global => global.get('activation')
+  global => global.get('activating')
 );
 
 const getPopups = createSelector(
@@ -17,9 +17,4 @@ export const showSignupSucceed = createSelector(
   popups => popups.get('showSignUpSucceed')
 )
 
-
-export const isActivated = createSelector(
-  getActivation,
-  activation => activation.get('activated'),
-);
 

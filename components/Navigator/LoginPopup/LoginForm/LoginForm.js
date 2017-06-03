@@ -5,7 +5,7 @@ import { Field, Form } from '~/components/shared/FormPopup/styled';
 import FormButton from '~/components/shared/FormButton/';
 import OptionsLogin from './OptionsLogin';
 import Validators from '~/components/shared/Validators';
-import { login, user } from '~/services/user';
+import { login, user as userService } from '~/services/user';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
 
@@ -29,25 +29,30 @@ export default class LoginForm extends Component {
     const { user, pass } = this.state;
     login({ Email: user, Password: pass, Provider: 'local'})
       .then((response) =>  {        
-        saveToken(response)
-        // const id = response.data.id;
-        // return user.get(id);
-        return Promise.resolve();
+        saveToken(response); 
+        const id = response.data.usuarioId;
+        return userService.get(id);
       })
       .then((userInfo) => {
+
         this.props.onLogin({
-          first_name: 'Anonymous',
+          first_name: userInfo.data.Nombre,
+          verified: userInfo.data.Verificado,
           picture: {
             data: {
-              url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/17992211_10155647473106416_5695453492870874090_n.jpg?oh=15bc84ee1c3d21f3f9492d8d4e5ba545&oe=59C116B4',
+              url: 'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png',
             }
           }
         }, PROVIDERS.LOCAL);
+        this.props.toggleLogin();
       })
-      .catch(err => this.setState({
-        message: err,
+      .catch(err => 
+      this.setState({
+        message: 'Email o Password incorrectos',
         loading: false,
-      }))
+      })
+      // console.log('ERROR', err)
+      )
   }
 
   onSubmit = (ev) => {

@@ -21,9 +21,6 @@ const reducer = (state = InitialState, action) => {
     case TOGGLE_SINGUP: {
       return toggler(state, 'showSignUp');
     }
-    case SET_LOGIN: {
-      return toggler(state, 'showLogin');
-    }
     default:
       return state;
   }

@@ -1,10 +1,10 @@
 import { TOGGLE_LOGIN, TOGGLE_SINGUP } from '~/components/constants';
 
-const toggleLogin = () => ({
+export const toggleLogin = () => ({
 	type: TOGGLE_LOGIN,
 });
 
-const toggleSignup = () => ({
+export const toggleSignup = () => ({
 	type: TOGGLE_SINGUP,
 });
 

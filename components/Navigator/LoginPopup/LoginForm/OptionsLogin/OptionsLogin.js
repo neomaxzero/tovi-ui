@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { OptionsContainer, LabelSc, Linki } from './OptionsLoginSc';
+import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 
 export default class OptionsLogin extends PureComponent {

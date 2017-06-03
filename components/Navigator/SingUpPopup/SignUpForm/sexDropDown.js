@@ -5,8 +5,8 @@ import { DropDownContainer, Title } from './styled';
 export default class LittleDropDown extends Component {
   state = {
     options:[
-      { value: 'M', label: 'M' },
-      { value:'F', label: 'F' },
+      { value: 1, label: 'M' },
+      { value: 2, label: 'F' },
     ],    
   };
 

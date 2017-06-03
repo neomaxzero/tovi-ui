@@ -1,9 +1,9 @@
 import { req, secureReq } from './provider';
 
-export const login = (loginBody) => (req.post('api/login/login', loginBody));
+export const login = (loginBody) => (req.post('api/login', loginBody));
 export const user = {
-  get: (id) => (secureReq.get(`api/usuario/${id}`)),
+  get: (id) => (secureReq().get(`api/usuario/obtener?usuarioId=${id}`)),
   create: (body) => (req.post('api/usuario/crear', body)),
-  // activate: (code) =>(req.post('api/activate'),{ code }),
-  activate: () =>(Promise.resolve()), 
+  activate: (code) =>(secureReq().post(`api/usuario/activarCuenta/${code}`)),
+  // activate: () =>(Promise.resolve()), 
 } 

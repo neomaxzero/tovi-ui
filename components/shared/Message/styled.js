@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const ActivationContainer = styled.div`
-  width: 30em;
+export const MainContainer = styled.div`
+  width: ${props => props.width || '30em'};
   padding: 2em;
 `
 

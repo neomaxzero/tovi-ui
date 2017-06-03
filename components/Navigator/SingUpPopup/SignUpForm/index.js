@@ -24,6 +24,7 @@ export default class SignUpForm extends Component {
     email: '',
     pass: '',
     sex: '',
+    recieveEmails: false,
     valid: true,
     loading: false,
     provinceList: [],
@@ -70,7 +71,7 @@ export default class SignUpForm extends Component {
       },
       terms: {
         valid: false,
-      }
+      },
     },
     error: '',
   }
@@ -98,7 +99,7 @@ export default class SignUpForm extends Component {
       [ev.target.name]: ev.target.value,
       fields: {
         ...this.state.fields,
-        [ev.target.name]: { valid: true, message: ''}
+        [ev.target.name]: { valid: true, message: '' }
       }
     })    
   }
@@ -287,7 +288,6 @@ export default class SignUpForm extends Component {
   }
 
   acceptTerms = () => {
-    console.log('asdsaddsadsa');
     this.setState({
       fields: {
         ...this.state.fields,
@@ -296,21 +296,51 @@ export default class SignUpForm extends Component {
     })
   }
 
+  acceptEmails = () => {
+    this.setState({
+      recieveEmails: !this.state.recieveEmails,      
+    })
+  }
+
   onSubmit = () => {
     const valid = this.validateFields();
     
     if (!valid)
       return;
-
+    const d = ("0" + this.state.date.day).slice(-2);
+    const m = ("0" + this.state.date.month).slice(-2);
+    
+    const date = `${d}${m}${this.state.date.year}`;
     const body = {
       Nombre: this.state.name,
       Apellido: this.state.surname,
       Password: this.state.pass,
       PasswordRepetir: this.state.pass,
-      Habilitado: true,
-      NombreUsuario: '',
       Email: this.state.email,
+      LocalidadId: this.state.city,
+      ProvinciaId: this.state.province,
+      PaisId: 1,
+      SexoId: this.state.sex,
+      RecibeCorreosTovi: this.state.recieveEmails,
+      Habilitado: false,
+      NombreUsuario: '',
+      FechaNacimiento: moment(date, 'DDMMYYYY').format(),
     };
+    // const body = {
+    //   Nombre: 'zaraza',
+    //   Apellido: 'asdsadadsasd',
+    //   Password: '123456',
+    //   PasswordRepetir: '123456',
+    //   Email: 'sneakycakes@mailinator.com',
+    //   LocalidadId: 1,
+    //   ProvinciaId: 1,
+    //   PaisId: 1,
+    //   SexoId: 1,
+    //   RecibeCorreosTovi: true,
+    //   Habilitado: false,
+    //   NombreUsuario: '',
+    //   FechaNacimiento: moment(date, 'DDMMYYYY').format(),
+    // };
 
     this.setState({
       loading: true,
@@ -420,7 +450,7 @@ export default class SignUpForm extends Component {
           valid={fields.date.valid}
         />
         <CheckboxContainer>
-          <FormCheckbox name="emailtovi" value="emailtovi">
+          <FormCheckbox name="emailtovi" value="emailtovi" onPress={this.acceptEmails}>
             Deseo recibir correos electronicos informativos de Tovi
           </FormCheckbox>     
           <FormCheckbox name="terms" value="terms" onPress={this.acceptTerms}>
