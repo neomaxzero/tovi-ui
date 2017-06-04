@@ -11,7 +11,7 @@ import SexDropDown from './sexDropDown';
 import DateDropDown from './dateDropDown';
 import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
-import { CheckboxContainer, ErrorMsg } from './styled';
+import { CheckboxContainer, ErrorMsg, DropDownsInline } from './styled';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -437,18 +437,19 @@ export default class SignUpForm extends Component {
           message={fields.pass.message}
           
         />
-        <SexDropDown 
+        <DropDownsInline>
+          <SexDropDown 
           value={sex} 
           setSex={this.selectSex} 
           valid={fields.sex.valid}
-          message={fields.sex.message}
-          
-        />
-        <DateDropDown 
-          value={date} 
-          setDate={this.selectDate} 
-          valid={fields.date.valid}
-        />
+          message={fields.sex.message}          
+          />
+          <DateDropDown 
+            value={date} 
+            setDate={this.selectDate} 
+            valid={fields.date.valid}
+          />
+        </DropDownsInline>        
         <CheckboxContainer>
           <FormCheckbox name="emailtovi" value="emailtovi" onPress={this.acceptEmails}>
             Deseo recibir correos electronicos informativos de Tovi

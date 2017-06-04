@@ -3,8 +3,7 @@ import { error } from'~/components/shared/MainColors';
 
 export const DropDownContainer = styled.div`
   display: inline-block;
-  width: 7.5em;
-  float: left;
+  width: 6.4em;
 `
 export const Title = styled.span`
   display: block;
@@ -62,3 +61,8 @@ export const ErrorMsg = styled.div`
   padding-bottom: 0.5em;
   font-weight: bold;
 `
+
+export const DropDownsInline = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
