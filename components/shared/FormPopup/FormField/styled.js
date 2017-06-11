@@ -10,6 +10,7 @@ export const Field = styled.input`
   border-radius: 4px;
   border:1px solid ${props => props.valid ? greyLine : error};
   margin-top: 0.5em;
+  ${props => props.oStyle}
 `;
 
 export const Error = styled.div`

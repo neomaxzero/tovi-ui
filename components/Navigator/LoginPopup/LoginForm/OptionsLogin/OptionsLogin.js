@@ -9,7 +9,7 @@ export default class OptionsLogin extends PureComponent {
         <FormCheckbox name="rememberme" value="rememberme">
           Recuérdame
         </FormCheckbox>        
-        <Linki>
+        <Linki onClick={this.props.forgot}>
           Olvidé la contraseña
         </Linki>
       </OptionsContainer>

@@ -19,4 +19,6 @@ export const FormButtonSc = styled.div`
   &:hover {
     opacity: ${props => props.loading ? '1' : '0.8'};
   }
+
+  ${props => props.oStyle}
 `;

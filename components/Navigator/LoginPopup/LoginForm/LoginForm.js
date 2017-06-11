@@ -27,14 +27,17 @@ export default class LoginForm extends Component {
 
   doLogin = () => {
     const { user, pass } = this.state;
+    let id;
     login({ Email: user, Password: pass, Provider: 'local'})
       .then((response) =>  {        
         saveToken(response); 
-        const id = response.data.usuarioId;
+        id = response.data.usuarioId;
         return userService.get(id);
       })
       .then((userInfo) => {
-
+        if (!userInfo.data.Verificado) {
+          return this.props.notActivated(id);
+        }
         this.props.onLogin({
           first_name: userInfo.data.Nombre,
           verified: userInfo.data.Verificado,
@@ -93,6 +96,7 @@ export default class LoginForm extends Component {
 
   render() {
     const { message, user, pass, validForm, loading } = this.state;
+    const { forgot } = this.props;
     return(
       <Form onSubmit={this.onSubmit}>
         <Field 
@@ -113,7 +117,7 @@ export default class LoginForm extends Component {
           valid={validForm}
           onKeyPress={this.handleKeys}          
         />
-        <OptionsLogin />        
+        <OptionsLogin forgot={forgot}/>        
         { message && <ErrorMessage>{message}</ErrorMessage>}
         <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading}/>
       </Form>

@@ -6,6 +6,7 @@ import Login from './LoginPopup';
 import SingUp from './SingUpPopup';
 import PasswordBlocked from './LoginPopup/PasswordBlocked';
 import SignUpSucceed from './SingUpPopup/SignUpSucceed';
+import RequestResetPassword from '~/components/Layout/ResetPassword/RequestResetPopup';
 
 import { Nav } from './styles';
 
@@ -17,7 +18,8 @@ export default class Navigator extends Component {
   render() {
     const { showLogin, showSignUp, 
       toggleLogin, toggleSignup,
-      showEmailPassword, showSignupSucceed } = this.props;
+      showEmailPassword, showSignupSucceed,
+    showRequestResetPassword } = this.props;
     return( 
       <Nav>
         <Logo onClick={this.goHome}/>        
@@ -25,7 +27,8 @@ export default class Navigator extends Component {
         { showLogin && <Login toggleLogin={toggleLogin} toggleSignup={toggleSignup} /> }
         { showSignUp && <SingUp toggleSignup={toggleSignup} /> }
         { showEmailPassword && <PasswordBlocked /> }
-        { showSignupSucceed && <SignUpSucceed />}
+        { showSignupSucceed && <SignUpSucceed /> }
+        { showRequestResetPassword && <RequestResetPassword /> }
       </Nav>
       );
   }

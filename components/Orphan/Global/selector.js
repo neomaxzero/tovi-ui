@@ -7,6 +7,7 @@ export const isActivating = createSelector(
   global => global.get('activating')
 );
 
+
 const getPopups = createSelector(
   GlobalSelector,
   global => global.get('popups')
@@ -18,3 +19,13 @@ export const showSignupSucceed = createSelector(
 )
 
 
+export const showRequestResetPassword = createSelector(
+  getPopups,
+  popups => popups.get('showRequestResetPassword')
+)
+
+
+export const isReseting = createSelector(
+  getPopups,
+  global => global.get('formResetPassword')
+);

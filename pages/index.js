@@ -13,14 +13,18 @@ class Tovi extends React.Component {
     const isServer = !!req;
     return { 
       isServer, 
-      act: query.act 
+      act: query.act,
+      resetCode: query.reset,
     };
   }
 
   render() {
     return (
       <div>   
-        <Layout activation={this.props.act}/>
+        <Layout 
+          activation={this.props.act}
+          resetCode ={this.props.resetCode}
+        />
         <SearchSection />        
       </div>
     );

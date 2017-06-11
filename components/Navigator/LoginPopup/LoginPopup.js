@@ -22,12 +22,20 @@ class LoginPopup extends Component {
     this.props.toggleSignup();
   }
 
-  notActivated = () => {
-    this.setState({ type: types.NOT_ACTIVATED });
+  openForgot = () => {
+    this.props.toggleLogin();
+    this.props.showRequestResetPasswordPopup();
+  }
+  
+  notActivated = (userId) => {
+    this.setState({
+       type: types.NOT_ACTIVATED,
+       userId,
+    });
   }
 
   pickPopup = () => {
-    const { setLogin, toggleLogin } = this.props;
+    const { setLogin, toggleLogin, showRequestResetPasswordPopup } = this.props;
     
     switch (this.state.type) {      
       case types.FORM:
@@ -37,7 +45,13 @@ class LoginPopup extends Component {
             <div>
               <SocialLogin onLogin={setLogin}/>
               <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
-              <LoginForm  notActivated={this.notActivated} onLogin={setLogin} lockPopup={lockPopup} toggleLogin={toggleLogin} />
+              <LoginForm  
+                notActivated={this.notActivated} 
+                onLogin={setLogin} 
+                lockPopup={lockPopup} 
+                toggleLogin={toggleLogin} 
+                forgot={this.openForgot}
+              />
               <NewAccount openSignUp={this.openSignUp}/>
             </div>
           )}          
@@ -47,6 +61,7 @@ class LoginPopup extends Component {
           <ResendPopup 
             activateClose={toggleLogin}
             title={'Cuenta no activada'}
+            userId={this.state.userId}
           >
             <Phrase> Aún no has activado tu cuenta.</Phrase>        
             <Phrase> Revisa tu correo electrónico y sigue las instrucciones que te hemos enviado.</Phrase>  

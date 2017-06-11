@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Popup from '~/components/shared/Popup';
 import { Field, Form } from '~/components/shared/FormPopup/styled';
 import FormButton from '~/components/shared/FormButton';
-import { primary } from '~/components/shared/MainColors';
+import { primary, error } from '~/components/shared/MainColors';
 import Validators from '~/components/shared/Validators';
 import { ErrorMessage } from'~/components/shared/FormPopup/styled';
 import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
@@ -10,6 +10,7 @@ import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
 
 import ResendPopup from '../ResendEmail';
+import SomethingWrongPopup from '../SomethingWrong';
 
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
 
@@ -20,6 +21,7 @@ const types = {
   SUCCESS: 'SUCCESS',
   LINK_USED: 'LINK_USED',
   INVALID_LINK: 'INVALID_LINK',
+  ERROR: 'ERROR',
 }
 
 export default class ActivationPopup extends PureComponent {
@@ -29,7 +31,7 @@ export default class ActivationPopup extends PureComponent {
     validForm: true,
     message: '',
     loading: false,
-    type: types.INVALID_LINK,
+    type: types.FORM,
     code: this.props.code,
   }
 
@@ -48,6 +50,10 @@ export default class ActivationPopup extends PureComponent {
      .then((response) =>  {       
         saveToken(response); 
         const id = response.data.usuarioId;
+        this.setState({
+          userId: id,
+        });
+
         return userService.get(id);
       })
       .then((userInfo) => {
@@ -70,7 +76,6 @@ export default class ActivationPopup extends PureComponent {
         })
       })
       .catch(err => {
-
         console.log('ERROR', err.response)
         this.setState({
           message: 'Email o Password incorrectos',
@@ -206,11 +211,14 @@ export default class ActivationPopup extends PureComponent {
           <ResendPopup 
             activateClose={activateClose}
             title={'Link inválido'}
+            userId={this.state.userId}
           >
             <Phrase> El link de activación no se encuentra activo.</Phrase>        
             <Phrase> Deseas que te enviemos un nuevo e-mail de activación? </Phrase>  
           </ResendPopup>
         );
+      case types.ERROR: 
+         return (<SomethingWrongPopup close={activateClose} />)
     }
   }
 

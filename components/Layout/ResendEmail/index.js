@@ -11,7 +11,7 @@ import { PROVIDERS } from '~/components/Orphan/Login/constants';
 
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
 
-import { login as resendEmail } from '~/services/user';
+import { user as userService } from '~/services/user';
 
 const types = {
   FORM: 'FORM',
@@ -22,11 +22,11 @@ export default class ResendEmail extends PureComponent {
   state = {
     message: '',
     loading: false,
-    type: types.FORM,
+    type: types.FORM,    
   }
 
   sendEmail = () => {
-    resendEmail()
+    userService.resendEmail(this.props.userId)
      .then(() => this.setState({ type: types.SUCCESS }))
      .catch(err => {
         console.log('ERROR', err.response);
@@ -37,7 +37,8 @@ export default class ResendEmail extends PureComponent {
       })
   }
 
-  requestEmail = (ev) => {                      
+  requestEmail = (ev) => {   
+    const { loading } = this.state;
     if (loading) return;
     if (ev) ev.preventDefault();
 
