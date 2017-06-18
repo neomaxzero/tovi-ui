@@ -9,7 +9,6 @@ import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
 
-import ResendPopup from '../ResendEmail';
 
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
 

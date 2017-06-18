@@ -4,12 +4,16 @@ import { OwnLoginPhrase } from './LoginPopupSc';
 import SocialLogin from './SocialLogin';
 import LoginForm from './LoginForm';
 import NewAccount from './NewAccount';
-import ResendPopup from '~/components/Layout/ResendEmail';
+import PasswordBlocked from './PasswordBlocked';
+import NotActivated from './NotActivated';
+import FirstTime from './FirstTime';
 import { Phrase } from '~/components/shared/Message/styled';
 
 const types = {
   FORM: 'FORM',
+  FIRST_TIME: 'FIRST_TIME',
   NOT_ACTIVATED: 'NOT_ACTIVATED',
+  BLOCKED: 'BLOCKED',
 }
 
 class LoginPopup extends Component {  
@@ -26,12 +30,31 @@ class LoginPopup extends Component {
     this.props.toggleLogin();
     this.props.showRequestResetPasswordPopup();
   }
+
+  openReset = () => {
+    this.props.toggleLogin();
+    this.props.showResetForm();
+  }
+
+  firstTime = (user) => {
+     this.setState({
+       type: types.FIRST_TIME,
+       user,
+    });
+  }
   
   notActivated = (userId) => {
     this.setState({
        type: types.NOT_ACTIVATED,
        userId,
     });
+  }
+
+  blocked = (user) => {
+    this.setState({
+      type: types.BLOCKED,
+      user,
+    })
   }
 
   pickPopup = () => {
@@ -43,7 +66,7 @@ class LoginPopup extends Component {
         <FormPopup toggle={toggleLogin}>
           {(lockPopup) => (
             <div>
-              <SocialLogin onLogin={setLogin}/>
+              <SocialLogin onLogin={setLogin} toggleLogin={toggleLogin}/>
               <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
               <LoginForm  
                 notActivated={this.notActivated} 
@@ -51,6 +74,9 @@ class LoginPopup extends Component {
                 lockPopup={lockPopup} 
                 toggleLogin={toggleLogin} 
                 forgot={this.openForgot}
+                showBlocked={this.blocked}
+                showResetForm={this.openReset}
+                showFirstTime={this.firstTime}
               />
               <NewAccount openSignUp={this.openSignUp}/>
             </div>
@@ -58,16 +84,25 @@ class LoginPopup extends Component {
         </FormPopup>);
       case types.NOT_ACTIVATED:
         return (
-          <ResendPopup 
+          <NotActivated 
             activateClose={toggleLogin}
-            title={'Cuenta no activada'}
             userId={this.state.userId}
-          >
-            <Phrase> Aún no has activado tu cuenta.</Phrase>        
-            <Phrase> Revisa tu correo electrónico y sigue las instrucciones que te hemos enviado.</Phrase>  
-            <Phrase> No olvides buscar en correos no deseados.</Phrase>              
-          </ResendPopup>
+          />          
         )
+      case types.BLOCKED:
+        return (
+          <PasswordBlocked 
+            activateClose={toggleLogin}            
+            user={this.state.user}            
+          />          
+        );
+      case types.FIRST_TIME:
+        return (
+          <FirstTime 
+            activateClose={toggleLogin}            
+            user={this.state.user}            
+          />          
+        ); 
     }
   }
 

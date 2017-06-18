@@ -8,8 +8,8 @@ import { ErrorMessage } from'~/components/shared/FormPopup/styled';
 import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
-
-import ResendPopup from '../ResendEmail';
+import errorCodes from './errorCodes';
+import ResendPopup from './ResendPopup';
 import SomethingWrongPopup from '../SomethingWrong';
 
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
@@ -19,7 +19,7 @@ import { login  , user as userService } from '~/services/user';
 const types = {
   FORM: 'FORM',
   SUCCESS: 'SUCCESS',
-  LINK_USED: 'LINK_USED',
+  ALREADY_ACTIVATED: 'ALREADY_ACTIVATED',
   INVALID_LINK: 'INVALID_LINK',
   ERROR: 'ERROR',
 }
@@ -42,6 +42,23 @@ export default class ActivationPopup extends PureComponent {
     return true;
   }
 
+  handleError = (err) => {
+     const { errorCode } = err.response.data;
+      debugger;
+      switch (errorCode) {
+        case errorCodes.ALREADY_ACTIVATED:
+          return this.setState({ type: types.ALREADY_ACTIVATED });
+        case errorCodes.INVALID_LINK:
+          return this.setState({ type: types.INVALID_LINK });
+        case errorCodes.ACTIVATE_FAIL:
+          return this.setState({ type: types.ERROR });
+        default:
+          return this.setState({ 
+            message: 'Email o Password incorrectos',
+            loading: false,
+          });
+      }      
+  }
   doActivate = () => {
     const { user, pass, code } = this.state;
     let userLogin;
@@ -75,15 +92,7 @@ export default class ActivationPopup extends PureComponent {
           type: types.SUCCESS,
         })
       })
-      .catch(err => {
-        console.log('ERROR', err.response)
-        this.setState({
-          message: 'Email o Password incorrectos',
-          loading: false,
-        })      
-      }
-        
-      )
+      .catch(this.handleError)
   }
 
   onSubmit = (ev) => {
@@ -123,6 +132,11 @@ export default class ActivationPopup extends PureComponent {
     })    
   }
 
+  openForgot = () => {
+    this.props.activateClose();
+    this.props.showRequestResetPasswordPopup();
+  }
+
   closeAndOpenLogin = () => {    
     this.props.activateClose();
     this.props.toggleLogin();
@@ -160,7 +174,7 @@ export default class ActivationPopup extends PureComponent {
                   />
                   <OptionsContainer>
                     <div></div>
-                    <Linki>
+                    <Linki onClick={this.openForgot}>
                       Olvidé la contraseña
                     </Linki>
                   </OptionsContainer>
@@ -188,7 +202,7 @@ export default class ActivationPopup extends PureComponent {
             </MainContainer>
           </Popup>
         )
-      case types.LINK_USED:
+      case types.ALREADY_ACTIVATED:
         return (
           <Popup
             title={'Cuenta ya activada'}
@@ -209,13 +223,9 @@ export default class ActivationPopup extends PureComponent {
       case types.INVALID_LINK:
         return (
           <ResendPopup 
-            activateClose={activateClose}
-            title={'Link inválido'}
             userId={this.state.userId}
-          >
-            <Phrase> El link de activación no se encuentra activo.</Phrase>        
-            <Phrase> Deseas que te enviemos un nuevo e-mail de activación? </Phrase>  
-          </ResendPopup>
+            activateClose={activateClose}
+          />
         );
       case types.ERROR: 
          return (<SomethingWrongPopup close={activateClose} />)

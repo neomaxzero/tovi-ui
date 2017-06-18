@@ -8,17 +8,22 @@ import { ErrorMessage } from'~/components/shared/FormPopup/styled';
 import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
-
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
+import SomethingWrongPopup from '../SomethingWrong';
 
 import { user as userService } from '~/services/user';
 
 const types = {
   FORM: 'FORM',
   SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
 }
 
 export default class ResendEmail extends PureComponent {
+  static defaultProps = {
+    nameButton: 'Reenviar e-mail',
+  }
+
   state = {
     message: '',
     loading: false,
@@ -26,7 +31,8 @@ export default class ResendEmail extends PureComponent {
   }
 
   sendEmail = () => {
-    userService.resendEmail(this.props.userId)
+    const { service } = this.props;
+    service()
      .then(() => this.setState({ type: types.SUCCESS }))
      .catch(err => {
         console.log('ERROR', err.response);
@@ -51,7 +57,7 @@ export default class ResendEmail extends PureComponent {
 
   pickPopup = () => {
     const { message, loading } = this.state;
-    const { activateClose, title, children } = this.props;
+    const { activateClose, title, children, nameButton } = this.props;
 
     switch (this.state.type) {
       case types.FORM:
@@ -67,7 +73,7 @@ export default class ResendEmail extends PureComponent {
               </MessageContainer>
               <ButtonContainer> 
                 { message && <ErrorMessage>{message}</ErrorMessage>}
-                <FormButton onClick={this.requestEmail} name={'Reenviar e-mail'} loading={loading} secundary/>
+                <FormButton onClick={this.requestEmail} name={nameButton} loading={loading} secundary/>
               </ButtonContainer>
             </MainContainer>
           </Popup>           
@@ -90,6 +96,8 @@ export default class ResendEmail extends PureComponent {
             </MainContainer>
           </Popup>    
         )
+      case types.ERROR: 
+        return (<SomethingWrongPopup close={activateClose} />)
     }
   }
 
