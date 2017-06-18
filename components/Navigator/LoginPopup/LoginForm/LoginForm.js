@@ -53,7 +53,6 @@ export default class LoginForm extends Component {
       .catch(err => {
         console.log(err.response);
         const code = err.response.data.errorCode;
-        // if (err.response.errorCode === ERROR_CODES.PASSWORD_BLOCKED)        
         if (code == ERROR_CODES.PASSWORD_BLOCKED)        
           return this.props.showBlocked(this.state.user);
         
@@ -64,7 +63,6 @@ export default class LoginForm extends Component {
           message: 'Email o Password incorrectos',
           loading: false,
         })
-        // console.log('ERROR', err)
         }
       )
   }

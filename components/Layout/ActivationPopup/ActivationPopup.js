@@ -92,7 +92,7 @@ export default class ActivationPopup extends PureComponent {
           type: types.SUCCESS,
         })
       })
-      .catch(err => this.handleError(err))
+      .catch(this.handleError)
   }
 
   onSubmit = (ev) => {
