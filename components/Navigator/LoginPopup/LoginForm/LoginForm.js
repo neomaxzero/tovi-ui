@@ -54,7 +54,6 @@ export default class LoginForm extends Component {
         message: 'Email o Password incorrectos',
         loading: false,
       })
-      // console.log('ERROR', err)
       )
   }
 
