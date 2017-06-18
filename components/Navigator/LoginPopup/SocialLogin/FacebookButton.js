@@ -14,6 +14,7 @@ class FacebookButton extends PureComponent {
   fetchProfile = () => {
     FB.api('/me?fields=email, name, picture, age_range, first_name, link, gender, locale, verified', (response) => {
       this.props.onLogin(response, PROVIDERS.FACEBOOK );
+      this.props.toggleLogin();
     });
   }
   

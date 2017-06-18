@@ -8,6 +8,7 @@ import Validators from '~/components/shared/Validators';
 import { login, user as userService } from '~/services/user';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
+import ERROR_CODES from './errorCodes';
 
 export default class LoginForm extends Component {
   state = {
@@ -19,7 +20,7 @@ export default class LoginForm extends Component {
   }
 
   validateFields = () => {
-    const { user, pass} = this.state;
+    const { user, pass } = this.state;
     if (!Validators.email(user) || !pass) return false;   
 
     return true;
@@ -49,12 +50,22 @@ export default class LoginForm extends Component {
         }, PROVIDERS.LOCAL);
         this.props.toggleLogin();
       })
-      .catch(err => 
-      this.setState({
-        message: 'Email o Password incorrectos',
-        loading: false,
-      })
-      // console.log('ERROR', err)
+      .catch(err => {
+        console.log(err.response);
+        const code = err.response.data.errorCode;
+        // if (err.response.errorCode === ERROR_CODES.PASSWORD_BLOCKED)        
+        if (code == ERROR_CODES.PASSWORD_BLOCKED)        
+          return this.props.showBlocked(this.state.user);
+        
+        if (code == ERROR_CODES.FIRST_TIME)
+          return this.props.showResetForm(this.state.user);
+
+        this.setState({
+          message: 'Email o Password incorrectos',
+          loading: false,
+        })
+        // console.log('ERROR', err)
+        }
       )
   }
 

@@ -8,9 +8,9 @@ import { ErrorMessage } from'~/components/shared/FormPopup/styled';
 import { OptionsContainer, Linki } from '~/components/shared/FormPopup/styled';
 import { saveToken } from '~/utils/token';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
-
+import errorCodes from './errorCodes';
 import SomethingWrongPopup from '../../SomethingWrong';
-
+import InvalidLinkPopup from './InvalidLinkPopup';
 import { MainContainer, ButtonContainer, Phrase, MessageContainer } from '~/components/shared/Message/styled';
 
 import { user as userService } from '~/services/user';
@@ -19,11 +19,16 @@ const types = {
   FORM: 'FORM',
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
+  INVALID_LINK: 'INVALID_LINK',
 }
 
 export default class ResetForm extends PureComponent {
-  state = {
+  static defaultProps = {
     user: '',
+  }
+
+  state = {
+    user: this.props.user,
     pass: '',
     repeatPass: '',
     validForm: true,
@@ -54,6 +59,17 @@ export default class ResetForm extends PureComponent {
     return { result: true };
   }
 
+  handleError = (err) => {
+     const { errorCode } = err.response.data;
+      debugger;
+      switch (errorCode) {        
+        case errorCodes.INVALID_LINK:
+          return this.setState({ type: types.INVALID_LINK });
+        default:
+          return this.setState({ type: types.ERROR }); 
+      }      
+  }
+
   doReset = () => {
     const { user, pass, code } = this.state;
     const body = {
@@ -69,14 +85,7 @@ export default class ResetForm extends PureComponent {
           type: types.SUCCESS,
         });
       })
-      .catch(err => {
-        console.log('ERROR', err.response)
-        this.setState({
-          type: types.ERROR,
-        });      
-      }
-        
-      )
+      .catch(this.handleError)
   }
 
   onSubmit = (ev) => {
@@ -189,7 +198,14 @@ export default class ResetForm extends PureComponent {
           </Popup>
         )      
       case types.ERROR: 
-         return (<SomethingWrongPopup close={close} />)
+        return (<SomethingWrongPopup close={close} />)
+      case types.INVALID_LINK:
+        return (
+          <InvalidLinkPopup 
+            activateClose={close}
+            user={this.state.user}
+          />
+        )
     }
   }
 

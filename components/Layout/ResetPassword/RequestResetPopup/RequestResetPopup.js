@@ -21,8 +21,12 @@ const types = {
 }
 
 export default class RequestResetPopup extends PureComponent {
-  state = {
+  static defaultProps = {
     user: '',
+  }
+  
+  state = {
+    user: this.props.user,
     loading: false,
     validForm: true,
     type: types.FORM,    
