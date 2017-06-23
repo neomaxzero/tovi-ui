@@ -235,20 +235,28 @@ export default class SignUpForm extends Component {
       fields.city.message = MESSAGE_DEFAULT;            
       valid = false;
     }
+
     //Email
+    
+    if(!Validators.email(this.state.email)) {
+      fields.email.valid = false;
+      fields.email.message = 'Formato de email incorrecto.';                 
+      valid = false;      
+    }
+
     if (!this.state.email) {      
       fields.email.valid = false;
       fields.email.message = MESSAGE_DEFAULT;            
       valid = false;
     }
 
-    if(!Validators.email(this.state.email)) {
-      fields.email.valid = false;
-      fields.email.message = 'Formato de email incorrecto.';                 
+    debugger;
+    const validatorPassword = Validators.password(this.state.pass);
+    if (!validatorPassword.valid) {
+      fields.pass.valid = false;
+      fields.pass.message = validatorPassword.message;            
       valid = false;
-      
     }
-
 
     if (!this.state.pass) {
       fields.pass.valid = false;
@@ -326,21 +334,6 @@ export default class SignUpForm extends Component {
       NombreUsuario: '',
       FechaNacimiento: moment(date, 'DDMMYYYY').format(),
     };
-    // const body = {
-    //   Nombre: 'zaraza',
-    //   Apellido: 'asdsadadsasd',
-    //   Password: '123456',
-    //   PasswordRepetir: '123456',
-    //   Email: 'sneakycakes@mailinator.com',
-    //   LocalidadId: 1,
-    //   ProvinciaId: 1,
-    //   PaisId: 1,
-    //   SexoId: 1,
-    //   RecibeCorreosTovi: true,
-    //   Habilitado: false,
-    //   NombreUsuario: '',
-    //   FechaNacimiento: moment(date, 'DDMMYYYY').format(),
-    // };
 
     this.setState({
       loading: true,

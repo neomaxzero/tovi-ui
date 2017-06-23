@@ -34,22 +34,30 @@ export default class ResetForm extends PureComponent {
     validForm: true,
     message: '',
     loading: false,
-    type: types.FORM,
+    type: types.SUCCESS,
     code: this.props.code,
   }
 
   validateFields = () => {
     const { user, pass, repeatPass} = this.state;
-    if (!Validators.email(user)) 
-      return {
-        result: false,
-        message: 'Correo electrónico incorrecto'
-      };   
     if (!user || !pass || !repeatPass) 
       return {
         result: false,
         message: 'No se permiten campos en blanco'
-      }
+      };
+
+    const validatorPassword = Validators.password(pass);
+    if (!validatorPassword.valid) 
+      return {
+        result: false,
+        message: validatorPassword.message,
+      };
+
+    if (!Validators.email(user)) 
+      return {
+        result: false,
+        message: 'Correo electrónico incorrecto'
+      };       
     if (pass !== repeatPass)
       return {
         result: false,
