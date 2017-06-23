@@ -6,12 +6,12 @@ import FormButton from '~/components/shared/FormButton/';
 import { getProvinces, getCities } from '~/services/global';
 import { user } from '~/services/user';
 import Validators from '~/components/shared/Validators';
-
+import Recaptcha from 'react-recaptcha';
 import SexDropDown from './sexDropDown';
 import DateDropDown from './dateDropDown';
 import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
-import { CheckboxContainer, ErrorMsg, DropDownsInline } from './styled';
+import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -24,6 +24,7 @@ export default class SignUpForm extends Component {
     email: '',
     pass: '',
     sex: '',
+    captcha: '',
     recieveEmails: false,
     valid: true,
     loading: false,
@@ -250,7 +251,6 @@ export default class SignUpForm extends Component {
       valid = false;
     }
 
-    debugger;
     const validatorPassword = Validators.password(this.state.pass);
     if (!validatorPassword.valid) {
       fields.pass.valid = false;
@@ -287,6 +287,12 @@ export default class SignUpForm extends Component {
       valid = false;      
       error = "Para usar el sitio debes aceptar los terminos y condiciones";
     }
+
+    if (!this.state.captcha) {      
+      valid = false;      
+      error = "Para continuar debe aceptar el captcha";
+    }
+
     this.setState({
       fields,
       error,
@@ -333,6 +339,7 @@ export default class SignUpForm extends Component {
       Habilitado: false,
       NombreUsuario: '',
       FechaNacimiento: moment(date, 'DDMMYYYY').format(),
+      Captcha: this.state.captcha,
     };
 
     this.setState({
@@ -347,6 +354,18 @@ export default class SignUpForm extends Component {
         loading: false,
         error: 'El correo electrónico ya fué utilizado.',
       }))
+  }
+
+  cbCaptcha = (p) => {
+    this.setState({
+      captcha: p,
+    });    
+  }
+
+  cbExpired = (p) => {
+    this.setState({
+      captcha: '',
+    });       
   }
 
   render() {
@@ -451,8 +470,16 @@ export default class SignUpForm extends Component {
             Acepto los terminos y condiciones del sitio
           </FormCheckbox>     
         </CheckboxContainer>
-        { error && <ErrorMsg> { error } </ErrorMsg> }
-          
+        <CaptchaContainer>
+          <Recaptcha
+            sitekey="6LdpHiYUAAAAAFj359ZOPi6Q0IvlkyhJ5GNGDoU5"
+            render="explicit"
+            verifyCallback={this.cbCaptcha}
+            onloadCallback={a => a}
+            expiredCallback={this.cbExpired}
+          />
+        </CaptchaContainer>
+        { error && <ErrorMsg> { error } </ErrorMsg> }        
         <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit}/>        
       </Form>
 

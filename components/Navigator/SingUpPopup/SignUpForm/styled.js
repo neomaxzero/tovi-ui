@@ -66,3 +66,10 @@ export const DropDownsInline = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const CaptchaContainer = styled.div`
+  display: flex;
+  width: 100%;    
+  justify-content: center;
+  margin-bottom: 1em;
+`;
