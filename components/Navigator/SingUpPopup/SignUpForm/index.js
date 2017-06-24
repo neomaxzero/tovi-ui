@@ -26,7 +26,6 @@ export default class SignUpForm extends Component {
     pass: '',
     sex: '',
     captcha: '',
-    recieveEmails: false,
     valid: true,
     loading: false,
     provinceList: [],
@@ -239,7 +238,6 @@ export default class SignUpForm extends Component {
     }
 
     //Email
-    
     if(!Validators.email(this.state.email)) {
       fields.email.valid = false;
       fields.email.message = 'Formato de email incorrecto.';                 
@@ -311,12 +309,6 @@ export default class SignUpForm extends Component {
     })
   }
 
-  acceptEmails = () => {
-    this.setState({
-      recieveEmails: !this.state.recieveEmails,      
-    })
-  }
-
   onSubmit = () => {
     const valid = this.validateFields();
     
@@ -336,7 +328,7 @@ export default class SignUpForm extends Component {
       ProvinciaId: this.state.province,
       PaisId: 1,
       SexoId: this.state.sex,
-      RecibeCorreosTovi: this.state.recieveEmails,
+      RecibeCorreosTovi: true,
       Habilitado: false,
       NombreUsuario: '',
       FechaNacimiento: moment(date, 'DDMMYYYY').format(),
@@ -463,10 +455,7 @@ export default class SignUpForm extends Component {
             valid={fields.date.valid}
           />
         </DropDownsInline>        
-        <CheckboxContainer>
-          <FormCheckbox name="emailtovi" value="emailtovi" onPress={this.acceptEmails}>
-            Deseo recibir correos electronicos informativos de Tovi
-          </FormCheckbox>     
+        <CheckboxContainer>            
           <FormCheckbox name="terms" value="terms" onPress={this.acceptTerms}>
             Acepto los terminos y condiciones del sitio
           </FormCheckbox>     
