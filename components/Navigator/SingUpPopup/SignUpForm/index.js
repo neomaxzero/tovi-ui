@@ -12,6 +12,7 @@ import DateDropDown from './dateDropDown';
 import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
+import { capitalize } from '~/utils/string';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -326,8 +327,8 @@ export default class SignUpForm extends Component {
     
     const date = `${d}${m}${this.state.date.year}`;
     const body = {
-      Nombre: this.state.name,
-      Apellido: this.state.surname,
+      Nombre: capitalize(this.state.name),
+      Apellido: capitalize(this.state.surname),
       Password: this.state.pass,
       PasswordRepetir: this.state.pass,
       Email: this.state.email,
