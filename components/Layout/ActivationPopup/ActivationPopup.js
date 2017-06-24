@@ -54,7 +54,7 @@ export default class ActivationPopup extends PureComponent {
           return this.setState({ type: types.ERROR });
         default:
           return this.setState({ 
-            message: 'Email o Password incorrectos',
+            message: 'Email o Contraseña incorrectos',
             loading: false,
           });
       }      
