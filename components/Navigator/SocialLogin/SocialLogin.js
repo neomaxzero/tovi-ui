@@ -3,14 +3,20 @@ import { SocialLoginContainer, OneClickPhrase } from './SocialLoginSc';
 import FacebookButton from './FacebookButton';
 
 class SocialLogin extends PureComponent {
-
+  static defaultProps = {
+    desc: 'Inicia sesión con un click',
+  }
   render() {
-    const { onLogin, toggleLogin } = this.props;
+    const { onLogin, toggleLogin, desc } = this.props;
 
     return(
       <SocialLoginContainer>
-        <OneClickPhrase>Inicia sesión con un click</OneClickPhrase>
-        <FacebookButton onLogin={onLogin} toggleLogin={toggleLogin}/>
+        <OneClickPhrase></OneClickPhrase>
+        <FacebookButton 
+          onLogin={onLogin} 
+          toggleLogin={toggleLogin}
+          desc={desc}
+        />
       </SocialLoginContainer>
     )
   }
