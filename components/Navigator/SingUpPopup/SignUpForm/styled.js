@@ -59,7 +59,6 @@ export const ErrorMsg = styled.div`
   margin: 0 auto;
   text-align: center;
   padding-bottom: 0.5em;
-  font-weight: bold;
 `
 
 export const DropDownsInline = styled.div`
@@ -71,5 +70,7 @@ export const CaptchaContainer = styled.div`
   display: flex;
   width: 100%;    
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1em;
 `;

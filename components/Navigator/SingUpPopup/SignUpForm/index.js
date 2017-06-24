@@ -13,6 +13,9 @@ import FormField, { SelectField } from '~/components/shared/FormPopup/FormField'
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
 import { capitalize } from '~/utils/string';
+import { Error } from '~/components/shared/FormPopup/FormField/styled';
+
+//import SocialLogin from '~/components/Navigator/SocialLogin';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -74,6 +77,9 @@ export default class SignUpForm extends Component {
       terms: {
         valid: false,
       },
+      captcha: {
+        message: '',
+      }
     },
     error: '',
   }
@@ -210,6 +216,9 @@ export default class SignUpForm extends Component {
       date: {
         valid: true,
       },
+      captcha: {
+        message: '',
+      },
       terms: {
         valid: this.state.fields.terms.valid,
       }
@@ -291,7 +300,7 @@ export default class SignUpForm extends Component {
 
     if (!this.state.captcha) {      
       valid = false;      
-      error = "Para continuar debe aceptar el captcha";
+      fields.captcha.message = MESSAGE_DEFAULT;      
     }
 
     this.setState({
@@ -479,6 +488,7 @@ export default class SignUpForm extends Component {
             onloadCallback={a => a}
             expiredCallback={this.cbExpired}
           />
+          { fields.captcha.message && <Error>{fields.captcha.message}</Error> }
         </CaptchaContainer>
         { error && <ErrorMsg> { error } </ErrorMsg> }        
         <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit}/>        
