@@ -52,6 +52,11 @@ export default class ActivationPopup extends PureComponent {
           return this.setState({ type: types.INVALID_LINK });
         case errorCodes.ACTIVATE_FAIL:
           return this.setState({ type: types.ERROR });
+        case errorCodes.INVALID_EMAIL:
+          return this.setState({ 
+            message: 'Correo electrónico incorrecto',
+            loading: false,
+          });
         default:
           return this.setState({ 
             message: 'Email o Contraseña incorrectos',
