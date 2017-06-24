@@ -13,5 +13,5 @@ const validator = (pass) => {
 export default (pass) => 
   ({
     valid: validator(pass),
-    message: 'La constraseña debe tener entre 6 y 15 caracteres',
+    message: 'La Contraseña debe tener entre 6 y 15 caracteres',
   });

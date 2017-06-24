@@ -191,13 +191,13 @@ export default class ResetForm extends PureComponent {
       case types.SUCCESS:
         return (
           <Popup
-            title={'Contraseña Modificada!'}
+            title={'¡Contraseña Modificada!'}
             icon={{name: 'check-circle-o',color: primary}}
             onClickOutside={close}
           >
             <MainContainer>
               <MessageContainer>              
-                <Phrase> Tu nueva contraseña ha sido guardad exitosamente. Ahora puedes iniciar sesión con ella.</Phrase>        
+                <Phrase> Tu nueva contraseña ha sido guardada exitosamente. Ahora puedes iniciar sesión con ella.</Phrase>        
               </MessageContainer>
               <ButtonContainer> 
                 <FormButton onClick={this.closeAndOpenLogin} name={'Iniciar Sesión'} />

@@ -64,7 +64,6 @@ export default class ResendEmail extends PureComponent {
         return (
           <Popup
             title={title}
-            icon={{name: 'times-circle-o', color: error}}
             onClickOutside={activateClose}
           >
             <MainContainer>
