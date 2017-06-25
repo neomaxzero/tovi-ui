@@ -19,7 +19,7 @@ export default class PasswordBlocked extends Component {
           nameButton={'Enviar e-mail'}
       >
         <Phrase> Por razones de seguridad tu contraseña ha sido bloqueada.</Phrase>        
-        <Phrase> Necesitamos enviarte un e-mail para que puedas establecer</Phrase>        
+        <Phrase> Te hemos enviado un e-mail para que puedas establecer</Phrase>        
         <Phrase> una nueva contraseña.</Phrase>          
       </ResendPopup>
     )

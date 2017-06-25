@@ -13,6 +13,8 @@ import FormField, { SelectField } from '~/components/shared/FormPopup/FormField'
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
 import SocialLogin from '~/components/Navigator/SocialLogin';
+import { capitalize } from '~/utils/string';
+import { Error } from '~/components/shared/FormPopup/FormField/styled';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -26,7 +28,6 @@ export default class SignUpForm extends Component {
     pass: '',
     sex: '',
     captcha: '',
-    recieveEmails: false,
     valid: true,
     loading: false,
     provinceList: [],
@@ -74,6 +75,9 @@ export default class SignUpForm extends Component {
       terms: {
         valid: false,
       },
+      captcha: {
+        message: '',
+      }
     },
     error: '',
   }
@@ -210,6 +214,9 @@ export default class SignUpForm extends Component {
       date: {
         valid: true,
       },
+      captcha: {
+        message: '',
+      },
       terms: {
         valid: this.state.fields.terms.valid,
       }
@@ -239,7 +246,6 @@ export default class SignUpForm extends Component {
     }
 
     //Email
-    
     if(!Validators.email(this.state.email)) {
       fields.email.valid = false;
       fields.email.message = 'Formato de email incorrecto.';                 
@@ -291,7 +297,7 @@ export default class SignUpForm extends Component {
 
     if (!this.state.captcha) {      
       valid = false;      
-      error = "Para continuar debe aceptar el captcha";
+      fields.captcha.message = MESSAGE_DEFAULT;      
     }
 
     this.setState({
@@ -311,12 +317,6 @@ export default class SignUpForm extends Component {
     })
   }
 
-  acceptEmails = () => {
-    this.setState({
-      recieveEmails: !this.state.recieveEmails,      
-    })
-  }
-
   onSubmit = () => {
     const valid = this.validateFields();
     
@@ -327,8 +327,8 @@ export default class SignUpForm extends Component {
     
     const date = `${d}${m}${this.state.date.year}`;
     const body = {
-      Nombre: this.state.name,
-      Apellido: this.state.surname,
+      Nombre: capitalize(this.state.name),
+      Apellido: capitalize(this.state.surname),
       Password: this.state.pass,
       PasswordRepetir: this.state.pass,
       Email: this.state.email,
@@ -336,7 +336,7 @@ export default class SignUpForm extends Component {
       ProvinciaId: this.state.province,
       PaisId: 1,
       SexoId: this.state.sex,
-      RecibeCorreosTovi: this.state.recieveEmails,
+      RecibeCorreosTovi: true,
       Habilitado: false,
       NombreUsuario: '',
       FechaNacimiento: moment(date, 'DDMMYYYY').format(),
@@ -463,10 +463,7 @@ export default class SignUpForm extends Component {
             valid={fields.date.valid}
           />
         </DropDownsInline>        
-        <CheckboxContainer>
-          <FormCheckbox name="emailtovi" value="emailtovi" onPress={this.acceptEmails}>
-            Deseo recibir correos electronicos informativos de Tovi
-          </FormCheckbox>     
+        <CheckboxContainer>            
           <FormCheckbox name="terms" value="terms" onPress={this.acceptTerms}>
             Acepto los terminos y condiciones del sitio
           </FormCheckbox>     
@@ -479,6 +476,7 @@ export default class SignUpForm extends Component {
             onloadCallback={a => a}
             expiredCallback={this.cbExpired}
           />
+          { fields.captcha.message && <Error>{fields.captcha.message}</Error> }
         </CaptchaContainer>
         { error && <ErrorMsg> { error } </ErrorMsg> }        
         <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit}/>        
