@@ -12,10 +12,9 @@ import DateDropDown from './dateDropDown';
 import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
+import SocialLogin from '~/components/Navigator/SocialLogin';
 import { capitalize } from '~/utils/string';
 import { Error } from '~/components/shared/FormPopup/FormField/styled';
-
-//import SocialLogin from '~/components/Navigator/SocialLogin';
 
 const MESSAGE_DEFAULT = 'Campo Requerido';
 
@@ -481,6 +480,11 @@ export default class SignUpForm extends Component {
         </CaptchaContainer>
         { error && <ErrorMsg> { error } </ErrorMsg> }        
         <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit}/>        
+        <SocialLogin 
+          onLogin={this.props.setLogin} 
+          toggleLogin={this.props.toggle}
+          desc='Registrarme con Facebook'
+        />
       </Form>
 
     );

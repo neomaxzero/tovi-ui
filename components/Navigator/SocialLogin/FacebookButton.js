@@ -68,7 +68,7 @@ class FacebookButton extends PureComponent {
     return(
       <FacebookButtonSc onClick={this.loginFacebook}>
         <FA name="facebook" style={{color: 'white'}}/>
-        <FacebookPhrase>Iniciar sesión con Facebook</FacebookPhrase>
+        <FacebookPhrase>{this.props.desc}</FacebookPhrase>
       </FacebookButtonSc>
     )
   }

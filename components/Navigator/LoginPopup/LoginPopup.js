@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FormPopup from '~/components/shared/FormPopup/FormPopup';
 import { OwnLoginPhrase } from './LoginPopupSc';
-import SocialLogin from './SocialLogin';
+import SocialLogin from '~/components/Navigator/SocialLogin';
 import LoginForm from './LoginForm';
 import NewAccount from './NewAccount';
 import PasswordBlocked from './PasswordBlocked';

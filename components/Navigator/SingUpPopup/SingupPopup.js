@@ -16,7 +16,11 @@ class SingupPopup extends Component {
         {(lockPopup) => (
           <div style={{width: '100%'}}>
             <Title>Crea una cuenta</Title>
-            <SignUpForm succeed={this.succeed}/>
+            <SignUpForm 
+              succeed={this.succeed} 
+              toggle={toggleSignup}
+              setLogin={setLogin}
+            />
           </div>
         )}          
       </FormPopup>
