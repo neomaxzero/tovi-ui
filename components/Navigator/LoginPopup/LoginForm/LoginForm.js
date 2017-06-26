@@ -62,7 +62,9 @@ export default class LoginForm extends Component {
         this.setState({
           message: 'Email o Password incorrectos',
           loading: false,
-        })
+        });
+        //Unlock popup
+        this.props.lockPopup();
         }
       )
   }

@@ -16,7 +16,7 @@ import SocialLogin from '~/components/Navigator/SocialLogin';
 import { capitalize } from '~/utils/string';
 import { Error } from '~/components/shared/FormPopup/FormField/styled';
 
-const MESSAGE_DEFAULT = 'Campo Requerido';
+const MESSAGE_DEFAULT = 'Campo requerido';
 
 export default class SignUpForm extends Component {
   state = {
@@ -319,7 +319,8 @@ export default class SignUpForm extends Component {
 
   onSubmit = () => {
     const valid = this.validateFields();
-    
+    console.log(this.props.lockPopup);
+    this.props.lockPopup();
     if (!valid)
       return;
     const d = ("0" + this.state.date.day).slice(-2);
@@ -349,12 +350,15 @@ export default class SignUpForm extends Component {
 
     user.create(body)
       .then((response) => {
-        this.props.succeed()
+        this.props.succeed();
       })
-      .catch((err) => this.setState({
-        loading: false,
-        error: 'El correo electrónico ya fué utilizado.',
-      }))
+      .catch((err) => {
+        this.props.lockPopup();
+        this.setState({
+          loading: false,
+          error: 'El correo electrónico ya fué utilizado.',
+        })
+      })
   }
 
   cbCaptcha = (p) => {
@@ -452,10 +456,10 @@ export default class SignUpForm extends Component {
         />
         <DropDownsInline>
           <SexDropDown 
-          value={sex} 
-          setSex={this.selectSex} 
-          valid={fields.sex.valid}
-          message={fields.sex.message}          
+            value={sex} 
+            setSex={this.selectSex} 
+            valid={fields.sex.valid}
+            message={fields.sex.message}          
           />
           <DateDropDown 
             value={date} 
@@ -475,6 +479,7 @@ export default class SignUpForm extends Component {
             verifyCallback={this.cbCaptcha}
             onloadCallback={a => a}
             expiredCallback={this.cbExpired}
+            hl='es'
           />
           { fields.captcha.message && <Error>{fields.captcha.message}</Error> }
         </CaptchaContainer>
