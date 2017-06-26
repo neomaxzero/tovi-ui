@@ -413,6 +413,8 @@ export default class SignUpForm extends Component {
           value={province}
           clearable={false}
           options={provinceList}
+          isLoading={!provinceList.length}
+          disabled={!provinceList.length}
           onChange={this.selectProvince}
           placeholder="Provincia"
           valid={fields.province.valid}
