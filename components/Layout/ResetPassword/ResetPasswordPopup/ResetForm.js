@@ -34,7 +34,7 @@ export default class ResetForm extends PureComponent {
     validForm: true,
     message: '',
     loading: false,
-    type: types.SUCCESS,
+    type: types.FORM,
     code: this.props.code,
   }
 
@@ -158,7 +158,7 @@ export default class ResetForm extends PureComponent {
                   <Field 
                     type="text" 
                     name="user" 
-                    placeholder="Correo Electrónico" 
+                    placeholder="Correo electrónico" 
                     onChange={this.onChange} 
                     value={user} 
                     valid={validForm}
@@ -191,16 +191,16 @@ export default class ResetForm extends PureComponent {
       case types.SUCCESS:
         return (
           <Popup
-            title={'¡Contraseña Modificada!'}
+            title={'Contraseña modificada'}
             icon={{name: 'check-circle-o',color: primary}}
             onClickOutside={close}
           >
             <MainContainer>
               <MessageContainer>              
-                <Phrase> Tu nueva contraseña ha sido guardada exitosamente. Ahora puedes iniciar sesión con ella.</Phrase>        
+                <Phrase> Tu nueva contraseña ha sido guardada exitosamente. Ahora puedes iniciar sesión con ella.</Phrase>
               </MessageContainer>
               <ButtonContainer> 
-                <FormButton onClick={this.closeAndOpenLogin} name={'Iniciar Sesión'} />
+                <FormButton onClick={this.closeAndOpenLogin} name={'Iniciar sesión'} />
               </ButtonContainer>
             </MainContainer>
           </Popup>

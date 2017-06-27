@@ -37,7 +37,7 @@ export default class ResendEmail extends PureComponent {
      .catch(err => {
         console.log('ERROR', err.response);
         this.setState({
-          message: 'Error al solicitar el email.',
+          message: 'Error al solicitar el e-mail.',
           loading: false,
         })      
       })
@@ -80,7 +80,7 @@ export default class ResendEmail extends PureComponent {
       case types.SUCCESS:
         return (
          <Popup
-            title={'E-mail Enviado'}
+            title={'E-mail enviado'}
             icon={{name: 'check-circle-o',color: primary}}
             onClickOutside={activateClose}
           >

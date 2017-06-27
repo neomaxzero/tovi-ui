@@ -108,7 +108,6 @@ export default class RequestResetPopup extends PureComponent {
         return (
           <Popup
             title='Olvidé la constraseña'
-            icon={{name: 'times-circle-o', color: error}}
             onClickOutside={close}
           >
             <MainContainer>
@@ -120,7 +119,7 @@ export default class RequestResetPopup extends PureComponent {
                   <Field 
                     type="text" 
                     name="user" 
-                    placeholder="Correo Electrónico" 
+                    placeholder="Correo electrónico" 
                     onChange={this.onChange} 
                     value={user} 
                     valid={validForm}
@@ -129,7 +128,7 @@ export default class RequestResetPopup extends PureComponent {
                   />
                   { message && <ErrorMessage>{message}</ErrorMessage>}
                   <FormButton 
-                    name="Restaurar Contraseña" 
+                    name="Restaurar contraseña" 
                     onClick={this.onSubmit} 
                     loading={loading}
                   />
@@ -140,7 +139,7 @@ export default class RequestResetPopup extends PureComponent {
       case types.SUCCESS:
         return (
          <Popup
-            title={'Mail Enviado'}
+            title={'Mail enviado'}
             icon={{name: 'check-circle-o',color: primary}}
             onClickOutside={close}
           >
