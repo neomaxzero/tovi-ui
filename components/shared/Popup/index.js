@@ -21,8 +21,7 @@ export default class CenterPopup extends PureComponent {
           <Body>
             { children }
           </Body>
-        </Container>
-        
+        </Container>        
       </Background>      
     )
   }

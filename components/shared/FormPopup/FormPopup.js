@@ -15,7 +15,7 @@ class FormPopup extends Component {
 
   lockPopup = () => {
     this.setState({
-      locked: true,
+      locked: !this.state.locked,
     });
   }
 
