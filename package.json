@@ -54,6 +54,8 @@
     "styled-components": "^2.0.0-17"
   },
   "devDependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.48.0",
     "next-style-loader": "^0.3.1"
   }
 }

@@ -60,7 +60,7 @@ export default class LoginForm extends Component {
           return this.props.showResetForm(this.state.user);
 
         this.setState({
-          message: 'Email o Password incorrectos',
+          message: 'Email o contraseña incorrectos',
           loading: false,
         })
         }
@@ -80,7 +80,7 @@ export default class LoginForm extends Component {
       this.props.lockPopup();
     } else {
       pass = '';
-      message = 'Email o Password incorrectos';
+      message = 'Email o contraseña incorrectos';
       validForm = false;
       loading = false;
     }

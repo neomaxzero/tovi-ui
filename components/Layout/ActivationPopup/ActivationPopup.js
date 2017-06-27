@@ -114,7 +114,7 @@ export default class ActivationPopup extends PureComponent {
       // this.props.lockPopup();
     } else {
       pass = '';
-      message = 'Email o Password incorrectos';
+      message = 'Email o contraseña incorrectos';
       validForm = false;
       loading = false;
     }
