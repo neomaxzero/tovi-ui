@@ -59,7 +59,7 @@ export default class ActivationPopup extends PureComponent {
           });
         default:
           return this.setState({ 
-            message: 'Email o Contraseña incorrectos',
+            message: 'Email o contraseña incorrectos',
             loading: false,
           });
       }      
@@ -114,7 +114,7 @@ export default class ActivationPopup extends PureComponent {
       // this.props.lockPopup();
     } else {
       pass = '';
-      message = 'Email o Password incorrectos';
+      message = 'Email o contraseña incorrectos';
       validForm = false;
       loading = false;
     }
@@ -162,7 +162,7 @@ export default class ActivationPopup extends PureComponent {
                   <Field 
                     type="text" 
                     name="user" 
-                    placeholder="Correo Electrónico" 
+                    placeholder="Correo electrónico" 
                     onChange={this.onChange} 
                     value={user} 
                     valid={validForm}
@@ -192,7 +192,7 @@ export default class ActivationPopup extends PureComponent {
       case types.SUCCESS:
         return (
           <Popup
-            title={'¡Cuenta activada!'}
+            title={'Cuenta activada'}
             icon={{name: 'check-circle-o',color: primary}}
             onClickOutside={activateClose}
           >
