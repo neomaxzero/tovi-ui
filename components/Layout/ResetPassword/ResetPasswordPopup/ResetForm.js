@@ -69,10 +69,14 @@ export default class ResetForm extends PureComponent {
 
   handleError = (err) => {
      const { errorCode } = err.response.data;
-      debugger;
       switch (errorCode) {        
         case errorCodes.INVALID_LINK:
           return this.setState({ type: types.INVALID_LINK });
+        case errorCodes.INVALID_EMAIL: 
+          return this.setState({ 
+            message: 'Correo electrónico incorrecto',
+            loading: false,
+          });
         default:
           return this.setState({ type: types.ERROR }); 
       }      

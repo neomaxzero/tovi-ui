@@ -44,7 +44,6 @@ export default class ActivationPopup extends PureComponent {
 
   handleError = (err) => {
      const { errorCode } = err.response.data;
-      debugger;
       switch (errorCode) {
         case errorCodes.ALREADY_ACTIVATED:
           return this.setState({ type: types.ALREADY_ACTIVATED });
