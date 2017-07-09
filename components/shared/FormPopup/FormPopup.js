@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Background from '~/components/shared/Background';
+import Background from 'tovi-background';
 import { PopupContainer } from './styled';
 import QuitResponsive from './QuitResponsive';
 class FormPopup extends Component {
