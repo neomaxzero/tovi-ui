@@ -2,7 +2,6 @@ import React from 'react'
 
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-// import styleSheet from 'styled-components/lib/models/StyleSheet'
 
 class MyDocument extends Document {
   render () {
@@ -22,7 +21,9 @@ class MyDocument extends Document {
           {styleTags}
         </Head>
         <body>
-          {main}
+          <div className="root">
+            {main}
+          </div>
           {this.props.customValue}
           <NextScript />
         </body>

@@ -20,7 +20,8 @@
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-module-resolver": "^2.5.0",
     "babel-plugin-root-import": "^5.1.0",
-    "babel-plugin-styled-components": "^1.1.4",
+    "babel-plugin-styled-components": "^1.1.7",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "express": "^4.15.2",
     "glob": "^7.1.1",
@@ -28,7 +29,7 @@
     "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "next": "beta",
+    "next": "^2.4.7",
     "next-redux-wrapper": "^1.0.0",
     "node-sass": "^4.5.1",
     "normalize.css": "^6.0.0",
@@ -51,8 +52,9 @@
     "redux-saga": "^0.14.6",
     "reselect": "^3.0.0",
     "sass-loader": "^6.0.3",
-    "styled-components": "^2.0.0-17",
-    "tovi-background": "^1.0.6"
+    "styled-components": "^2.1.1",
+    "tovi-background": "^1.0.6",
+    "tovi-nav": "^1.1.2"
   },
   "devDependencies": {
     "next-style-loader": "^0.3.1"

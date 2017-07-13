@@ -42,6 +42,7 @@ return [
     handler: () => (console.log('Conviertete en guia'))
   },
   ...subscriberOptions    
-]};
+]
+};
 
 export default optionsPanelItems;
