@@ -27,5 +27,5 @@ export const getYearForm = (from) => {
   for(let i = from; i<=current; i++) {
     years.push({ value: i, label: i});
   }
-  return years;
+  return years.reverse();
 }
