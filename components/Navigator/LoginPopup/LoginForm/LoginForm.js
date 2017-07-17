@@ -7,6 +7,7 @@ import OptionsLogin from './OptionsLogin';
 import Validators from '~/components/shared/Validators';
 import { login, user as userService } from '~/services/user';
 import { saveToken } from '~/utils/token';
+import CookiesUtils from '~/utils/cookies';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
 import ERROR_CODES from './errorCodes';
 
@@ -33,6 +34,7 @@ export default class LoginForm extends Component {
       .then((response) =>  {        
         saveToken(response); 
         id = response.data.usuarioId;
+        CookiesUtils.set('id', id, 1);
         return userService.get(id);
       })
       .then((userInfo) => {
