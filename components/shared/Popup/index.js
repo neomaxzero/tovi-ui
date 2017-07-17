@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Background from '../Background';
+import Background from 'tovi-background';
 import FA from 'react-fontawesome';
 import { Container, Header, Body, Icon } from './styled';
 

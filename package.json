@@ -51,7 +51,8 @@
     "redux-saga": "^0.14.6",
     "reselect": "^3.0.0",
     "sass-loader": "^6.0.3",
-    "styled-components": "^2.0.0-17"
+    "styled-components": "^2.0.0-17",
+    "tovi-background": "^1.0.6"
   },
   "devDependencies": {
     "next-style-loader": "^0.3.1"
