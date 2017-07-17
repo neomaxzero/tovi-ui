@@ -10,6 +10,9 @@ if (props.logged) {
       handler: () => (console.log('LOGIN')),
       avatar: props.loginInfo.getIn(['picture','data', 'url']),
       child: [{
+        name: 'Panel de Control',
+        handler: () => (window.location = "https://enterprise.tovi.com.ar"),
+      }, {
         name: 'Cerrar Sesion',
         handler: props.logout.bind(this, props.provider),
       }],
