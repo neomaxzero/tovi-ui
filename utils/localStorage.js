@@ -10,10 +10,10 @@ export const loadState = () => {
     if(serializedState === null) {
       return undefined;
     }
-
+    
     let deserializeData = JSON.parse(serializedState);
     //If user checks for rememberme we restore the session if not we don't do anything
-    if(deserializeData.Login.loginInfo.rememberme) {
+    if(deserializeData.Login.loginInfo.rememberme || deserializeData.Login.provider === "FACEBOOK") {
       for(let key in deserializeData) {
         //We must used with immutableJS to restore the state of the user session
         deserializeData[key] = fromJS(deserializeData[key]);
