@@ -6,7 +6,7 @@ export default class OptionsLogin extends PureComponent {
   render() {
     return(
       <OptionsContainer>
-        <FormCheckbox name="rememberme" value="rememberme">
+        <FormCheckbox name="rememberme" value={this.props.rememberme} onPress={this.props.onChange}>
           Recuérdame
         </FormCheckbox>        
         <Linki onClick={this.props.forgot}>
