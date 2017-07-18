@@ -17,8 +17,7 @@ export default class LoginForm extends Component {
     pass: '',
     message: '',
     validForm: true,
-    loading: false,
-    rememberme: false
+    loading: false
   }
 
   validateFields = () => {
@@ -50,8 +49,7 @@ export default class LoginForm extends Component {
             data: {
               url: 'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png',
             }
-          },
-          rememberme: this.state.rememberme
+          }
         }, PROVIDERS.LOCAL);
         this.props.toggleLogin();
       })
@@ -105,15 +103,6 @@ export default class LoginForm extends Component {
     })    
   }
 
-  /**
-   * Only for rememberme functionality
-   */
-  onRememberMe = (ev) => {
-    this.setState({
-      rememberme: ev.target.checked,
-    })    
-  }
-
   handleKeys = (ev) => {
     if(ev.key === 'Enter')
       return this.onSubmit();
@@ -142,7 +131,7 @@ export default class LoginForm extends Component {
           valid={validForm}
           onKeyPress={this.handleKeys}          
         />
-        <OptionsLogin forgot={forgot} rememberme={rememberme} onChange={this.onRememberMe}/>        
+        <OptionsLogin forgot={forgot}/>        
         { message && <ErrorMessage>{message}</ErrorMessage>}
         <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading}/>
       </Form>

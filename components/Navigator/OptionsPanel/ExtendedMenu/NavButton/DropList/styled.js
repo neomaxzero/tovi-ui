@@ -6,6 +6,7 @@ export const List = styled.ul`
   position: absolute;
   width: 100%;
   top: 100%;
+  z-index: 2;
   border: 1px solid ${greyLine};
   border-color: ${greyLine};
   ${animate('flipInX','0.2s')}
