@@ -18,6 +18,7 @@ export default class LoginForm extends Component {
     message: '',
     validForm: true,
     loading: false,
+    rememberme: false
   }
 
   validateFields = () => {
@@ -30,6 +31,7 @@ export default class LoginForm extends Component {
   doLogin = () => {
     const { user, pass } = this.state;
     let id;
+    //We may need to migrate to sagas this call
     login({ Email: user, Password: pass, Provider: 'local'})
       .then((response) =>  {        
         saveToken(response); 
@@ -48,7 +50,8 @@ export default class LoginForm extends Component {
             data: {
               url: 'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png',
             }
-          }
+          },
+          rememberme: this.state.rememberme
         }, PROVIDERS.LOCAL);
         this.props.toggleLogin();
       })
@@ -102,13 +105,22 @@ export default class LoginForm extends Component {
     })    
   }
 
+  /**
+   * Only for rememberme functionality
+   */
+  onRememberMe = (ev) => {
+    this.setState({
+      rememberme: ev.target.checked,
+    })    
+  }
+
   handleKeys = (ev) => {
     if(ev.key === 'Enter')
       return this.onSubmit();
   }
 
   render() {
-    const { message, user, pass, validForm, loading } = this.state;
+    const { message, user, pass, validForm, loading, rememberme } = this.state;
     const { forgot } = this.props;
     return(
       <Form onSubmit={this.onSubmit}>
@@ -130,7 +142,7 @@ export default class LoginForm extends Component {
           valid={validForm}
           onKeyPress={this.handleKeys}          
         />
-        <OptionsLogin forgot={forgot}/>        
+        <OptionsLogin forgot={forgot} rememberme={rememberme} onChange={this.onRememberMe}/>        
         { message && <ErrorMessage>{message}</ErrorMessage>}
         <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading}/>
       </Form>
