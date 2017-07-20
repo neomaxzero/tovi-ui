@@ -11,7 +11,8 @@ function * logoutAct(provider) {
   // if (provider === PROVIDERS.FACEBOOK)  FB.logout(() => {
   //   console.info('User logout succesfully');
   // }); 
-  Cookies.remove('token');
+  const domain = PRODUCTION && BASE_DOMAIN;
+  Cookies.remove('token', domain);
 
 }
 
