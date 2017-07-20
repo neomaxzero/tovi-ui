@@ -7,6 +7,7 @@ import OptionsLogin from './OptionsLogin';
 import Validators from '~/components/shared/Validators';
 import { login, user as userService } from '~/services/user';
 import { saveToken } from '~/utils/token';
+import CookiesUtils from '~/utils/cookies';
 import { PROVIDERS } from '~/components/Orphan/Login/constants';
 import ERROR_CODES from './errorCodes';
 
@@ -16,7 +17,7 @@ export default class LoginForm extends Component {
     pass: '',
     message: '',
     validForm: true,
-    loading: false,
+    loading: false
   }
 
   validateFields = () => {
@@ -29,10 +30,12 @@ export default class LoginForm extends Component {
   doLogin = () => {
     const { user, pass } = this.state;
     let id;
+    //We may need to migrate to sagas this call
     login({ Email: user, Password: pass, Provider: 'local'})
       .then((response) =>  {        
         saveToken(response); 
         id = response.data.usuarioId;
+        CookiesUtils.set('id', id, 1);
         return userService.get(id);
       })
       .then((userInfo) => {
@@ -106,7 +109,7 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const { message, user, pass, validForm, loading } = this.state;
+    const { message, user, pass, validForm, loading, rememberme } = this.state;
     const { forgot } = this.props;
     return(
       <Form onSubmit={this.onSubmit}>
