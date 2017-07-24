@@ -16,11 +16,12 @@ export default class PasswordBlocked extends Component {
           service={this.sendEmail}
           activateClose={activateClose}
           title={'Contraseña bloqueada'}
-          nameButton={'Enviar e-mail'}
+          nameButton={'Reenviar e-mail'}
       >
         <Phrase> Por razones de seguridad tu contraseña ha sido bloqueada.</Phrase>        
         <Phrase> Te hemos enviado un e-mail para que puedas establecer</Phrase>        
-        <Phrase> una nueva contraseña.</Phrase>          
+        <Phrase> una nueva contraseña.</Phrase>   
+        <Phrase> ¿No lo has recibido? </Phrase>       
       </ResendPopup>
     )
   }
