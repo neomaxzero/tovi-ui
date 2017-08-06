@@ -35,7 +35,7 @@ export default class LoginForm extends Component {
       .then((response) =>  {        
         saveToken(response); 
         id = response.data.usuarioId;
-        CookiesUtils.set('id', id, 1,);
+        CookiesUtils.set('id', id);
         return userService.get(id);
       })
       .then((userInfo) => {
