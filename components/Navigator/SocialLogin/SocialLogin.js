@@ -7,7 +7,7 @@ class SocialLogin extends PureComponent {
     desc: 'Inicia sesión con un click',
   }
   render() {
-    const { onLogin, toggleLogin, desc } = this.props;
+    const { onLogin, toggleLogin, desc, showBlockedWithFacebook } = this.props;
 
     return(
       <SocialLoginContainer>
@@ -16,6 +16,7 @@ class SocialLogin extends PureComponent {
           onLogin={onLogin} 
           toggleLogin={toggleLogin}
           desc={desc}
+          showBlockedWithFacebook={showBlockedWithFacebook}
         />
       </SocialLoginContainer>
     )

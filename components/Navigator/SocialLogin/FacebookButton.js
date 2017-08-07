@@ -13,17 +13,29 @@ class FacebookButton extends PureComponent {
 
   fetchProfile = () => {
     FB.api('/me?fields=email, name, picture, age_range, first_name, link, gender, locale, verified', (response) => {
-      this.props.onLogin(response, PROVIDERS.FACEBOOK );
-      this.props.toggleLogin();
+      //We need both data, from facebook and from tovi, so we need to way for both api
+      //Once we check facebook, we check tovi
+      this.exchangeToken(response)
     });
   }
   
-  exchangeToken = () => {
+  exchangeToken = (response) => {
     const Provider = 'facebook';
     const TokenFace = FB.getAccessToken();
     login({ TokenFace, Provider })
       .then((result) => {
-        saveToken(result)        
+        saveToken(result);
+        if(result.data.usuarioFaceBloqueado){
+          //User is blocked, he/she can login with facebook account
+          //So we show a popup with a message
+          this.props.showBlockedWithFacebook(response.email);
+          this.props.onLogin(response, PROVIDERS.FACEBOOK);
+        } else {
+          //User is NOT blocked, he/she can login with facebook account
+          //So we login as always
+          this.props.onLogin(response, PROVIDERS.FACEBOOK );
+          this.props.toggleLogin();
+        }     
       })
       .catch((err) => { console.error(err)})
   }
@@ -43,7 +55,6 @@ class FacebookButton extends PureComponent {
   statusChangeCallback = (response) => {
     if (response.status === 'connected') {
       this.fetchProfile();
-      this.exchangeToken();
     } else {
       FB.login((response) => {
         if (response.authResponse) this.fetchProfile();
