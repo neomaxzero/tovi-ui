@@ -13,13 +13,6 @@ const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 app.prepare()
 .then(() => {
   const server = express();
-  // createServer((req, res) => {
-  //   const parsedUrl = parse(req.url, true)
-  //   const { pathname, query } = parsedUrl
-
-  //   handle(req, res, parsedUrl)
-  // })
-
   server.get('*', (req, res) => {
     return handle(req, res)
   })

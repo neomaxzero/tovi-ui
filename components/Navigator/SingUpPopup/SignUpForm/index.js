@@ -319,10 +319,10 @@ export default class SignUpForm extends Component {
 
   onSubmit = () => {
     const valid = this.validateFields();
-    console.log(this.props.lockPopup);
+    if (!valid) return;
+  
     this.props.lockPopup();
-    if (!valid)
-      return;
+    
     const d = ("0" + this.state.date.day).slice(-2);
     const m = ("0" + this.state.date.month).slice(-2);
     

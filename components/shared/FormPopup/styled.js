@@ -36,10 +36,6 @@ export const QuitResponsive = styled.form`
   position: absolute;
   top: 1em;
   right: 1em;
-
-  @media (min-width: 700px) {
-		display: none;
-	}
 `
 
 export const ErrorMessage = styled.p`
