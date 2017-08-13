@@ -5,6 +5,7 @@ import SocialLogin from '~/components/Navigator/SocialLogin';
 import LoginForm from './LoginForm';
 import NewAccount from './NewAccount';
 import PasswordBlocked from './PasswordBlocked';
+import PasswordBlockedWithFacebook from './PasswordBlockedWithFacebook';
 import NotActivated from './NotActivated';
 import FirstTime from './FirstTime';
 import { Phrase } from '~/components/shared/Message/styled';
@@ -14,6 +15,7 @@ const types = {
   FIRST_TIME: 'FIRST_TIME',
   NOT_ACTIVATED: 'NOT_ACTIVATED',
   BLOCKED: 'BLOCKED',
+  BLOCKEDWITHFACEBOOK: 'BLOCKEDWITHFACEBOOK'
 }
 
 class LoginPopup extends Component {  
@@ -57,6 +59,13 @@ class LoginPopup extends Component {
     })
   }
 
+  blockedWithFacebook = (user) => {
+    this.setState({
+      type: types.BLOCKEDWITHFACEBOOK,
+      user
+    })
+  }
+
   pickPopup = () => {
     const { setLogin, toggleLogin, showRequestResetPasswordPopup } = this.props;
     
@@ -66,7 +75,11 @@ class LoginPopup extends Component {
         <FormPopup toggle={toggleLogin}>
           {(lockPopup) => (
             <div>
-              <SocialLogin onLogin={setLogin} toggleLogin={toggleLogin}/>
+              <SocialLogin 
+                onLogin={setLogin} 
+                toggleLogin={toggleLogin}
+                showBlockedWithFacebook={this.blockedWithFacebook}
+              />
               <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
               <LoginForm  
                 notActivated={this.notActivated} 
@@ -102,7 +115,14 @@ class LoginPopup extends Component {
             activateClose={toggleLogin}            
             user={this.state.user}            
           />          
-        ); 
+        );
+      case types.BLOCKEDWITHFACEBOOK:
+        return (
+          <PasswordBlockedWithFacebook
+            activateClose={toggleLogin}          
+            user={this.state.user}            
+          />          
+        );
     }
   }
 
