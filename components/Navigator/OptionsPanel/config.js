@@ -21,11 +21,11 @@ if (props.logged) {
 } else {
   subscriberOptions =  [
     {
-      name: 'Registrate',
+      name: 'Regístrate',
       handler: props.toggleSignup,
     },       
     {
-      name: 'Iniciar Sesion',
+      name: 'Iniciar Sesión',
       handler: props.toggleLogin,
     },
   ];
@@ -41,8 +41,8 @@ return [
     handler: () => (console.log('Empresas'))
   },
   {
-    name: 'Conviertete en guia',
-    handler: () => (console.log('Conviertete en guia'))
+    name: 'Conviértete en guia',
+    handler: () => (console.log('Conviértete en guia'))
   },
   ...subscriberOptions    
 ]};
