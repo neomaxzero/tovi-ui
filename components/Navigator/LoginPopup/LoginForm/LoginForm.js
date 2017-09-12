@@ -18,66 +18,72 @@ export default class LoginForm extends Component {
     message: '',
     validForm: true,
     loading: false
-  }
+  };
 
   validateFields = () => {
     const { user, pass } = this.state;
-    if (!Validators.email(user) || !pass) return false;   
+    if (!Validators.email(user) || !pass) return false;
 
     return true;
-  }
+  };
 
   doLogin = () => {
     const { user, pass } = this.state;
     let id;
     //We may need to migrate to sagas this call
-    login({ Email: user, Password: pass, Provider: 'local'})
-      .then((response) =>  {        
-        saveToken(response); 
+    login({ Email: user, Password: pass, Provider: 'local' })
+      .then(response => {
+        saveToken(response);
         id = response.data.usuarioId;
         CookiesUtils.set('id', id);
+        if (this.props.redirect) {
+          window.location.replace(this.props.redirect);
+        }
         return userService.get(id);
       })
-      .then((userInfo) => {
+      .then(userInfo => {
         if (!userInfo.data.Verificado) {
           return this.props.notActivated(id);
         }
-        this.props.onLogin({
-          first_name: userInfo.data.Nombre,
-          verified: userInfo.data.Verificado,
-          picture: {
-            data: {
-              url: 'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png',
+        this.props.onLogin(
+          {
+            first_name: userInfo.data.Nombre,
+            verified: userInfo.data.Verificado,
+            picture: {
+              data: {
+                url:
+                  'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png'
+              }
             }
-          }
-        }, PROVIDERS.LOCAL);
+          },
+          PROVIDERS.LOCAL
+        );
         this.props.toggleLogin();
       })
       .catch(err => {
         console.log(err.response);
         const code = err.response.data.errorCode;
-        if (code == ERROR_CODES.PASSWORD_BLOCKED)        
+        if (code == ERROR_CODES.PASSWORD_BLOCKED)
           return this.props.showBlocked(this.state.user);
-        
+
         if (code == ERROR_CODES.FIRST_TIME)
           return this.props.showResetForm(this.state.user);
 
         this.setState({
           message: 'Email o Password incorrectos',
-          loading: false,
+          loading: false
         });
         //Unlock popup
         this.props.lockPopup();
-        }
-      )
-  }
+      });
+  };
 
-  onSubmit = (ev) => {
+  onSubmit = ev => {
     if (loading) return;
 
     if (ev) ev.preventDefault();
     let message, validForm, loading, pass;
-    if(this.validateFields()) { 
+    if (this.validateFields()) {
       message = '';
       this.doLogin();
       validForm = true;
@@ -93,47 +99,50 @@ export default class LoginForm extends Component {
     this.setState({
       message,
       validForm,
-      loading,
+      loading
     });
-  }
+  };
 
-  onChange = (ev) => {
+  onChange = ev => {
     this.setState({
-      [ev.target.name]: ev.target.value,
-    })    
-  }
+      [ev.target.name]: ev.target.value
+    });
+  };
 
-  handleKeys = (ev) => {
-    if(ev.key === 'Enter')
-      return this.onSubmit();
-  }
+  handleKeys = ev => {
+    if (ev.key === 'Enter') return this.onSubmit();
+  };
 
   render() {
     const { message, user, pass, validForm, loading, rememberme } = this.state;
     const { forgot } = this.props;
-    return(
+    return (
       <Form onSubmit={this.onSubmit}>
-        <Field 
-          type="text" 
-          name="user" 
-          placeholder="Correo Electrónico" 
-          onChange={this.onChange} 
-          value={user} 
+        <Field
+          type="text"
+          name="user"
+          placeholder="Correo Electrónico"
+          onChange={this.onChange}
+          value={user}
           valid={validForm}
           onKeyPress={this.handleKeys}
         />
-        <Field 
-          type="password" 
-          name="pass" 
-          placeholder="Contraseña" 
-          onChange={this.onChange} 
-          value={pass} 
+        <Field
+          type="password"
+          name="pass"
+          placeholder="Contraseña"
+          onChange={this.onChange}
+          value={pass}
           valid={validForm}
-          onKeyPress={this.handleKeys}          
+          onKeyPress={this.handleKeys}
         />
-        <OptionsLogin forgot={forgot}/>        
-        { message && <ErrorMessage>{message}</ErrorMessage>}
-        <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading}/>
+        <OptionsLogin forgot={forgot} />
+        {message && <ErrorMessage>{message}</ErrorMessage>}
+        <FormButton
+          name="Iniciar sesión"
+          onClick={this.onSubmit}
+          loading={loading}
+        />
       </Form>
     );
   }

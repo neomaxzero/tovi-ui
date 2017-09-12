@@ -16,115 +16,115 @@ const types = {
   NOT_ACTIVATED: 'NOT_ACTIVATED',
   BLOCKED: 'BLOCKED',
   BLOCKEDWITHFACEBOOK: 'BLOCKEDWITHFACEBOOK'
-}
+};
 
-class LoginPopup extends Component {  
+class LoginPopup extends Component {
   state = {
-    type: types.FORM,
-  }
+    type: types.FORM
+  };
 
   openSignUp = () => {
     this.props.toggleLogin();
     this.props.toggleSignup();
-  }
+  };
 
   openForgot = () => {
     this.props.toggleLogin();
     this.props.showRequestResetPasswordPopup();
-  }
+  };
 
   openReset = () => {
     this.props.toggleLogin();
     this.props.showResetForm();
-  }
+  };
 
-  firstTime = (user) => {
-     this.setState({
-       type: types.FIRST_TIME,
-       user,
-    });
-  }
-  
-  notActivated = (userId) => {
+  firstTime = user => {
     this.setState({
-       type: types.NOT_ACTIVATED,
-       userId,
+      type: types.FIRST_TIME,
+      user
     });
-  }
+  };
 
-  blocked = (user) => {
+  notActivated = userId => {
+    this.setState({
+      type: types.NOT_ACTIVATED,
+      userId
+    });
+  };
+
+  blocked = user => {
     this.setState({
       type: types.BLOCKED,
-      user,
-    })
-  }
+      user
+    });
+  };
 
-  blockedWithFacebook = (user) => {
+  blockedWithFacebook = user => {
     this.setState({
       type: types.BLOCKEDWITHFACEBOOK,
       user
-    })
-  }
+    });
+  };
 
   pickPopup = () => {
-    const { setLogin, toggleLogin, showRequestResetPasswordPopup } = this.props;
-    
-    switch (this.state.type) {      
+    const {
+      setLogin,
+      toggleLogin,
+      showRequestResetPasswordPopup,
+      redirect
+    } = this.props;
+    console.log({ redirect });
+    switch (this.state.type) {
       case types.FORM:
         return (
-        <FormPopup toggle={toggleLogin}>
-          {(lockPopup) => (
-            <div>
-              <SocialLogin 
-                onLogin={setLogin} 
-                toggleLogin={toggleLogin}
-                showBlockedWithFacebook={this.blockedWithFacebook}
-              />
-              <OwnLoginPhrase>o inicia sesión con tu correo electrónico </OwnLoginPhrase>
-              <LoginForm  
-                notActivated={this.notActivated} 
-                onLogin={setLogin} 
-                lockPopup={lockPopup} 
-                toggleLogin={toggleLogin} 
-                forgot={this.openForgot}
-                showBlocked={this.blocked}
-                showResetForm={this.openReset}
-                showFirstTime={this.firstTime}
-              />
-              <NewAccount openSignUp={this.openSignUp}/>
-            </div>
-          )}          
-        </FormPopup>);
+          <FormPopup toggle={toggleLogin}>
+            {lockPopup =>
+              <div>
+                <SocialLogin
+                  onLogin={setLogin}
+                  toggleLogin={toggleLogin}
+                  showBlockedWithFacebook={this.blockedWithFacebook}
+                />
+                <OwnLoginPhrase>
+                  o inicia sesión con tu correo electrónico
+                </OwnLoginPhrase>
+                <LoginForm
+                  notActivated={this.notActivated}
+                  onLogin={setLogin}
+                  lockPopup={lockPopup}
+                  toggleLogin={toggleLogin}
+                  forgot={this.openForgot}
+                  showBlocked={this.blocked}
+                  showResetForm={this.openReset}
+                  showFirstTime={this.firstTime}
+                  redirect={redirect}
+                />
+                <NewAccount openSignUp={this.openSignUp} />
+              </div>}
+          </FormPopup>
+        );
       case types.NOT_ACTIVATED:
         return (
-          <NotActivated 
+          <NotActivated
             activateClose={toggleLogin}
             userId={this.state.userId}
-          />          
-        )
+          />
+        );
       case types.BLOCKED:
         return (
-          <PasswordBlocked 
-            activateClose={toggleLogin}            
-            user={this.state.user}            
-          />          
+          <PasswordBlocked activateClose={toggleLogin} user={this.state.user} />
         );
       case types.FIRST_TIME:
-        return (
-          <FirstTime 
-            activateClose={toggleLogin}            
-            user={this.state.user}            
-          />          
-        );
+        return <FirstTime activateClose={toggleLogin} user={this.state.user} />;
       case types.BLOCKEDWITHFACEBOOK:
         return (
           <PasswordBlockedWithFacebook
-            activateClose={toggleLogin}          
-            user={this.state.user}            
-          />          
+            activateClose={toggleLogin}
+            user={this.state.user}
+          />
         );
     }
-  }
+  };
 
   render() {
     return this.pickPopup();

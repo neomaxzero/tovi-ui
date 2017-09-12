@@ -15,7 +15,7 @@ const optionsPanelItems = props => {
             handler: () => (window.location = 'https://enterprise.tovi.com.ar')
           },
           {
-            name: 'Cerrar Sesion',
+            name: 'Cerrar Sesión',
             handler: props.logout.bind(this, props.provider)
           }
         ]
@@ -29,7 +29,7 @@ const optionsPanelItems = props => {
       },
       {
         name: 'Iniciar Sesión',
-        handler: props.toggleLogin
+        handler: () => props.toggleLogin()
       }
     ];
   }
