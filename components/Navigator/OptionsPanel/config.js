@@ -12,7 +12,7 @@ const optionsPanelItems = props => {
         child: [
           {
             name: 'Panel de Control',
-            handler: () => (window.location = 'https://enterprise.tovi.com.ar')
+            handler: () => (window.location = 'http://enterprise.tovi.com.ar')
           },
           {
             name: 'Cerrar Sesión',
