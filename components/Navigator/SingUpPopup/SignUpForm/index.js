@@ -11,7 +11,12 @@ import SexDropDown from './sexDropDown';
 import DateDropDown from './dateDropDown';
 import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
-import { CheckboxContainer, ErrorMsg, DropDownsInline, CaptchaContainer } from './styled';
+import {
+  CheckboxContainer,
+  ErrorMsg,
+  DropDownsInline,
+  CaptchaContainer,
+} from './styled';
 import SocialLogin from '~/components/Navigator/SocialLogin';
 import { capitalize } from '~/utils/string';
 import { Error } from '~/components/shared/FormPopup/FormField/styled';
@@ -77,39 +82,39 @@ export default class SignUpForm extends Component {
       },
       captcha: {
         message: '',
-      }
+      },
     },
     error: '',
-  }
+  };
 
   componentDidMount() {
     getProvinces()
-      .then((response) => {
-        return response.data.map((prov) => ({
-          label: prov.Descripcion, 
-          value: prov.ProvinciaId
-        }))
+      .then(response => {
+        return response.data.map(prov => ({
+          label: prov.Descripcion,
+          value: prov.ProvinciaId,
+        }));
       })
-      .then((values) => {
+      .then(values => {
         this.setState({
           provinceList: values,
-        })
+        });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
-      })
+      });
   }
 
-  onChange = (ev) => {
+  onChange = ev => {
     this.setState({
       [ev.target.name]: ev.target.value,
       fields: {
         ...this.state.fields,
-        [ev.target.name]: { valid: true, message: '' }
-      }
-    })    
-  }
- 
+        [ev.target.name]: { valid: true, message: '' },
+      },
+    });
+  };
+
   selectProvince = ({ value }) => {
     this.setState({
       province: value,
@@ -121,40 +126,40 @@ export default class SignUpForm extends Component {
         province: {
           valid: true,
         },
-      }
+      },
     });
     getCities(value)
-      .then((response) => {
-        return response.data.map((city) => ({
+      .then(response => {
+        return response.data.map(city => ({
           label: city.Descripcion,
           value: city.LocalidadId,
-        }))
+        }));
       })
-      .then((values) => {
-        this.setState({          
+      .then(values => {
+        this.setState({
           citySelect: {
             disabled: false,
             isLoading: false,
             List: values,
           },
-        })
+        });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
-      })
-  }
- 
+      });
+  };
+
   selectCity = ({ value }) => {
     this.setState({
-      city: value,  
+      city: value,
       fields: {
         ...this.state.fields,
         city: {
           valid: true,
         },
-      }    
+      },
     });
-  }
+  };
 
   selectSex = ({ value }) => {
     this.setState({
@@ -164,11 +169,11 @@ export default class SignUpForm extends Component {
         sex: {
           valid: true,
         },
-      }  
-    })
-  }
+      },
+    });
+  };
 
-  selectDate = (value) => {
+  selectDate = value => {
     this.setState({
       date: value,
       fields: {
@@ -176,15 +181,15 @@ export default class SignUpForm extends Component {
         date: {
           valid: true,
         },
-      }  
-    })
-  }
+      },
+    });
+  };
   validateFields = () => {
     let valid = true;
     let error = '';
 
     const fields = {
-     name: {
+      name: {
         valid: true,
         message: '',
       },
@@ -219,55 +224,55 @@ export default class SignUpForm extends Component {
       },
       terms: {
         valid: this.state.fields.terms.valid,
-      }
+      },
     };
     if (!this.state.name) {
       fields.name.valid = false;
-      fields.name.message = MESSAGE_DEFAULT;            
+      fields.name.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
     if (!this.state.surname) {
       fields.surname.valid = false;
-      fields.surname.message = MESSAGE_DEFAULT;            
+      fields.surname.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
     if (!this.state.province) {
       fields.province.valid = false;
-      fields.province.message = MESSAGE_DEFAULT;            
+      fields.province.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
     if (!this.state.city) {
       fields.city.valid = false;
-      fields.city.message = MESSAGE_DEFAULT;            
+      fields.city.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
     //Email
-    if(!Validators.email(this.state.email)) {
+    if (!Validators.email(this.state.email)) {
       fields.email.valid = false;
-      fields.email.message = 'Formato de email incorrecto.';                 
-      valid = false;      
+      fields.email.message = 'Formato de email incorrecto.';
+      valid = false;
     }
 
-    if (!this.state.email) {      
+    if (!this.state.email) {
       fields.email.valid = false;
-      fields.email.message = MESSAGE_DEFAULT;            
+      fields.email.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
     const validatorPassword = Validators.password(this.state.pass);
     if (!validatorPassword.valid) {
       fields.pass.valid = false;
-      fields.pass.message = validatorPassword.message;            
+      fields.pass.message = validatorPassword.message;
       valid = false;
     }
 
     if (!this.state.pass) {
       fields.pass.valid = false;
-      fields.pass.message = MESSAGE_DEFAULT;            
+      fields.pass.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
@@ -276,56 +281,63 @@ export default class SignUpForm extends Component {
       valid = false;
     }
 
-    if (!this.state.date.day || !this.state.date.month || !this.state.date.year) {      
+    if (
+      !this.state.date.day ||
+      !this.state.date.month ||
+      !this.state.date.year
+    ) {
       fields.date.valid = false;
       valid = false;
     }
-    const d = ("0" + this.state.date.day).slice(-2);
-    const m = ("0" + this.state.date.month).slice(-2);
+    const d = ('0' + this.state.date.day).slice(-2);
+    const m = ('0' + this.state.date.month).slice(-2);
 
-    const plus18 = moment(`${d}${m}${this.state.date.year}`, 'DDMMYYYY').add(18,'Y');
-    if(plus18>moment()) {
+    const plus18 = moment(`${d}${m}${this.state.date.year}`, 'DDMMYYYY').add(
+      18,
+      'Y',
+    );
+    if (plus18 > moment()) {
       fields.date.valid = false;
       valid = false;
-      error = 'Debe ser mayor a 18 años.';      
-    } 
-
-    if (!this.state.fields.terms.valid) {      
-      valid = false;      
-      error = "Para usar el sitio debes aceptar los terminos y condiciones";
+      error = 'Debe ser mayor a 18 años.';
     }
 
-    if (!this.state.captcha) {      
-      valid = false;      
-      fields.captcha.message = MESSAGE_DEFAULT;      
+    if (!this.state.fields.terms.valid) {
+      valid = false;
+      error = 'Para usar el sitio debes aceptar los terminos y condiciones';
+    }
+
+    if (!this.state.captcha) {
+      valid = false;
+      fields.captcha.message = MESSAGE_DEFAULT;
     }
 
     this.setState({
       fields,
       error,
-    })
+    });
 
-    return valid;      
-  }
+    return valid;
+  };
 
   acceptTerms = () => {
     this.setState({
       fields: {
         ...this.state.fields,
-        terms: { valid: !this.state.fields.terms.valid }
-      }
-    })
-  }
+        terms: { valid: !this.state.fields.terms.valid },
+      },
+    });
+  };
 
   onSubmit = () => {
     const valid = this.validateFields();
     if (!valid) return;
-  
+
     this.props.lockPopup();
-    
-    const d = ("0" + this.state.date.day).slice(-2);
-    const m = ("0" + this.state.date.month).slice(-2);
-    
+
+    const d = ('0' + this.state.date.day).slice(-2);
+    const m = ('0' + this.state.date.month).slice(-2);
+
     const date = `${d}${m}${this.state.date.year}`;
     const body = {
       Nombre: capitalize(this.state.name),
@@ -348,37 +360,38 @@ export default class SignUpForm extends Component {
       loading: true,
     });
 
-    user.create(body)
-      .then((response) => {
+    user
+      .create(body)
+      .then(response => {
         this.props.succeed();
       })
-      .catch((err) => {
+      .catch(err => {
         this.props.lockPopup();
         this.setState({
           loading: false,
           error: 'El correo electrónico ya fué utilizado.',
-        })
-      })
-  }
+        });
+      });
+  };
 
-  cbCaptcha = (p) => {
+  cbCaptcha = p => {
     this.setState({
       captcha: p,
-    });    
-  }
+    });
+  };
 
-  cbExpired = (p) => {
+  cbExpired = p => {
     this.setState({
       captcha: '',
-    });       
-  }
+    });
+  };
 
   render() {
-    const { 
+    const {
       name,
-      surname, 
+      surname,
       email,
-      valid, 
+      valid,
       loading,
       city,
       provinceList,
@@ -391,23 +404,23 @@ export default class SignUpForm extends Component {
       error,
     } = this.state;
 
-    return(
+    return (
       <Form>
-        <FormField 
-          type="text" 
-          name="name" 
-          placeholder="Nombres" 
-          onChange={this.onChange} 
-          value={name} 
+        <FormField
+          type="text"
+          name="name"
+          placeholder="Nombres"
+          onChange={this.onChange}
+          value={name}
           valid={fields.name.valid}
           message={fields.name.message}
         />
-         <FormField 
-          type="text" 
-          name="surname" 
-          placeholder="Apellido" 
-          onChange={this.onChange} 
-          value={surname} 
+        <FormField
+          type="text"
+          name="surname"
+          placeholder="Apellido"
+          onChange={this.onChange}
+          value={surname}
           valid={fields.surname.valid}
           message={fields.surname.message}
         />
@@ -437,42 +450,41 @@ export default class SignUpForm extends Component {
           valid={fields.province.valid}
           message={fields.province.message}
         />
-         <FormField 
-          type="text" 
-          name="email" 
-          placeholder="Correo electrónico" 
-          onChange={this.onChange} 
-          value={email} 
+        <FormField
+          type="text"
+          name="email"
+          placeholder="Correo electrónico"
+          onChange={this.onChange}
+          value={email}
           valid={fields.email.valid}
-          message={fields.email.message}          
+          message={fields.email.message}
         />
-         <FormField 
-          type="password" 
-          name="pass" 
-          placeholder="Contraseña" 
-          onChange={this.onChange} 
-          value={pass} 
+        <FormField
+          type="password"
+          name="pass"
+          placeholder="Contraseña"
+          onChange={this.onChange}
+          value={pass}
           valid={fields.pass.valid}
           message={fields.pass.message}
-          
         />
         <DropDownsInline>
-          <SexDropDown 
-            value={sex} 
-            setSex={this.selectSex} 
+          <SexDropDown
+            value={sex}
+            setSex={this.selectSex}
             valid={fields.sex.valid}
-            message={fields.sex.message}          
+            message={fields.sex.message}
           />
-          <DateDropDown 
-            value={date} 
-            setDate={this.selectDate} 
+          <DateDropDown
+            value={date}
+            setDate={this.selectDate}
             valid={fields.date.valid}
           />
-        </DropDownsInline>        
-        <CheckboxContainer>            
+        </DropDownsInline>
+        <CheckboxContainer>
           <FormCheckbox name="terms" value="terms" onPress={this.acceptTerms}>
             Acepto los terminos y condiciones del sitio
-          </FormCheckbox>     
+          </FormCheckbox>
         </CheckboxContainer>
         <CaptchaContainer>
           <Recaptcha
@@ -481,19 +493,17 @@ export default class SignUpForm extends Component {
             verifyCallback={this.cbCaptcha}
             onloadCallback={a => a}
             expiredCallback={this.cbExpired}
-            hl='es'
+            hl="es"
           />
-          { fields.captcha.message && <Error>{fields.captcha.message}</Error> }
+          {fields.captcha.message && <Error>{fields.captcha.message}</Error>}
         </CaptchaContainer>
-        { error && <ErrorMsg> { error } </ErrorMsg> }        
-        <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit}/>        
-        <SocialLogin 
-          onLogin={this.props.setLogin} 
-          toggleLogin={this.props.toggle}
-          desc='Registrarme con Facebook'
+        {error && <ErrorMsg> {error} </ErrorMsg>}
+        <FormButton
+          name="Crear cuenta"
+          loading={loading}
+          onClick={this.onSubmit}
         />
       </Form>
-
     );
   }
 }
