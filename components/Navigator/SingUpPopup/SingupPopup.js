@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import FormPopup from '~/components/shared/FormPopup/FormPopup';
 import SignUpForm from './SignUpForm';
-import { Title } from './styled';
+import { H2 } from '~/components/shared/Typog/Typog';
 
-class SingupPopup extends Component {  
+class SingupPopup extends Component {
   succeed = () => {
     this.props.toggleSignup();
     this.props.showSucceed();
-  }
+  };
 
   render() {
     const { setLogin, toggleSignup } = this.props;
-    return(
+    return (
       <FormPopup toggle={toggleSignup}>
-        {(lockPopup) => (
-          <div style={{width: '100%'}}>
-            <Title>Crea una cuenta</Title>
-            <SignUpForm  
+        {lockPopup =>
+          <div style={{ width: '100%' }}>
+            <H2 center>Crea una cuenta</H2>
+            <SignUpForm
               lockPopup={lockPopup}
-              succeed={this.succeed} 
+              succeed={this.succeed}
               toggle={toggleSignup}
               setLogin={setLogin}
             />
-          </div>
-        )}          
+          </div>}
       </FormPopup>
-    )
+    );
   }
 }
 

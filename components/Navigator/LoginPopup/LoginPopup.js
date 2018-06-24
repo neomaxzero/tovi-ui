@@ -68,7 +68,12 @@ class LoginPopup extends Component {
   };
 
   pickPopup = () => {
-    const { setLogin, toggleLogin, showRequestResetPasswordPopup } = this.props;
+    const {
+      setLogin,
+      toggleLogin,
+      showRequestResetPasswordPopup,
+      redirect,
+    } = this.props;
 
     switch (this.state.type) {
       case types.FORM:
