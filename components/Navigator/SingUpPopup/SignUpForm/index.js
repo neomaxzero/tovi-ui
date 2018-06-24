@@ -20,6 +20,7 @@ import {
 import SocialLogin from '~/components/Navigator/SocialLogin';
 import { capitalize } from '~/utils/string';
 import { Error } from '~/components/shared/FormPopup/FormField/styled';
+import i18n from '~/utils/intl';
 
 const MESSAGE_DEFAULT = 'Campo requerido';
 
@@ -425,6 +426,7 @@ export default class SignUpForm extends Component {
           message={fields.surname.message}
         />
         <SelectField
+          noResultsText={i18n.NO_RESULTS}
           name="form-field-province"
           className="selectForm"
           value={province}
@@ -434,10 +436,12 @@ export default class SignUpForm extends Component {
           disabled={!provinceList.length}
           onChange={this.selectProvince}
           placeholder="Provincia"
+          matchProp={'label'}
           valid={fields.province.valid}
           message={fields.province.message}
         />
         <SelectField
+          noResultsText={i18n.NO_RESULTS}
           name="form-field-city"
           className="selectForm"
           clearable={false}
@@ -445,6 +449,7 @@ export default class SignUpForm extends Component {
           options={citySelect.List}
           onChange={this.selectCity}
           placeholder="Ciudad"
+          matchProp={'label'}
           disabled={citySelect.disabled}
           isLoading={citySelect.isLoading}
           valid={fields.province.valid}

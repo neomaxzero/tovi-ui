@@ -7,25 +7,26 @@ import { store } from '~/store';
 import Layout from '~/components/Layout';
 import SearchSection from '~/components/Landing/SearchSection';
 
-
 class Tovi extends React.Component {
-  static async getInitialProps({ req, query,initialState }) { 
+  static async getInitialProps({ req, query, initialState }) {
     const isServer = !!req;
-    return { 
-      isServer, 
+    return {
+      isServer,
       act: query.act,
       resetCode: query.reset,
+      redirect: query.red
     };
   }
 
   render() {
     return (
-      <div>   
-        <Layout 
+      <div>
+        <Layout
           activation={this.props.act}
-          resetCode ={this.props.resetCode}
+          resetCode={this.props.resetCode}
+          redirect={this.props.redirect}
         />
-        <SearchSection />        
+        <SearchSection />
       </div>
     );
   }

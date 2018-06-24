@@ -86,6 +86,7 @@ class LoginPopup extends Component {
                   showBlocked={this.blocked}
                   showResetForm={this.openReset}
                   showFirstTime={this.firstTime}
+                  redirect={redirect}
                 />
                 <NewAccount openSignUp={this.openSignUp} />
               </div>}
