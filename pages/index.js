@@ -1,9 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
 // import withRedux from 'next-redux-wrapper';
-import withRedux from '~/utils/redux-wrapper';
-import { store } from '~/store';
+
 import Layout from '~/components/Layout';
 import tourServices from '~/services/tours';
 import SearchSection from '~/components/Landing/SearchSection';
@@ -38,6 +37,4 @@ class Tovi extends React.Component {
   }
 }
 
-const ToviRx = withRedux(store)(Tovi);
-export default ToviRx;
-// export default (Tovi);
+export default Tovi;
