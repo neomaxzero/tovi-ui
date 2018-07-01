@@ -5,16 +5,22 @@ import { fromJS } from 'immutable';
 import withRedux from '~/utils/redux-wrapper';
 import { store } from '~/store';
 import Layout from '~/components/Layout';
+import tourServices from '~/services/tours';
 import SearchSection from '~/components/Landing/SearchSection';
+import LastMinute from '~/components/Landing/LastMinute';
+import { TourCollectionMapper } from '~/components/domains/tour';
 
 class Tovi extends React.Component {
   static async getInitialProps({ req, query, initialState }) {
+    const toursRaw = await tourServices.getToursLastMinute();
+    const tours = TourCollectionMapper(toursRaw).data;
     const isServer = !!req;
     return {
       isServer,
       act: query.act,
       resetCode: query.reset,
-      redirect: query.red
+      redirect: query.red,
+      tours,
     };
   }
 
@@ -26,7 +32,7 @@ class Tovi extends React.Component {
           resetCode={this.props.resetCode}
           redirect={this.props.redirect}
         />
-        <SearchSection />
+        <LastMinute tours={this.props.tours} />
       </div>
     );
   }
