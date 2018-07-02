@@ -8,7 +8,7 @@ export default class LastMinute extends Component {
         {this.props.tours &&
           this.props.tours.map(tour =>
             <TourCard
-              imgSrc={tour.profile}
+              imgSrc={tour.portrait}
               category={tour.category}
               endIn={tour.endIn}
               title={tour.name}
