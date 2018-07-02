@@ -50,10 +50,6 @@ export const TourMapper = payload =>
   });
 
 export const TourCollectionMapper = payload => {
-  console.log('---------------------------------------------------');
-  console.log(payload.data);
-  console.log('---------------------------------------------------');
-
   return new Tours({
     total: payload.data.total,
     data: new List(
