@@ -21,7 +21,7 @@ const Tour = Record({
   category: DEF,
   dateCreated: new Date(),
   dateTour: new Date(),
-  profile:
+  portrait:
     'http://www.turismozahr.cl/web/wp-content/uploads/2017/11/BARILOCHElake-820938_640-400x400.jpg',
   price: DEF,
   endIn: DEF,
@@ -47,6 +47,7 @@ export const TourMapper = payload =>
     price: payload.Price,
     endIn: payload.DeltaAvailableUp,
     vacancy: payload.VacancyNumbers,
+    portrait: payload.Portrait,
   });
 
 export const TourCollectionMapper = payload => {
