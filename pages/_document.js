@@ -11,16 +11,12 @@ class MyDocument extends Document {
       sheet.collectStyles(<App {...props} />),
     );
     const styleTags = sheet.getStyleElement();
-    console.log(styleTags);
     return { ...page, styleTags };
-    console.log(styleTags);
   }
-
   render() {
     return (
       <html>
         <Head>
-          {this.props.styleTags}
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat:400"
             rel="stylesheet"
@@ -38,10 +34,10 @@ class MyDocument extends Document {
             href="https://unpkg.com/react-select/dist/react-select.css"
           />
           <meta name="theme-color" content="#41C8C8" />
+          {this.props.styleTags}
         </Head>
         <body>
           <Main />
-          {this.props.customValue}
           <NextScript />
           <script
             src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"

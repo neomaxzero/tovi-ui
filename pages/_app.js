@@ -4,7 +4,7 @@ import App, { Container } from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { store } from '~/store';
 
-export default withRedux(store, { debug: true })(
+export default withRedux(store, { debug: false })(
   class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
       return {

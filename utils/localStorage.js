@@ -7,7 +7,9 @@ import Cookies from './cookies';
  */
 export const loadState = () => {
   try {
-    if (!localStorage) return;
+    if (typeof window === 'undefined') return;
+    console.log(window);
+
     const token = Cookies.get('token');
     console.log(token);
     const serializedState = localStorage.getItem('state');
