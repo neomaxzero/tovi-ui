@@ -5912,7 +5912,7 @@ tovi-gallery@^1.2.24:
     react-click-outside tj/react-click-outside
     react-slick "^0.23.1"
     slick-carousel "^1.8.1"
-    tovi-background "^1.2.18"
+    tovi-background "^1.2.13"
 
 tovi-gallery@^1.2.25:
   version "1.2.25"
