@@ -57,7 +57,7 @@
     "reselect": "^3.0.0",
     "sass-loader": "^6.0.3",
     "styled-components": "^3.3.3",
-    "tovi-background": "^1.1.0",
+    "tovi-background": "^1.2.13",
     "tovi-cards": "^1.2.21",
     "tovi-gallery": "^1.2.24",
     "tovi-nav": "^1.2.16",
