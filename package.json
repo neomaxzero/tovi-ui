@@ -62,7 +62,7 @@
     "tovi-gallery": "^1.2.24",
     "tovi-nav": "^1.2.16",
     "tovi-typo": "^1.2.24",
-    "tovi-views": "^1.2.24"
+    "tovi-views": "^1.2.27"
   },
   "devDependencies": {
     "next-style-loader": "^0.3.1"

@@ -5891,7 +5891,7 @@ tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   dependencies:
     punycode "^1.4.1"
 
-tovi-background@^1.2.13, tovi-background@^1.2.18:
+tovi-background@^1.2.0, tovi-background@^1.2.13:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/tovi-background/-/tovi-background-1.2.13.tgz#6a696cd6f66c706e0012335bbc65b79af9be3cf4"
   dependencies:
@@ -5901,7 +5901,7 @@ tovi-cards@^1.2.21:
   version "1.2.21"
   resolved "https://registry.yarnpkg.com/tovi-cards/-/tovi-cards-1.2.21.tgz#9ce1837fc712c480b6ceafed4e82536f00fc01be"
 
-tovi-form-button@^1.2.18:
+tovi-form-button@^1.2.16:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/tovi-form-button/-/tovi-form-button-1.2.16.tgz#e8bdd39811be5c71dc219f7de5c6c41d324d74e9"
 
@@ -5914,6 +5914,15 @@ tovi-gallery@^1.2.24:
     slick-carousel "^1.8.1"
     tovi-background "^1.2.18"
 
+tovi-gallery@^1.2.25:
+  version "1.2.25"
+  resolved "https://registry.yarnpkg.com/tovi-gallery/-/tovi-gallery-1.2.25.tgz#6d34f2c1da2fa0eff0d79843fab6fd09b125895f"
+  dependencies:
+    react-click-outside tj/react-click-outside
+    react-slick "^0.23.1"
+    slick-carousel "^1.8.1"
+    tovi-background "^1.2.0"
+
 tovi-nav@^1.2.16:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/tovi-nav/-/tovi-nav-1.2.16.tgz#2f1bf0812aa068f29c4d42da157becbbfb93bead"
@@ -5924,12 +5933,12 @@ tovi-typo@^1.2.24:
   version "1.2.24"
   resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.24.tgz#6e349e3109acb3def0e671e5d3b2cb3d2b00f45d"
 
-tovi-views@^1.2.24:
-  version "1.2.24"
-  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.24.tgz#da494a09c49fd9927b714160670961aee1f08581"
+tovi-views@^1.2.27:
+  version "1.2.27"
+  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.27.tgz#f60b20de07c90d66c1e8c3b6fed07245f62bb2da"
   dependencies:
-    tovi-form-button "^1.2.18"
-    tovi-gallery "^1.2.24"
+    tovi-form-button "^1.2.16"
+    tovi-gallery "^1.2.25"
     tovi-typo "^1.2.24"
 
 traverse@0.6.6:
