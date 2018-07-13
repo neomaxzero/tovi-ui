@@ -1,11 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fromJS } from 'immutable';
-// import withRedux from 'next-redux-wrapper';
-
 import Layout from '~/components/Layout';
 import tourServices from '~/services/tours';
-import SearchSection from '~/components/Landing/SearchSection';
 import LastMinute from '~/components/Landing/LastMinute';
 import { TourCollectionMapper } from '~/components/domains/tour';
 

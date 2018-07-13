@@ -605,6 +605,29 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-common-types@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.0.tgz#6bcf6481030f59e7ffd1a40a67cd464d47780f6a"
+
+"@fortawesome/fontawesome-svg-core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.0.tgz#b0ec14af25cdc11d38ede7d8c94b89b478ab67ab"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.0"
+
+"@fortawesome/free-solid-svg-icons@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.1.0.tgz#1a4b43027104d63c7862fd39333f6ed6d8bb2c9a"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.0"
+
+"@fortawesome/react-fontawesome@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.0.tgz#1fabf7e02582037cb9ff63d5ced631d43f34886b"
+  dependencies:
+    humps "^2.0.1"
+    prop-types "^15.5.10"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -2762,6 +2785,10 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+humps@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/humps/-/humps-2.0.1.tgz#dd02ea6081bd0568dc5d073184463957ba9ef9aa"
+
 iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
@@ -4875,6 +4902,16 @@ react-slick@^0.14.7, react-slick@~0.14.2:
     object-assign "^4.1.0"
     slick-carousel "^1.6.0"
 
+react-slick@^0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.23.1.tgz#15791c4107f0ba3a5688d5bd97b7b7ceaa0dd181"
+  dependencies:
+    classnames "^2.2.5"
+    enquire.js "^2.1.6"
+    json2mq "^0.2.0"
+    lodash.debounce "^4.0.8"
+    resize-observer-polyfill "^1.5.0"
+
 react-spinkit@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-spinkit/-/react-spinkit-2.1.2.tgz#55c037bd73e99e4b69bf2e37c6227474e74a99f6"
@@ -5160,6 +5197,10 @@ reselect@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
 
+resize-observer-polyfill@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
+
 resolve-url@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
@@ -5413,6 +5454,10 @@ slick-carousel@^1.6.0:
   resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.6.0.tgz#780f378e470f4e6f6bec1aa2bae0475f4f9eb085"
   dependencies:
     jquery ">=1.7.2"
+
+slick-carousel@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -5832,15 +5877,46 @@ tovi-background@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/tovi-background/-/tovi-background-1.1.0.tgz#df2c98b96fd540e1442ad2d9462d20f510b1cdda"
 
-tovi-cards@^1.2.17:
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/tovi-cards/-/tovi-cards-1.2.17.tgz#29f10a038a09f85d6a851dffc17483fd9bcfb504"
+tovi-background@^1.2.18:
+  version "1.2.13"
+  resolved "https://registry.yarnpkg.com/tovi-background/-/tovi-background-1.2.13.tgz#6a696cd6f66c706e0012335bbc65b79af9be3cf4"
+  dependencies:
+    react-click-outside "github:tj/react-click-outside"
+
+tovi-cards@^1.2.21:
+  version "1.2.21"
+  resolved "https://registry.yarnpkg.com/tovi-cards/-/tovi-cards-1.2.21.tgz#9ce1837fc712c480b6ceafed4e82536f00fc01be"
+
+tovi-form-button@^1.2.18:
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/tovi-form-button/-/tovi-form-button-1.2.16.tgz#e8bdd39811be5c71dc219f7de5c6c41d324d74e9"
+
+tovi-gallery@^1.2.24:
+  version "1.2.24"
+  resolved "https://registry.yarnpkg.com/tovi-gallery/-/tovi-gallery-1.2.24.tgz#97dc277f9e9f24f8ca652f576ce8a63cefda7528"
+  dependencies:
+    react-click-outside tj/react-click-outside
+    react-slick "^0.23.1"
+    slick-carousel "^1.8.1"
+    tovi-background "^1.2.18"
 
 tovi-nav@^1.2.16:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/tovi-nav/-/tovi-nav-1.2.16.tgz#2f1bf0812aa068f29c4d42da157becbbfb93bead"
   dependencies:
     react-click-outside "github:tj/react-click-outside"
+
+tovi-typo@^1.2.24:
+  version "1.2.24"
+  resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.24.tgz#6e349e3109acb3def0e671e5d3b2cb3d2b00f45d"
+
+tovi-views@^1.2.24:
+  version "1.2.24"
+  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.24.tgz#da494a09c49fd9927b714160670961aee1f08581"
+  dependencies:
+    tovi-form-button "^1.2.18"
+    tovi-gallery "^1.2.24"
+    tovi-typo "^1.2.24"
 
 traverse@0.6.6:
   version "0.6.6"
