@@ -565,13 +565,6 @@
     core-js "^2.5.3"
     regenerator-runtime "^0.11.1"
 
-"@babel/runtime@^7.0.0-beta.42":
-  version "7.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.53.tgz#9df22ae34823ce89f790060594b83ee572e2c5d2"
-  dependencies:
-    core-js "^2.5.7"
-    regenerator-runtime "^0.12.0"
-
 "@babel/template@7.0.0-beta.42":
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.42.tgz#7186d4e70d44cdec975049ba0a73bdaf5cdee052"
@@ -615,6 +608,10 @@
 "@fortawesome/fontawesome-common-types@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.0.tgz#6bcf6481030f59e7ffd1a40a67cd464d47780f6a"
+
+"@fortawesome/fontawesome-free@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.1.0.tgz#f35f5ba91366b7a58b0b6a4f22ff0907fe002219"
 
 "@fortawesome/fontawesome-svg-core@^1.2.0":
   version "1.2.0"
@@ -1368,8 +1365,8 @@ can-use-dom@^0.1.0:
   resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
 
 caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000865"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000865.tgz#82ffb64d40f7567620aac02d3a632079689abc6b"
+  version "1.0.30000867"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000867.tgz#b55a6ecfac3107988940c9c7dfe1866315312c97"
 
 caniuse-lite@^1.0.30000844:
   version "1.0.30000865"
@@ -1595,7 +1592,7 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.5.3, core-js@^2.5.7:
+core-js@^2.4.0, core-js@^2.5.3:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
@@ -3659,10 +3656,8 @@ next-redux-saga@^3.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/next-redux-saga/-/next-redux-saga-3.0.0-beta.1.tgz#5f4463707aa89848713630dc54d79c679d960d59"
 
 next-redux-wrapper@^2.0.0-beta.6:
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-2.0.0-beta.6.tgz#55128bc37fbdf1c8531a992ba14832797c34b15d"
-  dependencies:
-    "@babel/runtime" "^7.0.0-beta.42"
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-2.0.0.tgz#74587381ff9c762cd85676d9739a51a3aeceed58"
 
 next-style-loader@^0.3.1:
   version "0.3.1"
@@ -5064,10 +5059,6 @@ regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
 
-regenerator-runtime@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.0.tgz#8052ac952d85b10f3425192cd0c53f45cf65c6cb"
-
 regenerator-transform@^0.12.3:
   version "0.12.4"
   resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.12.4.tgz#aa9b6c59f4b97be080e972506c560b3bccbfcff0"
@@ -5905,18 +5896,9 @@ tovi-form-button@^1.2.16:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/tovi-form-button/-/tovi-form-button-1.2.16.tgz#e8bdd39811be5c71dc219f7de5c6c41d324d74e9"
 
-tovi-gallery@^1.2.24:
-  version "1.2.24"
-  resolved "https://registry.yarnpkg.com/tovi-gallery/-/tovi-gallery-1.2.24.tgz#97dc277f9e9f24f8ca652f576ce8a63cefda7528"
-  dependencies:
-    react-click-outside tj/react-click-outside
-    react-slick "^0.23.1"
-    slick-carousel "^1.8.1"
-    tovi-background "^1.2.13"
-
-tovi-gallery@^1.2.25:
-  version "1.2.25"
-  resolved "https://registry.yarnpkg.com/tovi-gallery/-/tovi-gallery-1.2.25.tgz#6d34f2c1da2fa0eff0d79843fab6fd09b125895f"
+tovi-gallery@^1.2.28:
+  version "1.2.28"
+  resolved "https://registry.yarnpkg.com/tovi-gallery/-/tovi-gallery-1.2.28.tgz#db50af324a8400d4db8e8d1ec5ee779ed70f28e2"
   dependencies:
     react-click-outside tj/react-click-outside
     react-slick "^0.23.1"
@@ -5933,12 +5915,12 @@ tovi-typo@^1.2.24:
   version "1.2.24"
   resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.24.tgz#6e349e3109acb3def0e671e5d3b2cb3d2b00f45d"
 
-tovi-views@^1.2.27:
-  version "1.2.27"
-  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.27.tgz#f60b20de07c90d66c1e8c3b6fed07245f62bb2da"
+tovi-views@^1.2.28:
+  version "1.2.28"
+  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.28.tgz#f908e82543d59ee06bff52b5b66c4680ddff4467"
   dependencies:
     tovi-form-button "^1.2.16"
-    tovi-gallery "^1.2.25"
+    tovi-gallery "^1.2.28"
     tovi-typo "^1.2.24"
 
 traverse@0.6.6:
