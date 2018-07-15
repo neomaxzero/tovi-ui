@@ -7,16 +7,11 @@ import { getProvinces, getCities } from '~/services/global';
 import { user } from '~/services/user';
 import Validators from '~/components/shared/Validators';
 import Recaptcha from 'react-recaptcha';
-import SexDropDown from './sexDropDown';
-import DateDropDown from './dateDropDown';
-import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
+import FormField, {
+  SelectField,
+} from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
-import {
-  CheckboxContainer,
-  ErrorMsg,
-  DropDownsInline,
-  CaptchaContainer,
-} from './styled';
+import { CheckboxContainer, ErrorMsg, CaptchaContainer } from './styled';
 import SocialLogin from '~/components/Navigator/SocialLogin';
 import { capitalize } from '~/utils/string';
 import { Error } from '~/components/shared/FormPopup/FormField/styled';
@@ -27,21 +22,14 @@ const MESSAGE_DEFAULT = 'Campo requerido';
 export default class SignUpForm extends Component {
   state = {
     name: '',
-    surname: '',
     province: '',
     city: '',
     email: '',
     pass: '',
-    sex: '',
     captcha: '',
     valid: true,
     loading: false,
     provinceList: [],
-    date: {
-      day: '',
-      month: '',
-      year: '',
-    },
     citySelect: {
       disabled: true,
       isLoading: false,
@@ -49,10 +37,6 @@ export default class SignUpForm extends Component {
     },
     fields: {
       name: {
-        valid: true,
-        message: '',
-      },
-      surname: {
         valid: true,
         message: '',
       },
@@ -71,12 +55,6 @@ export default class SignUpForm extends Component {
       pass: {
         valid: true,
         message: '',
-      },
-      sex: {
-        valid: true,
-      },
-      date: {
-        valid: true,
       },
       terms: {
         valid: false,
@@ -162,39 +140,12 @@ export default class SignUpForm extends Component {
     });
   };
 
-  selectSex = ({ value }) => {
-    this.setState({
-      sex: value,
-      fields: {
-        ...this.state.fields,
-        sex: {
-          valid: true,
-        },
-      },
-    });
-  };
-
-  selectDate = value => {
-    this.setState({
-      date: value,
-      fields: {
-        ...this.state.fields,
-        date: {
-          valid: true,
-        },
-      },
-    });
-  };
   validateFields = () => {
     let valid = true;
     let error = '';
 
     const fields = {
       name: {
-        valid: true,
-        message: '',
-      },
-      surname: {
         valid: true,
         message: '',
       },
@@ -214,12 +165,6 @@ export default class SignUpForm extends Component {
         valid: true,
         message: '',
       },
-      sex: {
-        valid: true,
-      },
-      date: {
-        valid: true,
-      },
       captcha: {
         message: '',
       },
@@ -230,12 +175,6 @@ export default class SignUpForm extends Component {
     if (!this.state.name) {
       fields.name.valid = false;
       fields.name.message = MESSAGE_DEFAULT;
-      valid = false;
-    }
-
-    if (!this.state.surname) {
-      fields.surname.valid = false;
-      fields.surname.message = MESSAGE_DEFAULT;
       valid = false;
     }
 
@@ -277,32 +216,6 @@ export default class SignUpForm extends Component {
       valid = false;
     }
 
-    if (!this.state.sex) {
-      fields.sex.valid = false;
-      valid = false;
-    }
-
-    if (
-      !this.state.date.day ||
-      !this.state.date.month ||
-      !this.state.date.year
-    ) {
-      fields.date.valid = false;
-      valid = false;
-    }
-    const d = ('0' + this.state.date.day).slice(-2);
-    const m = ('0' + this.state.date.month).slice(-2);
-
-    const plus18 = moment(`${d}${m}${this.state.date.year}`, 'DDMMYYYY').add(
-      18,
-      'Y',
-    );
-    if (plus18 > moment()) {
-      fields.date.valid = false;
-      valid = false;
-      error = 'Debe ser mayor a 18 años.';
-    }
-
     if (!this.state.fields.terms.valid) {
       valid = false;
       error = 'Para usar el sitio debes aceptar los terminos y condiciones';
@@ -336,24 +249,17 @@ export default class SignUpForm extends Component {
 
     this.props.lockPopup();
 
-    const d = ('0' + this.state.date.day).slice(-2);
-    const m = ('0' + this.state.date.month).slice(-2);
-
-    const date = `${d}${m}${this.state.date.year}`;
     const body = {
       Nombre: capitalize(this.state.name),
-      Apellido: capitalize(this.state.surname),
       Password: this.state.pass,
       PasswordRepetir: this.state.pass,
       Email: this.state.email,
       LocalidadId: this.state.city,
       ProvinciaId: this.state.province,
       PaisId: 1,
-      SexoId: this.state.sex,
       RecibeCorreosTovi: true,
       Habilitado: false,
       NombreUsuario: '',
-      FechaNacimiento: moment(date, 'DDMMYYYY').format(),
       Captcha: this.state.captcha,
     };
 
@@ -390,7 +296,6 @@ export default class SignUpForm extends Component {
   render() {
     const {
       name,
-      surname,
       email,
       valid,
       loading,
@@ -399,8 +304,6 @@ export default class SignUpForm extends Component {
       province,
       citySelect,
       pass,
-      sex,
-      date,
       fields,
       error,
     } = this.state;
@@ -410,20 +313,11 @@ export default class SignUpForm extends Component {
         <FormField
           type="text"
           name="name"
-          placeholder="Nombres"
+          placeholder="Nombre de la empresa"
           onChange={this.onChange}
           value={name}
           valid={fields.name.valid}
           message={fields.name.message}
-        />
-        <FormField
-          type="text"
-          name="surname"
-          placeholder="Apellido"
-          onChange={this.onChange}
-          value={surname}
-          valid={fields.surname.valid}
-          message={fields.surname.message}
         />
         <SelectField
           noResultsText={i18n.NO_RESULTS}
@@ -473,19 +367,7 @@ export default class SignUpForm extends Component {
           valid={fields.pass.valid}
           message={fields.pass.message}
         />
-        <DropDownsInline>
-          <SexDropDown
-            value={sex}
-            setSex={this.selectSex}
-            valid={fields.sex.valid}
-            message={fields.sex.message}
-          />
-          <DateDropDown
-            value={date}
-            setDate={this.selectDate}
-            valid={fields.date.valid}
-          />
-        </DropDownsInline>
+
         <CheckboxContainer>
           <FormCheckbox name="terms" value="terms" onPress={this.acceptTerms}>
             Acepto los terminos y condiciones del sitio
