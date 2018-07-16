@@ -5911,17 +5911,17 @@ tovi-nav@^1.2.16:
   dependencies:
     react-click-outside "github:tj/react-click-outside"
 
-tovi-typo@^1.2.24:
-  version "1.2.24"
-  resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.24.tgz#6e349e3109acb3def0e671e5d3b2cb3d2b00f45d"
+tovi-typo@^1.2.29:
+  version "1.2.29"
+  resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.29.tgz#f79cbe7397f9454189fb863e4b02b0e86478275a"
 
-tovi-views@^1.2.28:
-  version "1.2.28"
-  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.28.tgz#f908e82543d59ee06bff52b5b66c4680ddff4467"
+tovi-views@^1.2.29:
+  version "1.2.29"
+  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.29.tgz#3b27a90ec013504b49d2f36022bcd55695345762"
   dependencies:
     tovi-form-button "^1.2.16"
     tovi-gallery "^1.2.28"
-    tovi-typo "^1.2.24"
+    tovi-typo "^1.2.29"
 
 traverse@0.6.6:
   version "0.6.6"

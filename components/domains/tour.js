@@ -8,7 +8,7 @@
 // },
 
 import { Record, List } from 'immutable';
-
+import userMapper, { User } from './user';
 const DEF = 'N/A';
 
 const Tour = Record({
@@ -29,6 +29,7 @@ const Tour = Record({
   endIn: DEF,
   vacancy: DEF,
   resourceUrls: DEF,
+  user: User,
 });
 
 const Tours = Record({
@@ -37,7 +38,7 @@ const Tours = Record({
 });
 
 export const TourMapper = payload => {
-  console.log(payload);
+  // console.log(payload);
   return new Tour({
     id: payload.TourId,
     name: payload.ExperienceName,
@@ -54,6 +55,7 @@ export const TourMapper = payload => {
     portrait: payload.Portrait,
     indexPortrait: payload.IsPortrait,
     resourceUrls: payload.ResourceUrls,
+    user: userMapper(payload),
   });
 };
 
