@@ -18,7 +18,6 @@ class Tovi extends React.Component {
   }
 
   render() {
-    console.log(Views.DetailsView);
     return (
       <div>
         <Layout

@@ -9,7 +9,7 @@ export const User = Record({
   firstName: DEF,
   lastName: DEF,
   company: DEF,
-  profile: null,
+  profile: undefined,
   legajo: null,
 });
 

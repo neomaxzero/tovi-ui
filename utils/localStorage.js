@@ -8,10 +8,8 @@ import Cookies from './cookies';
 export const loadState = () => {
   try {
     if (typeof window === 'undefined') return;
-    console.log(window);
 
     const token = Cookies.get('token');
-    console.log(token);
     const serializedState = localStorage.getItem('state');
     if (serializedState === null || !token) {
       return undefined;
@@ -31,7 +29,7 @@ export const loadState = () => {
 
 /**
  * Save the state in localStorage
- * @param {*object} state 
+ * @param {*object} state
  */
 export const saveState = state => {
   try {
