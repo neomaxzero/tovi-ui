@@ -9,6 +9,8 @@ export const User = Record({
   firstName: DEF,
   lastName: DEF,
   company: DEF,
+  profile: null,
+  legajo: null,
 });
 
 const userMapper = data => {
@@ -19,6 +21,8 @@ const userMapper = data => {
     firstName: data.UserFirstName,
     lastName: data.UserLastName,
     company: data.UserCompanyName,
+    legajo: data.UserLegajo,
+    profile: data.UserProfilePictureUrl,
   });
 };
 

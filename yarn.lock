@@ -5915,9 +5915,9 @@ tovi-typo@^1.2.29:
   version "1.2.29"
   resolved "https://registry.yarnpkg.com/tovi-typo/-/tovi-typo-1.2.29.tgz#f79cbe7397f9454189fb863e4b02b0e86478275a"
 
-tovi-views@^1.2.29:
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.29.tgz#3b27a90ec013504b49d2f36022bcd55695345762"
+tovi-views@^1.2.30:
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/tovi-views/-/tovi-views-1.2.30.tgz#4dc1a4d1af5d998133afe34be859fe396a9db059"
   dependencies:
     tovi-form-button "^1.2.16"
     tovi-gallery "^1.2.28"
