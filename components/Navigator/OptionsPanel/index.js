@@ -12,26 +12,25 @@ class OptionsPanelContainer extends Component {
   componentDidMount() {
     this.verifyMode();
     window.onresize = debounce(this.verifyMode, 200);
-  };
+  }
 
   componentWillUnmount() {
     window.onresize = null;
-  };
+  }
 
   verifyMode = () => {
     this.setState({
       compactMode: window.innerWidth < 768,
-    })
+    });
   };
 
-
   render() {
-    return (
-      this.state.compactMode
-      ? <CompactMenu items={items(this.props)} />
-      : <ExtendedMenu items={items(this.props)} />
-    )
+    return this.state.compactMode ? (
+      <CompactMenu items={items(this.props)} />
+    ) : (
+      <ExtendedMenu items={items(this.props)} />
+    );
   }
-};
+}
 
 export default OptionsPanelContainer;

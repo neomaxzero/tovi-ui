@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-
 export const OwnLoginPhrase = styled.span`
   margin-bottom: 0.6em;
   text-align: center;
   width: 100%;
-`
+`;
 
 export const NewAccountContainer = styled.div`
   width: 100%;

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { SelectField } from "~/components/shared/FormPopup/FormField";
-import { DropDownContainer, Title } from "./styled";
-import i18n from "~/utils/intl";
+import React, { Component } from 'react';
+import { SelectField } from '~/components/shared/FormPopup/FormField';
+import { DropDownContainer, Title } from './styled';
+import i18n from '~/utils/intl';
 
 export default class LittleDropDown extends Component {
   state = {
-    options: [{ value: 1, label: "Hombre" }, { value: 2, label: "Mujer" }]
+    options: [{ value: 1, label: 'Hombre' }, { value: 2, label: 'Mujer' }],
   };
 
   render() {
@@ -23,7 +23,7 @@ export default class LittleDropDown extends Component {
           options={options}
           onChange={this.props.setSex}
           placeholder=""
-          matchProp={"label"}
+          matchProp={'label'}
           valid={valid}
           messages={messages}
         />

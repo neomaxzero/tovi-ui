@@ -1,7 +1,7 @@
 import StyleReactSelect from './stylesReactSelect';
 import styled from 'styled-components';
 
-const global = () =>
+const global = () => (
   <style>
     {`
     * {
@@ -30,7 +30,8 @@ const global = () =>
     
     ${StyleReactSelect}
     `}
-  </style>;
+  </style>
+);
 
 export const CenterMessage = styled.h3`
   display: flex;

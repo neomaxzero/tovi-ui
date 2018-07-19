@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { BigList } from './style';
 
 class List extends React.PureComponent {
   render() {
-    return(
+    return (
       <BigList>
         <li> Puerto Madero</li>
         <li> Obelisco </li>
-        <li> Wilde </li>      
+        <li> Wilde </li>
       </BigList>
-    )
+    );
   }
 }
 

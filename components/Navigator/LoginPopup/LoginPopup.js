@@ -68,18 +68,13 @@ class LoginPopup extends Component {
   };
 
   pickPopup = () => {
-    const {
-      setLogin,
-      toggleLogin,
-      showRequestResetPasswordPopup,
-      redirect,
-    } = this.props;
+    const { setLogin, toggleLogin, showRequestResetPasswordPopup, redirect } = this.props;
 
     switch (this.state.type) {
       case types.FORM:
         return (
           <FormPopup toggle={toggleLogin}>
-            {lockPopup =>
+            {lockPopup => (
               <div>
                 <H2 center>Iniciar sesión</H2>
                 <LoginForm
@@ -94,29 +89,18 @@ class LoginPopup extends Component {
                   redirect={redirect}
                 />
                 <NewAccount openSignUp={this.openSignUp} />
-              </div>}
+              </div>
+            )}
           </FormPopup>
         );
       case types.NOT_ACTIVATED:
-        return (
-          <NotActivated
-            activateClose={toggleLogin}
-            userId={this.state.userId}
-          />
-        );
+        return <NotActivated activateClose={toggleLogin} userId={this.state.userId} />;
       case types.BLOCKED:
-        return (
-          <PasswordBlocked activateClose={toggleLogin} user={this.state.user} />
-        );
+        return <PasswordBlocked activateClose={toggleLogin} user={this.state.user} />;
       case types.FIRST_TIME:
         return <FirstTime activateClose={toggleLogin} user={this.state.user} />;
       case types.BLOCKEDWITHFACEBOOK:
-        return (
-          <PasswordBlockedWithFacebook
-            activateClose={toggleLogin}
-            user={this.state.user}
-          />
-        );
+        return <PasswordBlockedWithFacebook activateClose={toggleLogin} user={this.state.user} />;
     }
   };
 

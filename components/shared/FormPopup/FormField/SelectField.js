@@ -5,13 +5,13 @@ import { Error, BorderSelect } from './styled';
 export default class FormField extends PureComponent {
   render() {
     const { message, valid } = this.props;
-    return(
+    return (
       <div>
         <BorderSelect valid={valid}>
-          <Select {...this.props} />            
+          <Select {...this.props} />
         </BorderSelect>
-        { message && <Error>{message}</Error> }
+        {message && <Error>{message}</Error>}
       </div>
-    )
+    );
   }
 }

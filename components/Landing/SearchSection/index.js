@@ -6,15 +6,15 @@ import Lema from './Lema';
 
 class SearchSection extends PureComponent {
   style = {
-      background: 'url(static/backgroundSearch.jpg)',
-      height: '340px',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
+    background: 'url(static/backgroundSearch.jpg)',
+    height: '340px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
   };
 
   render() {
     return (
-      <div style={this.style}> 
+      <div style={this.style}>
         <Lema />
         <SearchBar />
       </div>

@@ -13,23 +13,28 @@ import { Nav } from './styles';
 export default class Navigator extends Component {
   goHome = () => {
     Router.push('/');
-  }
+  };
 
   render() {
-    const { showLogin, showSignUp, 
-      toggleLogin, toggleSignup,
-      showEmailPassword, showSignupSucceed,
-    showRequestResetPassword } = this.props;
-    return( 
+    const {
+      showLogin,
+      showSignUp,
+      toggleLogin,
+      toggleSignup,
+      showEmailPassword,
+      showSignupSucceed,
+      showRequestResetPassword,
+    } = this.props;
+    return (
       <Nav>
-        <Logo onClick={this.goHome}/>        
+        <Logo onClick={this.goHome} />
         <OptionsPanel />
-        { showLogin && <Login toggleLogin={toggleLogin} toggleSignup={toggleSignup} /> }
-        { showSignUp && <SingUp toggleSignup={toggleSignup} /> }
-        { showEmailPassword && <PasswordBlocked /> }
-        { showSignupSucceed && <SignUpSucceed /> }
-        { showRequestResetPassword && <RequestResetPassword /> }
+        {showLogin && <Login toggleLogin={toggleLogin} toggleSignup={toggleSignup} />}
+        {showSignUp && <SingUp toggleSignup={toggleSignup} />}
+        {showEmailPassword && <PasswordBlocked />}
+        {showSignupSucceed && <SignUpSucceed />}
+        {showRequestResetPassword && <RequestResetPassword />}
       </Nav>
-      );
+    );
   }
 }

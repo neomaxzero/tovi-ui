@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { SelectField } from "~/components/shared/FormPopup/FormField";
+import React, { Component } from 'react';
+import { SelectField } from '~/components/shared/FormPopup/FormField';
 
-import Select from "react-select";
-import { DateContainer, Title, Day, Month, Year, Dmy } from "./styled";
-import { get31, getMonths, getYearForm } from "./dateGenerator";
-import i18n from "~/utils/intl";
+import Select from 'react-select';
+import { DateContainer, Title, Day, Month, Year, Dmy } from './styled';
+import { get31, getMonths, getYearForm } from './dateGenerator';
+import i18n from '~/utils/intl';
 
 export default class LittleDropDown extends Component {
   state = {
@@ -14,20 +14,20 @@ export default class LittleDropDown extends Component {
     date: {
       day: this.props.value.day,
       month: this.props.value.month,
-      year: this.props.value.year
-    }
+      year: this.props.value.year,
+    },
   };
 
   setDay = ({ value }) => {
-    this.setInState(value, "day");
+    this.setInState(value, 'day');
   };
 
   setMonth = ({ value }) => {
-    this.setInState(value, "month");
+    this.setInState(value, 'month');
   };
 
   setYear = ({ value }) => {
-    this.setInState(value, "year");
+    this.setInState(value, 'year');
   };
 
   setInState = (value, attr) => {
@@ -35,12 +35,12 @@ export default class LittleDropDown extends Component {
       {
         date: {
           ...this.state.date,
-          [attr]: value
-        }
+          [attr]: value,
+        },
       },
       () => {
         this.props.setDate(this.state.date);
-      }
+      },
     );
   };
 
@@ -62,8 +62,8 @@ export default class LittleDropDown extends Component {
               clearable={false}
               options={dayOptions}
               onChange={this.setDay}
-              labelKey={"label"}
-              valueKey={"value"}
+              labelKey={'label'}
+              valueKey={'value'}
               placeholder="Día"
               valid={valid}
             />
@@ -77,7 +77,7 @@ export default class LittleDropDown extends Component {
               clearable={false}
               options={monthOptions}
               onChange={this.setMonth}
-              matchProp={"label"}
+              matchProp={'label'}
               placeholder="Mes"
               valid={valid}
             />
@@ -91,14 +91,12 @@ export default class LittleDropDown extends Component {
               clearable={false}
               options={yearOptions}
               onChange={this.setYear}
-              matchProp={"label"}
+              matchProp={'label'}
               placeholder="Año"
               valid={valid}
             />
           </Year>
-
         </Dmy>
-
       </DateContainer>
     );
   }

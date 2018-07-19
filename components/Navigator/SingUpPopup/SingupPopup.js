@@ -13,16 +13,12 @@ class SingupPopup extends Component {
     const { setLogin, toggleSignup } = this.props;
     return (
       <FormPopup toggle={toggleSignup}>
-        {lockPopup =>
+        {lockPopup => (
           <div style={{ width: '100%' }}>
             <H2 center>Crea una cuenta</H2>
-            <SignUpForm
-              lockPopup={lockPopup}
-              succeed={this.succeed}
-              toggle={toggleSignup}
-              setLogin={setLogin}
-            />
-          </div>}
+            <SignUpForm lockPopup={lockPopup} succeed={this.succeed} toggle={toggleSignup} setLogin={setLogin} />
+          </div>
+        )}
       </FormPopup>
     );
   }

@@ -7,13 +7,11 @@ import { SyBars } from './sy';
 class Bars extends React.PureComponent {
   render() {
     const icon = this.props.showCross ? 'close' : 'bars';
-    return (      
+    return (
       <SyBars onClick={this.props.onClick}>
-        <FA name={icon}
-        style={{color: primary}}
-        />
+        <FA name={icon} style={{ color: primary }} />
       </SyBars>
-    )
+    );
   }
 }
 

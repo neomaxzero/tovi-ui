@@ -7,22 +7,21 @@ export default class NotActivated extends Component {
   sendEmail = () => {
     const { userId } = this.props;
     return userService.resendEmail(userId);
-  }
+  };
 
   render() {
     const { activateClose } = this.props;
     return (
-      <ResendPopup 
-          service={this.sendEmail}
-          activateClose={activateClose}
-          title={'Cuenta no activada'}
-          nameButton={'Enviar e-mail'}
+      <ResendPopup
+        service={this.sendEmail}
+        activateClose={activateClose}
+        title={'Cuenta no activada'}
+        nameButton={'Enviar e-mail'}
       >
-        <Phrase> Aún no has activado tu cuenta.</Phrase>        
-        <Phrase> Revisa tu correo electrónico y sigue las instrucciones que te hemos enviado.</Phrase>  
-        <Phrase> No olvides buscar en correos no deseados.</Phrase>            
+        <Phrase> Aún no has activado tu cuenta.</Phrase>
+        <Phrase> Revisa tu correo electrónico y sigue las instrucciones que te hemos enviado.</Phrase>
+        <Phrase> No olvides buscar en correos no deseados.</Phrase>
       </ResendPopup>
-    )
+    );
   }
 }
-          

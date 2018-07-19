@@ -1,4 +1,4 @@
-import Container from './container'
+import Container from './container';
 import RequestReset from './RequestResetPopup';
 
 export { RequestReset };

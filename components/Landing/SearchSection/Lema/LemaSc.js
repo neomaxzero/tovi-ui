@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LemasContainer =  styled.div`
+export const LemasContainer = styled.div`
   padding: 2em 2em;
 `;
 
@@ -9,5 +9,5 @@ export const LemaSc = styled.div`
   font-size: 2em;
   font-family: Montserrat;
   opacity: 0.5;
-  cursor: default; 
+  cursor: default;
 `;

@@ -6,7 +6,7 @@ export const ButtonSc = styled.div`
   font-size: 1.2em;
   padding: 0.6em 1.2em;
   border-radius: 4px
-  background-color: ${ primary }
+  background-color: ${primary}
   cursor: pointer;
   user-select: none;
 

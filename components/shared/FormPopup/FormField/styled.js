@@ -8,19 +8,19 @@ export const Field = styled.input`
   font-size: 1.1em;
   padding: 0 1em;
   border-radius: 4px;
-  border:1px solid ${props => props.valid ? greyLine : error};
+  border: 1px solid ${props => (props.valid ? greyLine : error)};
   margin-top: 0.5em;
-  ${props => props.oStyle}
+  ${props => props.oStyle};
 `;
 
 export const Error = styled.div`
   color: ${error};
   padding-left: 1em;
   margin-bottom: 0.5em;
-`
+`;
 
 export const BorderSelect = styled.div`
   .Select-control {
-    border: 1px solid ${props => props.valid ? greyLine : error };
+    border: 1px solid ${props => (props.valid ? greyLine : error)};
   }
-`
+`;

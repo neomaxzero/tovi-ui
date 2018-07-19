@@ -14,15 +14,13 @@ class CompactMenu extends React.PureComponent {
   };
 
   render() {
-    return(
+    return (
       <div>
-        <Bars
-          onClick={this.toggleMenu}
-          showCross={this.state.opened}
-        />
-        { this.state.opened && <CompactList items={this.props.items} /> }
+        <Bars onClick={this.toggleMenu} showCross={this.state.opened} />
+        {this.state.opened && <CompactList items={this.props.items} />}
       </div>
-  )};
-};
+    );
+  }
+}
 
 export default CompactMenu;

@@ -7,23 +7,22 @@ export default class PasswordBlocked extends Component {
   sendEmail = () => {
     const { user } = this.props;
     return userService.resendPasswordEmail(this.props.user);
-  }
+  };
 
   render() {
     const { activateClose } = this.props;
     return (
-      <ResendPopup 
-          service={this.sendEmail}
-          activateClose={activateClose}
-          title={'Contraseña bloqueada'}
-          nameButton={'Reenviar e-mail'}
+      <ResendPopup
+        service={this.sendEmail}
+        activateClose={activateClose}
+        title={'Contraseña bloqueada'}
+        nameButton={'Reenviar e-mail'}
       >
-        <Phrase> Por razones de seguridad tu contraseña ha sido bloqueada.</Phrase>        
-        <Phrase> Te hemos enviado un e-mail para que puedas establecer</Phrase>        
-        <Phrase> una nueva contraseña.</Phrase>   
-        <Phrase> ¿No lo has recibido? </Phrase>       
+        <Phrase> Por razones de seguridad tu contraseña ha sido bloqueada.</Phrase>
+        <Phrase> Te hemos enviado un e-mail para que puedas establecer</Phrase>
+        <Phrase> una nueva contraseña.</Phrase>
+        <Phrase> ¿No lo has recibido? </Phrase>
       </ResendPopup>
-    )
+    );
   }
 }
-          

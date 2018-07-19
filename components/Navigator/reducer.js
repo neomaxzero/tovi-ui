@@ -7,8 +7,8 @@ const InitialState = fromJS({
   login: {
     email: '',
     password: '',
-    remember: false
-  }
+    remember: false,
+  },
 });
 
 const toggler = (state, field) => state.set(field, !state.get(field));

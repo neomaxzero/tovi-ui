@@ -1,3 +1,3 @@
 export default {
-  NO_RESULTS: "No se encontraron resultados"
+  NO_RESULTS: 'No se encontraron resultados',
 };

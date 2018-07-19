@@ -4,13 +4,15 @@ import { greyLine } from '~/components/shared/MainColors';
 import { QuitResponsive } from './styled.js';
 
 export default class QuitButton extends Component {
-  shouldComponentUpdate() { return false; }
+  shouldComponentUpdate() {
+    return false;
+  }
 
   render() {
-    return(
+    return (
       <QuitResponsive onClick={this.props.onClick}>
-        <FA name="times" style={{color: greyLine}} />
+        <FA name="times" style={{ color: greyLine }} />
       </QuitResponsive>
-    )
+    );
   }
 }

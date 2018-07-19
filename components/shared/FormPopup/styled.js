@@ -8,7 +8,7 @@ export const PopupContainer = styled.div`
   overflow-y: auto;
   width: 30em;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   background-color: white;
   padding: 2em 1.5em;
@@ -22,9 +22,9 @@ export const Field = styled.input`
   font-size: 1.1em;
   padding: 0 1em;
   border-radius: 4px;
-  border:1px solid ${props => props.valid ? greyLine : error};
+  border: 1px solid ${props => (props.valid ? greyLine : error)};
   margin-bottom: 0.5em;
-  ${props => props.oStyle}
+  ${props => props.oStyle};
 `;
 
 export const Form = styled.form`
@@ -36,7 +36,7 @@ export const QuitResponsive = styled.form`
   position: absolute;
   top: 1em;
   right: 1em;
-`
+`;
 
 export const ErrorMessage = styled.p`
   margin-bottom: 0.6em;
@@ -55,7 +55,7 @@ export const OptionsContainer = styled.div`
 export const Linki = styled.a`
   text-decoration: none;
   color: ${linkColors};
-  cursor: pointer; 
+  cursor: pointer;
   &:hover {
     opacity: 0.8;
   }

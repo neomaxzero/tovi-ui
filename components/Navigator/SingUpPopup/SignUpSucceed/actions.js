@@ -1,7 +1,7 @@
 import { SIGNUP_SUCCEED_CLOSE, SIGNUP_SUCCEED_OPEN } from '~/components/constants';
 
 const close = () => ({
-	type: SIGNUP_SUCCEED_CLOSE,
+  type: SIGNUP_SUCCEED_CLOSE,
 });
 
 const show = () => ({
@@ -9,6 +9,6 @@ const show = () => ({
 });
 
 export default {
-	close,
+  close,
   show,
 };

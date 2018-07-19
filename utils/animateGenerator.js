@@ -5,6 +5,5 @@ import { JSONtoCSS } from './object';
 export const animate = (eff, duration) => {
   const effectOnAnimate = animations[eff];
   const keyEffect = keyframes`${JSONtoCSS(effectOnAnimate)}`;
-  return `animation: ${keyEffect} ${duration};`
-}
-
+  return `animation: ${keyEffect} ${duration};`;
+};

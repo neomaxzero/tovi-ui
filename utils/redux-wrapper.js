@@ -11,9 +11,7 @@ var _debug = false;
 var skipMerge = ['initialState', 'initialProps', 'isServer', 'store'];
 
 function initStore(makeStore, req, initialState2) {
-  const initialState = initialState2 === 'undefined'
-    ? initialState2
-    : fromJS(initialState2);
+  const initialState = initialState2 === 'undefined' ? initialState2 : fromJS(initialState2);
   // Always make a new store if server
   if (!!req && typeof window === 'undefined') {
     if (!req._store) {
@@ -42,11 +40,8 @@ export default function(createStore) {
 
       var initialState = props.initialState || {};
       var initialProps = props.initialProps || {};
-      var hasStore =
-        props.store && props.store.dispatch && props.store.getState;
-      var store = hasStore
-        ? props.store
-        : initStore(createStore, {}, initialState); // client case, no store but has initialState
+      var hasStore = props.store && props.store.dispatch && props.store.getState;
+      var store = hasStore ? props.store : initStore(createStore, {}, initialState); // client case, no store but has initialState
 
       if (_debug)
         console.log(
@@ -81,9 +76,7 @@ export default function(createStore) {
           console.log(
             Cmp.name,
             '- 1. WrappedCmp.getInitialProps wrapper',
-            ctx.req && ctx.req._store
-              ? 'takes the req store'
-              : 'creates the store',
+            ctx.req && ctx.req._store ? 'takes the req store' : 'creates the store',
           );
 
         ctx.isServer = !!ctx.req;
@@ -98,12 +91,7 @@ export default function(createStore) {
           ]),
         );
       }).then(function(arr) {
-        if (_debug)
-          console.log(
-            Cmp.name,
-            '- 3. WrappedCmp.getInitialProps has store state',
-            arr[1].getState(),
-          );
+        if (_debug) console.log(Cmp.name, '- 3. WrappedCmp.getInitialProps has store state', arr[1].getState());
 
         return {
           isServer: arr[0],

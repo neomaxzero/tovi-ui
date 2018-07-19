@@ -6,31 +6,30 @@ import List from './List/List';
 class ValueSelector extends React.PureComponent {
   state = {
     listOpened: false,
-  }
-  setList = (val) => {
+  };
+  setList = val => {
     this.setState({
       listOpened: val,
     });
-  }
+  };
   openList = () => {
     this.setList(true);
-  }
+  };
   closeList = () => {
     this.setList(false);
-  }
+  };
 
   render() {
     const { title, value } = this.props;
 
-    return(
-        <ClickOutside onClickOutside={this.closeList}>
-          <ValueSelectorSc>
-            <Title>{ title }</Title>
-            <Value onClick={this.openList}>{ value }</Value>
-          </ValueSelectorSc>
-          { this.state.listOpened && <List /> }
-        </ClickOutside>
-      
+    return (
+      <ClickOutside onClickOutside={this.closeList}>
+        <ValueSelectorSc>
+          <Title>{title}</Title>
+          <Value onClick={this.openList}>{value}</Value>
+        </ValueSelectorSc>
+        {this.state.listOpened && <List />}
+      </ClickOutside>
     );
   }
 }

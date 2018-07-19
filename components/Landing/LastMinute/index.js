@@ -8,7 +8,7 @@ export default class LastMinute extends Component {
     return (
       <CardShower>
         {this.props.tours &&
-          this.props.tours.map(tour =>
+          this.props.tours.map(tour => (
             <a href={`/tour/${tour.id}`} target="_blank">
               <TourCard
                 imgSrc={tour.portrait}
@@ -17,8 +17,8 @@ export default class LastMinute extends Component {
                 title={tour.name}
                 price={tour.price}
               />
-            </a>,
-          )}
+            </a>
+          ))}
       </CardShower>
     );
   }

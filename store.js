@@ -18,20 +18,13 @@ const reducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers =
-  (typeof window !== 'undefined' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose;
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 //Restoring if there is something in localStorage
 const persistedState = loadState();
 
 const store = () => {
-  const store = createStore(
-    reducer,
-    persistedState,
-    composeEnhancers(applyMiddleware(sagaMiddleware)),
-  );
+  const store = createStore(reducer, persistedState, composeEnhancers(applyMiddleware(sagaMiddleware)));
   sagaMiddleware.run(rootSaga);
 
   //Suscribing the store to save the state in localStorage

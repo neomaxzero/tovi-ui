@@ -33,4 +33,4 @@ export const FacebookPhrase = styled.span`
 export const OneClickPhrase = styled.p`
   margin-bottom: 0.9em;
   cursor: default;
-`
+`;

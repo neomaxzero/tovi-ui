@@ -6,19 +6,19 @@ export const FormButtonSc = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background-color: ${props => props.secundary ? 'white' : primary};
+  background-color: ${props => (props.secundary ? 'white' : primary)};
   border: 1px solid ${primary};
   padding: 1em;
   width: 100%;
-  cursor: ${props => props.loading ? 'default' : 'pointer'};
-  color: ${props => props.secundary ? primary : 'white'};
+  cursor: ${props => (props.loading ? 'default' : 'pointer')};
+  color: ${props => (props.secundary ? primary : 'white')};
   font-size: 1.1em;
-  user-select: none; 
+  user-select: none;
   height: 3.2em;
 
   &:hover {
-    opacity: ${props => props.loading ? '1' : '0.8'};
+    opacity: ${props => (props.loading ? '1' : '0.8')};
   }
 
-  ${props => props.oStyle}
+  ${props => props.oStyle};
 `;

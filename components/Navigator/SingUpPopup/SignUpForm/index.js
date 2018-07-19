@@ -7,9 +7,7 @@ import { getProvinces, getCities } from '~/services/global';
 import { user } from '~/services/user';
 import Validators from '~/components/shared/Validators';
 import Recaptcha from 'react-recaptcha';
-import FormField, {
-  SelectField,
-} from '~/components/shared/FormPopup/FormField';
+import FormField, { SelectField } from '~/components/shared/FormPopup/FormField';
 import FormCheckbox from '~/components/shared/FormPopup/FormCheckbox';
 import { CheckboxContainer, ErrorMsg, CaptchaContainer } from './styled';
 import SocialLogin from '~/components/Navigator/SocialLogin';
@@ -294,19 +292,7 @@ export default class SignUpForm extends Component {
   };
 
   render() {
-    const {
-      name,
-      email,
-      valid,
-      loading,
-      city,
-      provinceList,
-      province,
-      citySelect,
-      pass,
-      fields,
-      error,
-    } = this.state;
+    const { name, email, valid, loading, city, provinceList, province, citySelect, pass, fields, error } = this.state;
 
     return (
       <Form>
@@ -385,11 +371,7 @@ export default class SignUpForm extends Component {
           {fields.captcha.message && <Error>{fields.captcha.message}</Error>}
         </CaptchaContainer>
         {error && <ErrorMsg> {error} </ErrorMsg>}
-        <FormButton
-          name="Crear cuenta"
-          loading={loading}
-          onClick={this.onSubmit}
-        />
+        <FormButton name="Crear cuenta" loading={loading} onClick={this.onSubmit} />
       </Form>
     );
   }

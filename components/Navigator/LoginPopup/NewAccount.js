@@ -4,13 +4,10 @@ import FormButton from '~/components/shared/FormButton/';
 
 export default class NewAccount extends PureComponent {
   render() {
-    return(
+    return (
       <NewAccountContainer>
         <NoAccQ>¿No tienes cuenta?</NoAccQ>
-        <FormButton 
-          name="Crear una Cuenta"
-          onClick={this.props.openSignUp}
-          secundary />
+        <FormButton name="Crear una Cuenta" onClick={this.props.openSignUp} secundary />
       </NewAccountContainer>
     );
   }

@@ -65,11 +65,9 @@ export default class LoginForm extends Component {
       .catch(err => {
         console.log(err.response);
         const code = err.response.data.errorCode;
-        if (code == ERROR_CODES.PASSWORD_BLOCKED)
-          return this.props.showBlocked(this.state.user);
+        if (code == ERROR_CODES.PASSWORD_BLOCKED) return this.props.showBlocked(this.state.user);
 
-        if (code == ERROR_CODES.FIRST_TIME)
-          return this.props.showResetForm(this.state.user);
+        if (code == ERROR_CODES.FIRST_TIME) return this.props.showResetForm(this.state.user);
 
         this.setState({
           message: 'Email o Password incorrectos',
@@ -140,11 +138,7 @@ export default class LoginForm extends Component {
         />
         <OptionsLogin forgot={forgot} />
         {message && <ErrorMessage>{message}</ErrorMessage>}
-        <FormButton
-          name="Iniciar sesión"
-          onClick={this.onSubmit}
-          loading={loading}
-        />
+        <FormButton name="Iniciar sesión" onClick={this.onSubmit} loading={loading} />
       </Form>
     );
   }

@@ -10,26 +10,25 @@ export default class NavButton extends PureComponent {
   toggle = () => {
     this.setState({
       showPopup: !this.state.showPopup,
-    })
-  }
+    });
+  };
 
   handleClick = () => {
     this.toggle();
     this.props.onClick();
-  }
+  };
 
   render() {
     const { children, avatar, child } = this.props;
     const showPopup = child && this.state.showPopup;
-    return(
+    return (
       <div>
         <ButtonWrapper onClick={this.handleClick}>
           <span> {children} </span>
-          { avatar && <Avatar src={avatar} alt="avatar" /> }
-          { showPopup && <DropList items={child}/> }
+          {avatar && <Avatar src={avatar} alt="avatar" />}
+          {showPopup && <DropList items={child} />}
         </ButtonWrapper>
       </div>
-    )
+    );
   }
 }
-

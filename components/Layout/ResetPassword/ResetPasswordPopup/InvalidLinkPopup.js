@@ -7,21 +7,20 @@ export default class InvalidLinkPopup extends Component {
   sendEmail = () => {
     const { user } = this.props;
     return userService.resendPasswordEmail(this.props.user);
-  }
+  };
 
   render() {
     const { activateClose } = this.props;
     return (
-      <ResendPopup 
-          service={this.sendEmail}
-          activateClose={activateClose}
-          title={'Link Invalido'}
-          nameButton={'Enviar e-mail'}
+      <ResendPopup
+        service={this.sendEmail}
+        activateClose={activateClose}
+        title={'Link Invalido'}
+        nameButton={'Enviar e-mail'}
       >
-          <Phrase> El link de activación no se encuentra activo.</Phrase>        
-          <Phrase> Deseas que te enviemos un nuevo e-mail de restauracion? </Phrase>        
+        <Phrase> El link de activación no se encuentra activo.</Phrase>
+        <Phrase> Deseas que te enviemos un nuevo e-mail de restauracion? </Phrase>
       </ResendPopup>
-    )
+    );
   }
 }
-          

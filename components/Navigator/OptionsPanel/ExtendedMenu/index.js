@@ -4,24 +4,15 @@ import { OptionsPanel } from './styles';
 
 class ExtendedMenu extends React.PureComponent {
   render() {
-    const Items = this.props.items.map((option) => {
+    const Items = this.props.items.map(option => {
       return (
-        <NavButton 
-          key={option.name}
-          onClick={option.handler}
-          avatar={option.avatar}
-          child={option.child}
-        > 
-          {option.name} 
+        <NavButton key={option.name} onClick={option.handler} avatar={option.avatar} child={option.child}>
+          {option.name}
         </NavButton>
-      )
+      );
     });
 
-    return (
-    <OptionsPanel>
-      { Items }
-    </OptionsPanel>
-    )
+    return <OptionsPanel>{Items}</OptionsPanel>;
   }
 }
 

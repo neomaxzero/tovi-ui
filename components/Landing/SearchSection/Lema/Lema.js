@@ -3,7 +3,7 @@ import { LemasContainer, LemaSc } from './LemaSc';
 
 class Lema extends React.PureComponent {
   render() {
-    return(
+    return (
       <LemasContainer>
         <LemaSc>Tours en el destino que elijas.</LemaSc>
         <LemaSc>Experimenta como un local</LemaSc>

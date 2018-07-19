@@ -1,4 +1,4 @@
-import Container from './container'
+import Container from './container';
 import ResetForm from './ResetForm';
 
 export { ResetForm };

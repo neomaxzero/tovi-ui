@@ -5,19 +5,22 @@ import LoginPopupActions from '../actions';
 import AuthActions from '~/components/Orphan/Login/actions';
 import { isLogged, getLoginInfo, getProvider } from '~/components/Orphan/Login/selector';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     logged: isLogged(state),
     loginInfo: getLoginInfo(state),
     provider: getProvider(state),
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-  ...bindActionCreators(LoginPopupActions, dispatch),
-  logout: bindActionCreators(AuthActions.logout, dispatch),
-}};
+    ...bindActionCreators(LoginPopupActions, dispatch),
+    logout: bindActionCreators(AuthActions.logout, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(OptionsPanel);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(OptionsPanel);

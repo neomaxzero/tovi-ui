@@ -10,9 +10,7 @@ export default withRedux(store, { debug: false })(
       return {
         pageProps: {
           // Call page-level getInitialProps
-          ...(Component.getInitialProps
-            ? await Component.getInitialProps(ctx)
-            : {}),
+          ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
         },
       };
     }

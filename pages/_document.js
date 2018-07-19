@@ -7,9 +7,7 @@ import { ServerStyleSheet } from 'styled-components';
 class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />),
-    );
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
     return { ...page, styleTags };
   }
@@ -17,22 +15,10 @@ class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Lato:300,400"
-            rel="stylesheet"
-          />
-          <link
-            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-          />
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/react-select/dist/react-select.css"
-          />
+          <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
+          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+          <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css" />
           <link
             rel="stylesheet"
             type="text/css"
@@ -50,11 +36,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-            async
-            defer
-          />
+          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer />
         </body>
       </html>
     );

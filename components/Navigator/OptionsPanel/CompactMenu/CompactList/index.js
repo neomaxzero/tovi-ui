@@ -3,21 +3,14 @@ import { ListContainer, ItemSy } from './styles';
 
 class CompactList extends React.PureComponent {
   render() {
-    const items = this.props.items.map((item) => {
+    const items = this.props.items.map(item => {
       return (
-        <ItemSy 
-          key={item.name}
-          onClick={item.handler}
-        >
-          { item.name }
+        <ItemSy key={item.name} onClick={item.handler}>
+          {item.name}
         </ItemSy>
-      )
+      );
     });
-    return(
-      <ListContainer>
-        { items }
-      </ListContainer>
-    )
+    return <ListContainer>{items}</ListContainer>;
   }
 }
 
