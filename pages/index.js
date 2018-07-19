@@ -6,8 +6,15 @@ import { TourCollectionMapper } from '~/components/domains/tour';
 
 class Tovi extends React.Component {
   static async getInitialProps({ req, query, initialState }) {
-    const toursRaw = await tourServices.getToursLastMinute();
-    const tours = TourCollectionMapper(toursRaw).data;
+    let err = false;
+    let tours;
+    try {
+      const toursRaw = await tourServices.getToursLastMinute();
+      tours = TourCollectionMapper(toursRaw).data;
+    } catch (err) {
+      err = err;
+    }
+
     const isServer = !!req;
     return {
       isServer,
@@ -15,6 +22,7 @@ class Tovi extends React.Component {
       resetCode: query.reset,
       redirect: query.red,
       tours,
+      err,
     };
   }
 
@@ -26,7 +34,7 @@ class Tovi extends React.Component {
           resetCode={this.props.resetCode}
           redirect={this.props.redirect}
         />
-        <LastMinute tours={this.props.tours} />
+        {!this.props.err && <LastMinute tours={this.props.tours} />}
       </div>
     );
   }

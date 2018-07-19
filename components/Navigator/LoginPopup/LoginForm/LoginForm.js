@@ -17,7 +17,7 @@ export default class LoginForm extends Component {
     pass: '',
     message: '',
     validForm: true,
-    loading: false
+    loading: false,
   };
 
   validateFields = () => {
@@ -45,18 +45,20 @@ export default class LoginForm extends Component {
         if (!userInfo.data.Verificado) {
           return this.props.notActivated(id);
         }
+        const img =
+          userInfo.data.UserProfilePictureUrl ||
+          'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png';
         this.props.onLogin(
           {
             first_name: userInfo.data.Nombre,
             verified: userInfo.data.Verificado,
             picture: {
               data: {
-                url:
-                  'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png'
-              }
-            }
+                url: img,
+              },
+            },
           },
-          PROVIDERS.LOCAL
+          PROVIDERS.LOCAL,
         );
         this.props.toggleLogin();
       })
@@ -71,7 +73,7 @@ export default class LoginForm extends Component {
 
         this.setState({
           message: 'Email o Password incorrectos',
-          loading: false
+          loading: false,
         });
         //Unlock popup
         this.props.lockPopup();
@@ -99,13 +101,13 @@ export default class LoginForm extends Component {
     this.setState({
       message,
       validForm,
-      loading
+      loading,
     });
   };
 
   onChange = ev => {
     this.setState({
-      [ev.target.name]: ev.target.value
+      [ev.target.name]: ev.target.value,
     });
   };
 
