@@ -28,10 +28,9 @@ class Tovi extends React.Component {
 
   render() {
     return (
-      <div>
-        <Layout activation={this.props.act} resetCode={this.props.resetCode} redirect={this.props.redirect} />
+      <Layout activation={this.props.act} resetCode={this.props.resetCode} redirect={this.props.redirect}>
         {!this.props.err && <LastMinute tours={this.props.tours} />}
-      </div>
+      </Layout>
     );
   }
 }
