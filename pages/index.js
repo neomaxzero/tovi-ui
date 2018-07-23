@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from '~/components/Layout';
 import tourServices from '~/services/tours';
 import LastMinute from '~/components/Landing/LastMinute';
+import SearchSection from '~/components/Landing/SearchSection';
+
 import { TourCollectionMapper } from '~/components/domains/tour';
 
 class Tovi extends React.Component {
@@ -29,6 +31,7 @@ class Tovi extends React.Component {
   render() {
     return (
       <Layout activation={this.props.act} resetCode={this.props.resetCode} redirect={this.props.redirect}>
+        <SearchSection />
         {!this.props.err && <LastMinute tours={this.props.tours} />}
       </Layout>
     );

@@ -1,19 +1,31 @@
 import React from 'react';
-import { SearchSectionContainer, SearchButtonContainer } from './styles';
+import Geosuggest from 'react-geosuggest';
+
+import { SearchSectionContainer, SearchButtonContainer, SearchComponent } from './styles';
 import ValueSelector from './ValueSelector';
 import Button from '~/components/shared/Button';
 
 class SearchBar extends React.PureComponent {
   search = () => {};
 
+  setValue = value => {
+    this.setState({
+      value,
+    });
+  };
   render() {
     return (
       <SearchSectionContainer>
-        <ValueSelector title={'Donde'} value={'Puerto Madero'} />
-        <ValueSelector title={'Cuando'} value={'10 de ene - 15 de ene'} />
-        <ValueSelector title={'Personas'} value={'2 Adultos - 1 Niño'} />
         <SearchButtonContainer>
-          <Button name={'Buscar'} onClick={this.search} />
+          <Geosuggest
+            types={['(regions)']}
+            country={'AR'}
+            ref={e => (this._geoSuggest = e)}
+            name="location"
+            placeholder={'Ingresa un ciudad'}
+            autoComplete="off"
+          />
+          <SearchComponent />
         </SearchButtonContainer>
       </SearchSectionContainer>
     );

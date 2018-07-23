@@ -5,8 +5,7 @@ class Lema extends React.PureComponent {
   render() {
     return (
       <LemasContainer>
-        <LemaSc>Tours en el destino que elijas.</LemaSc>
-        <LemaSc>Experimenta como un local</LemaSc>
+        <LemaSc>Aprovecha ofertas de tours Last Minute!</LemaSc>
       </LemasContainer>
     );
   }
