@@ -6,7 +6,8 @@ import EmptyMessage from './EmptyMessage';
 
 export default class LastMinute extends Component {
   render() {
-    return (
+    const { ciudad, provincia } = this.props.searchParams;
+    return this.props.tours.length ? (
       <CardShower>
         {this.props.tours &&
           this.props.tours.map(tour => (
@@ -21,6 +22,8 @@ export default class LastMinute extends Component {
             </a>
           ))}
       </CardShower>
+    ) : (
+      <EmptyMessage provincia={provincia} ciudad={ciudad} />
     );
   }
 }

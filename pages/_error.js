@@ -23,8 +23,9 @@ class Error extends React.Component {
     }
     return (
       <div>
-        <Layout title="Pagina no encontrada" />
-        <CenterMessage>{message}</CenterMessage>
+        <Layout title="Pagina no encontrada">
+          <CenterMessage>{message}</CenterMessage>
+        </Layout>
       </div>
     );
   }

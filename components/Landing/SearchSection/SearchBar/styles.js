@@ -12,6 +12,17 @@ export const SearchSectionContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 769px) {
+  }
+
+  @media (max-width: 1280px) and (min-width: 770px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1281px) {
+    width: 80%;
+  }
 `;
 
 export const SearchButtonContainer = styled.div`
@@ -20,6 +31,21 @@ export const SearchButtonContainer = styled.div`
   justify-content: center;
   padding: 0.8em;
   width: 100%;
+
+  @media (max-width: 769px) {
+    
+  }
+
+  @media (max-width: 1280px) and (min-width: 770px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 90%;
+  }
+
+  @media (min-width: 1281px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 90%;
 `;
 
 export const SearchButton = styled.div`
@@ -27,6 +53,7 @@ export const SearchButton = styled.div`
   top: 31%;
   right: 8%;
   font-size: 1.2em;
+  cursor: pointer;
 `;
 
 export const SearchComponent = props => (

@@ -37,7 +37,8 @@ export const CenterMessage = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  min-height: 72vh;
+  ${props => props.oStyle};
 `;
 
 export const BodyWrapper = styled.div`
