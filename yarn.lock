@@ -5914,9 +5914,9 @@ tovi-background@^1.2.0, tovi-background@^1.2.13:
   dependencies:
     react-click-outside "github:tj/react-click-outside"
 
-tovi-cards@^1.2.34:
-  version "1.2.34"
-  resolved "https://registry.yarnpkg.com/tovi-cards/-/tovi-cards-1.2.34.tgz#7f026ebc439916deea78affc2a5aeef817a7b02e"
+tovi-cards@^1.2.35:
+  version "1.2.35"
+  resolved "https://registry.yarnpkg.com/tovi-cards/-/tovi-cards-1.2.35.tgz#a4ee8f98d4a27ad03c02439b000220fb25fa50bb"
 
 tovi-form-button@^1.2.16:
   version "1.2.16"
