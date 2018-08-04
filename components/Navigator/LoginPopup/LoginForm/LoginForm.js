@@ -46,7 +46,7 @@ export default class LoginForm extends Component {
           return this.props.notActivated(id);
         }
         const img =
-          userInfo.data.UserProfilePictureUrl ||
+          userInfo.data.ProfilePictureUrl ||
           'https://cdn1.iconfinder.com/data/icons/circle-outlines/512/User_Account_Avatar_Person_Profile_Login_Human-512.png';
         this.props.onLogin(
           {

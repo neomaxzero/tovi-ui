@@ -37,16 +37,8 @@ const optionsPanelItems = props => {
 
   return [
     {
-      name: 'Ayuda',
-      handler: () => Router.push('/help'),
-    },
-    {
-      name: 'Empresas',
-      handler: () => console.log('Empresas'),
-    },
-    {
-      name: '¿Quieres ser un anfitrión Tovi?',
-      handler: () => console.log('Conviértete en guia'),
+      name: '¿Qué es Tovi?',
+      handler: () => Router.push('/about'),
     },
     ...subscriberOptions,
   ];
