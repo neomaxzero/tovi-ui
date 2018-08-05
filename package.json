@@ -1,7 +1,7 @@
 {
   "name": "tovi-ui",
   "version": "1.0.0",
-  "description": "Tovi web-ui",
+  "description": "tovi web-ui",
   "main": "server.js",
   "scripts": {
     "serve:dev": "node server.js",
