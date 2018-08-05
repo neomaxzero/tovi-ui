@@ -29,6 +29,7 @@ class Tovi extends React.Component {
       redirect: query.red,
       tours,
       err,
+      query,
       searchParams: body,
     };
   }
@@ -37,7 +38,7 @@ class Tovi extends React.Component {
     return (
       <div>
         <Layout activation={this.props.act} resetCode={this.props.resetCode} redirect={this.props.redirect}>
-          <SearchSection />
+          <SearchSection query={this.props.query} />
           {!this.props.err && <LastMinuteResults tours={this.props.tours} searchParams={this.props.searchParams} />}
         </Layout>
       </div>

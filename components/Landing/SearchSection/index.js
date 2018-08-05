@@ -10,7 +10,7 @@ class SearchSection extends PureComponent {
     return (
       <SearchBack>
         <Lema />
-        <SearchBar />
+        <SearchBar query={this.props.query} />
       </SearchBack>
     );
   }

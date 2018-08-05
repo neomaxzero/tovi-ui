@@ -8,6 +8,18 @@ import Router from 'next/router';
 import { getLocationField } from '~/utils/maps';
 
 class SearchBar extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    let value = '';
+    if (props.query) {
+      value += props.query.c ? `${props.query.c}, ` : '';
+      value += props.query.p ? props.query.p : '';
+    }
+    this.initialValue = value;
+  }
+  state = { value: '' };
+
   search = value => {
     if (!value) return;
     let searchPath = '/search';
@@ -17,6 +29,8 @@ class SearchBar extends React.PureComponent {
     searchPath += `?p=${province}`;
 
     if (city) searchPath += `&c=${city}`;
+
+    this.setValue(value);
 
     Router.push(searchPath);
   };
@@ -31,6 +45,7 @@ class SearchBar extends React.PureComponent {
       <SearchSectionContainer>
         <SearchButtonContainer>
           <Geosuggest
+            initialValue={this.initialValue}
             types={['(regions)']}
             country={'AR'}
             ref={e => (this._geoSuggest = e)}
