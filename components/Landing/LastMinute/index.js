@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { CardShower, TourCard } from 'tovi-cards';
-import Router from 'next/router';
-import Link from 'next/link';
-import EmptyMessage from './EmptyMessage';
 
 export default class LastMinute extends Component {
   render() {

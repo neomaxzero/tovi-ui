@@ -7,6 +7,8 @@ const SearchBack = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
 `;
 
 export default SearchBack;
