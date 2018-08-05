@@ -18,7 +18,7 @@ class Tovi extends React.Component {
     let tours, err;
     try {
       const toursRaw = await tourServices.getToursLastMinute(body);
-      tours = TourCollectionMapper(toursRaw).data;
+      tours = TourCollectionMapper(toursRaw).data.toJS();
     } catch (err) {
       err = err;
     }

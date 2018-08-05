@@ -21,7 +21,7 @@ class SearchBar extends React.PureComponent {
   state = { value: '' };
 
   search = value => {
-    if (!value) return;
+    if (!value || !value.description) return;
     let searchPath = '/search';
     const city = getLocationField(value.gmaps.address_components, 'administrative_area_level_2');
     const province = getLocationField(value.gmaps.address_components, 'administrative_area_level_1');
